@@ -1,0 +1,21 @@
+/* NewsCardList styles */
+.NewsCardList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .NewsCardList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .NewsCardList {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,124 @@
+/* Underline indicator for Home button (Figma spec) */
+.Header__nav-home-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.Header__nav-underline {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 68px;
+  height: 3px;
+  background: #fff;
+  opacity: 1;
+  border-radius: 2px;
+  pointer-events: none;
+}
+/* Header positioned at top, 80px tall, border, Figma spec */
+.Header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #d1d2d6;
+  height: 80px;
+}
+
+/* News Explorer logo (home button) Figma spec: white text, Roboto Slab */
+.Header__logo-link {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Roboto Slab", "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  padding: 0 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Nav buttons: 26px from bottom border, Figma spec */
+.Header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+}
+
+.Header__nav-link {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  padding: 8px 24px;
+  border-radius: 32px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Sign in button border (Figma spec: 176x48) */
+.Header__nav-signin {
+  width: 176px;
+  height: 48px;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Header__logo-link:hover,
+.Header__logo-link:active,
+.Header__logo-link:focus {
+  color: #fff;
+  outline: none;
+}
+
+.Header__nav-link:hover,
+.Header__nav-link:active,
+.Header__nav-link:focus {
+  color: #fff;
+  outline: none;
+  border-color: #fff;
+}
+
+/* Black variant when logged in on saved-news */
+.Header--black .Header__logo-link {
+  color: #000;
+}
+.Header--black .Header__nav-link {
+  color: #000;
+}
+.Header--black .Header__nav-signin {
+  border-color: #000;
+}
+.Header--black .Header__nav-underline {
+  background: #000;
+}
+.Header--black .Header__logo-link:hover,
+.Header--black .Header__logo-link:active,
+.Header--black .Header__logo-link:focus {
+  color: #000;
+}
+.Header--black .Header__nav-link:hover,
+.Header--black .Header__nav-link:active,
+.Header--black .Header__nav-link:focus {
+  color: #000;
+  border-color: #000;
+}

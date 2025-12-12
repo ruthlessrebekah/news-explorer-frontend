@@ -1,0 +1,346 @@
+/* Show More button styles */
+.Main__show-more {
+  display: block;
+  margin: 32px auto 0 auto;
+  width: 288px;
+  height: 64px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a1b22; /* default text color */
+  background: #ffffff; /* default background */
+  border: 1px solid transparent;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
+}
+.Main__show-more:hover {
+  background: #e8e8e8; /* hover background */
+  color: #1a1b22; /* hover text color */
+}
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("../../assets/fonts/roboto-slab-400-regular.woff2") format("woff2"),
+    url("../../assets/fonts/roboto-slab-400-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Main styles */
+.Main {
+  background: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0;
+}
+
+/* Generic section wrapper to fit viewport width and height */
+.Main__section {
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 80px 80px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 32px;
+}
+
+/* Override generic section sizing for About when combined */
+.Main__section.Main__about {
+  min-height: 624px;
+  height: 624px;
+  padding: 0 80px; /* ensure total section height is exactly 624px */
+  gap: 0; /* avoid extra vertical space from section gap */
+}
+
+/* Loading state for results: matches Figma block height and removes extra padding */
+.Main__results--loading {
+  min-height: 282px;
+  height: 282px;
+  padding: 0; /* so the 80px offset for the spinner is measured from the bottom of the hero image */
+  background: #f5f6f7; /* light grey per Figma */
+}
+
+.Main__section-title {
+  font-family: "Roboto Slab", serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+/* Hero section */
+.Main__hero {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: 576px;
+  max-height: 576px;
+  background: url("../../assets/images/hero-image.jpg") center center / cover
+    no-repeat;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.Main__hero-container {
+  position: relative;
+  width: 100%;
+  height: 576px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Main__hero-image {
+  width: 100%;
+  height: 576px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  border: 1px solid #d1d2d6;
+}
+
+.Main__hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 576px;
+  background: rgba(40, 40, 40, 0.35); /* semi-transparent dark overlay */
+  z-index: 1;
+}
+
+.Main__hero-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 576px;
+  box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.Main__hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 576px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 3;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.Main__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  letter-spacing: 0px;
+  opacity: 1;
+  margin: 0;
+  text-align: left;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.Main__subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: 32px;
+  margin-bottom: 0;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Search bar */
+.Main__search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 88px auto 2rem auto;
+}
+
+.Main__search-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem 0 0 2rem;
+  border: none;
+  font-size: 1rem;
+}
+
+.Main__search-button {
+  padding: 0.75rem 2rem;
+  border-radius: 0 2rem 2rem 0;
+  border: none;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Search button states per Figma */
+.Main__search-button--idle {
+  background-color: #2f71e5; /* text not entered */
+}
+.Main__search-button--idle:hover {
+  background-color: #2f71e5; /* remains same when empty */
+}
+.Main__search-button--idle:active {
+  background-color: #2f71e5; /* remains same when empty */
+}
+
+.Main__search-button--ready {
+  background-color: #2f71e5; /* base color when text entered */
+}
+.Main__search-button--ready:hover {
+  background-color: #347eff; /* hover when text entered */
+}
+.Main__search-button--ready:active {
+  background-color: #2a65cc; /* on click when text entered */
+}
+/* Ensure keyboard Enter submit also shows active color */
+.Main__search-button--ready.Main__search-button--active {
+  background-color: #2a65cc;
+}
+
+.Main__search-error {
+  color: #ff3055;
+  font-size: 14px;
+  margin-top: 8px;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+/* No results section */
+.Main__no-results {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.Main__no-results-text {
+  font-size: 18px;
+  color: #b6bcbf;
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 16px 0 0 0;
+}
+
+/* About section */
+.Main__about {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0; /* handle spacing explicitly on content to ensure exact 56px */
+  flex-direction: row;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+.About {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  background: #fff;
+  padding: 80px 120px;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.About__image {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #c4c4c4;
+}
+
+.About__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.About__content {
+  flex: 1;
+  max-width: 600px;
+  margin-left: 56px; /* Figma: 56px between image and text */
+}
+
+.About__title {
+  font-family: "Roboto Slab", serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  margin: 0 0 16px 0;
+  color: #1a1b22;
+}
+
+.About__description {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+/* Footer styles (for reference, should be in Footer.css) */
+.Footer {
+  width: 100%;
+  background: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: #888;
+  border-top: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.Footer__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.Footer__link {
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 1rem;
+}
+
+.Footer__icon {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}

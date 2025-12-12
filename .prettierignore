@@ -1,0 +1,6 @@
+# Ignore artifacts and build output
+node_modules
+build
+dist
+coverage
+*.log

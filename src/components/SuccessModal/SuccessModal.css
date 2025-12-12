@@ -1,0 +1,89 @@
+/* SuccessModal styles */
+.SuccessModal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0 36px 48px 36px;
+  width: 430px;
+  height: 182px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.SuccessModal__close {
+  position: absolute;
+  top: -34px;
+  right: -34px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.SuccessModal__close img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  pointer-events: none;
+  transform: scale(1.2);
+}
+
+.SuccessModal__close:focus,
+.SuccessModal__close:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.SuccessModal h2 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #1a1b22;
+  width: 315px;
+  height: 56px;
+  margin: 43px 0 14px 0;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-align: left;
+  padding: 0;
+}
+
+.SuccessModal__signin-link {
+  background: none;
+  border: none;
+  color: #2f71e5;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Inter", Arial, sans-serif;
+  padding: 0;
+  text-decoration: none;
+  line-height: 100%;
+  letter-spacing: 0;
+  transition: color 0.2s;
+  width: 228px;
+  height: 18px;
+  text-align: left;
+}
+
+.SuccessModal__signin-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.SuccessModal__signin-link:disabled {
+  color: #b6bcbf;
+  cursor: not-allowed;
+}

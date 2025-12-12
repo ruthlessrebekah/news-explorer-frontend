@@ -1,0 +1,79 @@
+/* Preloader styles */
+.Preloader {
+  position: relative;
+  width: 100%;
+  height: 282px; /* Figma block height */
+  display: block;
+}
+
+/* Spinner container positioned 80px from hero bottom */
+.circle-preloader {
+  position: absolute;
+  top: 80px; /* distance from bottom of hero image to TOP of spinner */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+}
+
+/* Light track ring */
+.circle-preloader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid #d1d2d6; /* Figma: 1px track */
+}
+
+/* Rotating arc rendered as gradient ring; single continuous circular line */
+.circle-preloader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #1a1b22 0deg,
+    #1a1b22 20deg,
+    rgba(209, 210, 214, 0.35) 310deg,
+    rgba(209, 210, 214, 0) 350deg,
+    rgba(209, 210, 214, 0) 360deg
+  );
+  /* Punch out the center to create a 1px ring */
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 1px),
+    #000 calc(100% - 1px)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 1px),
+    #000 calc(100% - 1px)
+  );
+  animation: spinArc 0.9s linear infinite;
+  will-change: transform;
+}
+
+@keyframes spinArc {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Preloader__text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(80px + 74px + 24px); /* spinner offset + size + 24px gap */
+  width: 280px;
+  height: 24px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #6c707a;
+  margin: 0;
+}

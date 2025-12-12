@@ -1,0 +1,284 @@
+/* LoginModal styles */
+.LoginModal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 34px 36px 48px 36px;
+  width: 430px;
+  height: 380px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.LoginModal__close {
+  position: absolute;
+  top: -34px;
+  right: -34px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: transparent; /* remove mobile tap highlight */
+}
+
+.LoginModal__close img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  pointer-events: none; /* ensure focus stays on button */
+  transform: scale(1.2);
+}
+
+/* Remove focus/active outlines and shadows to avoid flicker when clicking */
+.LoginModal__close:focus,
+.LoginModal__close:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.LoginModal h2 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #1a1b22;
+  margin: 0 0 22px 0;
+  line-height: 100%;
+  letter-spacing: 0;
+  width: 76px;
+  height: 32px;
+}
+
+.LoginModal form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.LoginModal form > .LoginModal__input-group {
+  margin-bottom: 0; /* default; overridden for email via modifiers */
+}
+
+/* spacing under password field depends on email error presence */
+.LoginModal__submit--no-error {
+  margin-top: 39px; /* 39px under password when there is no email error */
+}
+
+.LoginModal__submit--error {
+  margin-top: 43px; /* 43px under password when email error is displayed */
+}
+
+.LoginModal input {
+  padding: 0 0 12px 0;
+  border: none;
+  border-bottom: 1px solid #d3d3d3;
+  font-size: 14px;
+  font-family: "Inter", Arial, sans-serif;
+  color: #1a1b22;
+  transition: border-color 0.2s;
+  width: 100%;
+  background: transparent;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.LoginModal input:focus {
+  outline: none;
+  border-color: #d3d3d3;
+}
+
+.LoginModal input::placeholder {
+  color: #000000;
+  opacity: 0.2;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.LoginModal button[type="submit"] {
+  padding: 0;
+  width: 358px;
+  height: 64px;
+  background: #2563eb; /* default, will be overridden when enabled */
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enabled (valid inputs) state */
+.LoginModal button[type="submit"]:not(:disabled) {
+  background: #2f71e5;
+}
+
+.LoginModal button[type="submit"]:not(:disabled):hover {
+  background: #2f71e5;
+}
+
+.LoginModal button[type="submit"]:disabled {
+  background: #e6e8eb;
+  color: #b6bcbf;
+  cursor: not-allowed;
+}
+
+.LoginModal p {
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #1a1b22;
+  margin: 16px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.LoginModal__register-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", Arial, sans-serif;
+  padding: 0;
+  text-decoration: none;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.LoginModal__register-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.LoginModal__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* remove extra 10px gap; rely on label margin-bottom */
+}
+
+/* Spacing for email group based on error presence */
+.LoginModal__input-group--no-error {
+  margin-bottom: 31px;
+}
+
+.LoginModal__input-group--error {
+  margin-bottom: 0;
+}
+
+/* Ensure the email group spacing overrides the generic rule when no error */
+.LoginModal form > .LoginModal__input-group--no-error {
+  margin-bottom: 31px;
+}
+
+.LoginModal__label {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #2f71e5;
+  margin-bottom: 9px;
+  width: 66px;
+  height: 14px;
+}
+
+.LoginModal .LoginModal__error {
+  color: #ff0000 !important;
+  font-size: 12px;
+  line-height: 14px;
+  font-family: "Roboto", Arial, sans-serif;
+  /* 3px under the email input line, 13px above the next label */
+  height: 14px;
+  margin: 3px 0 13px 0;
+  padding: 0;
+  text-align: left;
+  display: block;
+  width: 100%;
+  align-self: flex-start;
+}
+
+/* Verification screen styles */
+.LoginModal--verification {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 36px;
+}
+
+.LoginModal--verification h2 {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.LoginModal__verification-text {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #1a1b22;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.LoginModal__verification-text strong {
+  font-weight: 600;
+}
+
+.LoginModal__verification-button {
+  padding: 0;
+  width: 360px;
+  height: 64px;
+  background: #2f71e5;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LoginModal__verification-button:hover {
+  background: #2563eb;
+}
+
+.LoginModal__verification-button:disabled {
+  background: #e6e8eb;
+  color: #b6bcbf;
+  cursor: not-allowed;
+}

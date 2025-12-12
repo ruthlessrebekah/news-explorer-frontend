@@ -1,0 +1,28 @@
+/* Footer styles */
+.Footer {
+  height: 80px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  box-sizing: border-box;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.Footer__nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.Footer__link {
+  color: #1a1b22;
+  font-weight: 500;
+}
+
+.Footer__icon {
+  display: inline-flex;
+  align-items: center;
+}
