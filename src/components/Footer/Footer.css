@@ -26,3 +26,25 @@
   display: inline-flex;
   align-items: center;
 }
+
+/* Responsive Design - Tablet (768px and below) */
+@media (max-width: 768px) {
+  .Footer {
+    height: 64px;
+    min-height: 64px;
+    padding: 0 24px;
+  }
+
+  .Footer__nav {
+    gap: 16px;
+  }
+
+  .Footer__link {
+    font-size: 14px;
+  }
+
+  .Footer__icon {
+    width: 16px;
+    height: 16px;
+  }
+}

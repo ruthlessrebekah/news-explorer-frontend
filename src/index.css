@@ -1,4 +1,4 @@
-@import "../vendor/normalize.css";
+@import "./normalize.css";
 
 :root {
   font-family: "Roboto", Arial, sans-serif;

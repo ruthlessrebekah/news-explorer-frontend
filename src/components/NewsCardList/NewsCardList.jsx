@@ -4,17 +4,20 @@ import NewsCard from "../NewsCard/NewsCard";
 import "./NewsCardList.css";
 
 function NewsCardList({ newsCards, isLoggedIn, savedArticles, onToggleSave }) {
-  const isSaved = (url) => savedArticles?.some((item) => item.url === url);
+  const safeCards = Array.isArray(newsCards) ? newsCards : [];
+  const isSaved = (url) =>
+    Array.isArray(savedArticles) &&
+    savedArticles.some((item) => item.url === url);
 
   return (
     <section className="NewsCardList">
-      {newsCards.map((card, index) => (
+      {safeCards.map((card, index) => (
         <NewsCard
           key={card.url || index}
           {...card}
           isLoggedIn={isLoggedIn}
           isSaved={isSaved(card.url)}
-          onToggleSave={() => onToggleSave(card)}
+          onToggleSave={() => onToggleSave && onToggleSave(card)}
         />
       ))}
     </section>

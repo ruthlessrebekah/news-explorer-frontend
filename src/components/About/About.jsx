@@ -1,20 +1,25 @@
 // About.jsx
 import React from "react";
 import "./About.css";
+import authorImage from "../../assets/images/author.jpg";
 
 function About() {
   return (
     <section className="About">
-      <h1>About News Explorer</h1>
-      <p>
-        News Explorer is a project for searching, saving, and managing news
-        articles. It demonstrates modern React best practices, including
-        routing, authentication, and persistent state.
-      </p>
-      <p>
-        Built as part of a learning curriculum, this app helps users stay
-        informed and organized with their favorite news stories.
-      </p>
+      <div className="About__image">
+        <img src={authorImage} alt="Author" className="About__img" />
+      </div>
+      <div className="About__content">
+        <h2 className="About__title">About the author</h2>
+        <p className="About__description">
+          This block describes the project author. Here you should indicate your
+          name, what you do, and which development technologies you know.
+          <br />
+          <br />
+          You can also talk about your experience with TripleTen, what you
+          learned there, and how you can help potential customers.
+        </p>
+      </div>
     </section>
   );
 }

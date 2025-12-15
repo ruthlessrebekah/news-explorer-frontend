@@ -1,115 +1,334 @@
-/* Underline indicator for Home button (Figma spec) */
-.Header__nav-home-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100%;
+/* Saved articles button (main page, Figma spec) */
+.Header__nav-link.Header__nav-link--saved {
+  max-width: 114px;
+  max-height: 24px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #b6bcbf;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  margin-right: 64px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
-.Header__nav-underline {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  width: 68px;
-  height: 3px;
-  background: #fff;
-  opacity: 1;
-  border-radius: 2px;
-  pointer-events: none;
-}
-/* Header positioned at top, 80px tall, border, Figma spec */
+/* Header overlays hero, full width background and border */
 .Header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  z-index: 10;
+  height: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   background: transparent;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.Header--black {
+  position: relative;
+  background: #fff;
+  border-bottom: 1px solid #d1d2d6;
+}
+/* Sign in button text: literal Figma sizing */
+.Header__nav-link--signin-text {
+  display: block;
+  width: 152px;
+  height: 24px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Centered content, max 1440px, with side padding */
+
+.Header__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 104px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 64px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #d1d2d6;
   height: 80px;
+  box-sizing: border-box;
 }
 
-/* News Explorer logo (home button) Figma spec: white text, Roboto Slab */
-.Header__logo-link {
+.Header__logo {
   color: #fff;
-  text-decoration: none;
-  font-family: "Roboto Slab", "Roboto", Arial, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  width: 200;
+  height: 24;
+  font-size: 20px;
   line-height: 24px;
-  letter-spacing: 0;
-  padding: 0 8px;
-  border: none;
-  background: none;
-  cursor: pointer;
 }
 
-/* Nav buttons: 26px from bottom border, Figma spec */
 .Header__nav {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 32px;
-  height: 100%;
 }
 
 .Header__nav-link {
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
-  color: #fff;
-  background: transparent;
-  border: none;
-  text-decoration: none;
-  padding: 8px 24px;
-  border-radius: 32px;
-  cursor: pointer;
   font-weight: 500;
-}
-
-/* Sign in button border (Figma spec: 176x48) */
-.Header__nav-signin {
-  width: 176px;
+  color: #fff;
+  background: none;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
   height: 48px;
-  border: 1px solid #fff;
-  box-sizing: border-box;
-  padding: 0;
+  line-height: 48px;
+  border-radius: 24px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.Header__logo-link:hover,
-.Header__logo-link:active,
-.Header__logo-link:focus {
-  color: #fff;
-  outline: none;
+/* Home link underline (active) */
+.Header__nav-link--active {
+  border-bottom: 3px solid #fff;
+  border-radius: 0;
+  padding-bottom: 0;
 }
 
-.Header__nav-link:hover,
-.Header__nav-link:active,
-.Header__nav-link:focus {
+/* Sign in button */
+.Header__nav-link--signin {
+  width: 176px;
+  height: 48px;
+  border: 1px solid #fff;
+  border-width: 1px;
+  border-radius: 100px;
+  background: transparent;
   color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Remove all UA styles for header links/buttons */
+.Header__nav-link,
+.Header__nav-link:active,
+.Header__nav-link:focus,
+.Header__nav-link:visited {
+  box-shadow: none;
   outline: none;
-  border-color: #fff;
+  background: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Home link (no border) */
+.Header__nav-link--home {
+  border: none;
+  width: 49px;
+  height: 24;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #fff;
+  margin-right: 42px;
+}
+
+/* When logged in, increase margin-right to 76px */
+.Header--logged-in .Header__nav-link--home {
+  margin-right: 76px;
 }
 
 /* Black variant when logged in on saved-news */
-.Header--black .Header__logo-link {
-  color: #000;
+/* Saved news page: all header text/buttons #1A1B22 */
+
+/* Saved news page: all header text/buttons #1A1B22 */
+.Header--black .Header__logo,
+.Header--black .Header__nav-link,
+.Header--black .Header__nav-link--home,
+.Header--black .Header__nav-link--saved,
+.Header--black .Header__logout-button,
+.Header--black .Header__username {
+  color: #1a1b22;
+  border-color: #1a1b22;
 }
-.Header--black .Header__nav-link {
-  color: #000;
+
+.Header--black .Header__logout-button {
+  border-color: #1a1b22;
+  color: #1a1b22;
 }
-.Header--black .Header__nav-signin {
+
+.Header--black .Header__logout-button:hover {
+  background-color: rgba(26, 27, 34, 0.1);
+}
+
+.Header--black .Header__nav-link:hover,
+.Header--black .Header__nav-link:active,
+.Header--black .Header__nav-link:focus {
+  color: #1a1b22;
+  border-color: #1a1b22;
+}
+
+.Header--black .Header__logo-link:hover,
+.Header--black .Header__logo-link:active,
+.Header--black .Header__logo-link:focus {
+  color: #1a1b22;
+}
+
+/* Logout button (username + icon) */
+.Header__logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 112px;
+  max-width: 176px;
+  width: auto;
+  height: 48px;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 0 19px 0 19px;
+  overflow: hidden;
+}
+
+.Header__logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.Header__username {
+  display: inline-block;
+  height: 24px;
+  max-width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  vertical-align: middle;
+}
+
+.Header__logout-icon {
+  width: 17px;
+  height: 16px;
+  display: block;
+  margin-left: 19px;
+  flex-shrink: 0;
+}
+
+/* Black variant (on saved-news page) */
+.Header--black .Header__logout-button {
   border-color: #000;
+  color: #000;
 }
-.Header--black .Header__nav-underline {
-  background: #000;
+
+.Header--black .Header__logout-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Tablet (768px and below) specific typography and spacing per Figma */
+@media (max-width: 768px) {
+  .Header {
+    /* Tablet layout: exact vertical spacing and horizontal paddings */
+    padding: 23px 40px 18px 40px; /* top 23px, bottom 18px, sides 40px */
+    height: 66px; /* 23 + 25 + 18 = 66 (logo height 25px) */
+  }
+
+  .Header__logo-link {
+    font-family: "Roboto Slab", "Roboto", Arial, sans-serif;
+    font-weight: 700; /* bold per Figma */
+    font-size: 20px; /* Figma: 20px */
+    line-height: 25px; /* match logo height */
+    width: 200px; /* Figma: logo width */
+    height: 25px; /* Figma: logo height */
+    display: inline-flex;
+    align-items: center; /* vertical-align: middle equivalent */
+  }
+
+  .Header__nav-home-wrapper,
+  .Header__nav-saved-wrapper {
+    height: 66px; /* match tablet header height */
+  }
+
+  /* Spacing: Home sits 16px to the left of the sign-in/logout button */
+  .Header__nav-home-wrapper {
+    margin-right: 16px;
+  }
+
+  .Header__nav-link--home {
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 16px; /* Figma: 16px */
+    line-height: 24px; /* Figma: 24px */
+    height: 24px;
+    display: inline-flex;
+    align-items: center; /* vertical-align: middle */
+    justify-content: center;
+  }
+
+  .Header__nav-link {
+    font-size: 16px; /* base for other links/buttons */
+    line-height: 24px;
+  }
+
+  .Header__nav-signin {
+    width: 152px; /* Tablet spec */
+    height: 40px; /* Tablet spec */
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 16px; /* Figma: 16px */
+    line-height: 24px; /* Figma: 24px */
+  }
+
+  /* Logged-in logout button size on tablet */
+  .Header__logout-button {
+    height: 40px;
+    padding: 8px 16px; /* tighten to fit 40px height */
+    border-radius: 32px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .Header__nav-underline {
+    bottom: 2px; /* pull above divider on tablet where header flex layout differs */
+  }
 }
 .Header--black .Header__logo-link:hover,
 .Header--black .Header__logo-link:active,

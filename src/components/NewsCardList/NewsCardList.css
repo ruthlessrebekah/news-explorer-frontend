@@ -16,6 +16,11 @@
 
 @media (max-width: 768px) {
   .NewsCardList {
-    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 672px;
+    grid-template-columns: repeat(3, 224px);
+    justify-content: center;
+    gap: 8px;
+    box-sizing: border-box;
   }
 }

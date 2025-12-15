@@ -22,13 +22,11 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
   const getKeywords = () => {
     const keywords = new Set();
     savedArticles.forEach((article) => {
-      if (article.title) {
-        // Extract key words from title (simple approach: take significant words)
-        const words = article.title.split(" ").filter((w) => w.length > 3);
-        words.slice(0, 2).forEach((word) => keywords.add(word));
+      if (article.keyword) {
+        keywords.add(article.keyword);
       }
     });
-    return Array.from(keywords).slice(0, 3);
+    return Array.from(keywords);
   };
 
   const keywords = getKeywords();
@@ -48,15 +46,25 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
           {hasArticles && keywords.length > 0 && (
             <p className="SavedNews__keywords">
               By keywords:{" "}
-              {keywords.map((keyword, index) => (
-                <span key={index}>
-                  {keyword}
-                  {index < keywords.length - 1 && ", "}
-                  {index === keywords.length - 2 && savedArticles.length > 5
-                    ? " and 2 other"
-                    : ""}
-                </span>
-              ))}
+              {keywords.length <= 3
+                ? keywords.map((keyword, index) => (
+                    <span key={index}>
+                      {keyword}
+                      {index < keywords.length - 1 && ", "}
+                    </span>
+                  ))
+                : [
+                    ...keywords.slice(0, 3).map((keyword, index) => (
+                      <span key={index}>
+                        {keyword}
+                        {index < 2 && ", "}
+                      </span>
+                    )),
+                    <span key="other">
+                      {keywords.length > 3 &&
+                        `, and ${keywords.length - 3} other`}
+                    </span>,
+                  ]}
             </p>
           )}
         </div>

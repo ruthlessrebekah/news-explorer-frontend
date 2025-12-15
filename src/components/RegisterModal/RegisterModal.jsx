@@ -159,6 +159,7 @@ function RegisterModal({ onClose, onLogin }) {
               onChange={(e) => setUsername(e.target.value)}
               disabled={isLoading}
               required
+              maxLength={30}
             />
           </div>
           <button type="submit" disabled={!isFormValid || isLoading}>

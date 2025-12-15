@@ -5,9 +5,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  height: 100%;
+  width: 400px;
+  max-width: 100%;
+  height: 576px;
+  box-sizing: border-box;
 }
 
 .NewsCard:hover {
@@ -19,7 +20,18 @@
   width: 100%;
   height: 272px;
   object-fit: cover;
-  display: block;
+}
+
+.NewsCard__image--placeholder {
+  background: #e6ecf2; /* darker than white to contrast with bookmark container */
+  color: #1a1b22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
 }
 
 .NewsCard__image-wrapper {
@@ -28,25 +40,37 @@
 
 .NewsCard__save {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 24px;
+  right: 24px;
   width: 40px;
   height: 40px;
   border-radius: 8px;
   border: none;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   cursor: pointer;
   transition: background 0.2s;
+  padding: 11px 13px 10px 13px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .NewsCard__save::before {
   content: "";
   display: block;
-  width: 16px;
-  height: 16px;
-  margin: auto;
-  background: url("data:image/svg+xml,%3Csvg width='15' height='19' viewBox='0 0 15 19' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.75 18.5l-5.51-4.307-5.49 4.307V1.75C1.75.918 2.418.25 3.25.25h9c.832 0 1.5.668 1.5 1.5v16.75z' fill='%231A1B22'/%3E%3C/svg%3E")
-    center/contain no-repeat;
+  width: 14px;
+  height: 19px;
+  background: url("../../assets/images/bookmark-icon-default-gray.png") center
+    no-repeat;
+  background-size: cover;
+  transition: background 0.2s;
+}
+
+.NewsCard__save:hover::before {
+  background: url("../../assets/images/bookmark-icon-hover-black.png") center
+    no-repeat;
+  background-size: cover;
 }
 
 .NewsCard__save--inactive {
@@ -58,20 +82,35 @@
 }
 
 .NewsCard__save--saved::before {
-  background: url("data:image/svg+xml,%3Csvg width='15' height='19' viewBox='0 0 15 19' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.75 18.5l-5.51-4.307-5.49 4.307V1.75C1.75.918 2.418.25 3.25.25h9c.832 0 1.5.668 1.5 1.5v16.75z' fill='%232563EB'/%3E%3C/svg%3E")
-    center/contain no-repeat;
+  background: url("../../assets/images/bookmark-icon-saved-blue.png") center
+    no-repeat !important;
+  background-size: cover !important;
+  background-color: transparent !important;
+}
+
+.NewsCard__save--saved:hover::before {
+  background: url("../../assets/images/bookmark-icon-saved-blue.png") center
+    no-repeat !important;
+  background-size: cover !important;
 }
 
 .NewsCard__tooltip {
   position: absolute;
-  top: 16px;
-  right: 64px;
-  background: #fff;
+  width: 182px;
+  height: 40px;
+  top: 24px;
+  right: 69px;
+  background: #ffffff;
   color: #1a1b22;
-  padding: 10px 12px;
   border-radius: 10px;
   font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
   font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   white-space: nowrap;
   opacity: 0;
@@ -79,7 +118,7 @@
   transition: opacity 0.2s;
 }
 
-.NewsCard__image-wrapper:hover .NewsCard__tooltip {
+.NewsCard__save:hover + .NewsCard__tooltip {
   opacity: 1;
 }
 
@@ -96,6 +135,10 @@
   font-size: 26px;
   font-weight: 400;
   line-height: 30px;
+  letter-spacing: 0;
+  width: 352px;
+  max-width: 100%;
+  height: 60px;
   color: #1a1b22;
   margin: 0;
   display: -webkit-box;
@@ -124,16 +167,19 @@
 
 .NewsCard__meta {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-top: auto;
   padding-top: 8px;
 }
 
 .NewsCard__date {
-  font-family: "Roboto", Arial, sans-serif;
-  font-size: 16px;
+  font-family: "Source Sans Pro", "Roboto", Arial, sans-serif;
+  font-size: 18px;
   font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+  vertical-align: middle;
   color: #b6bcbf;
 }
 
@@ -144,4 +190,119 @@
   color: #b6bcbf;
   text-transform: uppercase;
   letter-spacing: 0.4px;
+}
+/* Responsive Design - Tablet (768px and below) */
+@media (max-width: 768px) {
+  .NewsCard {
+    width: 224px;
+    height: 420px;
+    min-height: 420px;
+  }
+
+  .NewsCard__image {
+    width: 224px;
+    height: 150px; /* Figma: tablet image height */
+    object-fit: cover;
+  }
+
+  .NewsCard__save {
+    width: 32px;
+    height: 32px;
+    padding: 8px 10px 7px 10px;
+    top: 16px;
+    right: 16px;
+  }
+
+  .NewsCard__save::before {
+    width: 12px;
+    height: 16px;
+  }
+
+  .NewsCard__content {
+    /* Layout spacing based on Figma specs */
+    padding: 0; /* control spacing via element margins */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .NewsCard__title {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    width: 192px;
+    height: 72px; /* Figma: 3 lines at 24px */
+    margin-left: 16px; /* 16px from left */
+    margin-top: 12px; /* 12px under date */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .NewsCard__description {
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    width: 192px;
+    height: 88px; /* Figma: 4 lines at 22px */
+    margin-left: 16px; /* 16px from left */
+    margin-top: 10px; /* 10px under title */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .NewsCard__meta {
+    margin-top: auto; /* push meta to bottom */
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .NewsCard__date {
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    margin-left: 16px; /* align with 16px left spacing */
+    margin-top: 16px; /* 16px under image */
+    width: 192px; /* single line within content column */
+    white-space: nowrap; /* prevent wrapping */
+    overflow: hidden; /* hide overflow */
+    text-overflow: ellipsis; /* truncate if needed */
+  }
+
+  .NewsCard__source {
+    font-family: "Roboto Slab", serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    margin-left: 16px; /* 16px from left */
+    margin-top: 12px; /* 12px under description */
+    margin-bottom: 16px; /* bottom space per Figma */
+    width: 192px; /* match title/description width */
+    height: 20px; /* Figma: source height */
+    display: block; /* ensure width/height apply */
+    white-space: nowrap; /* prevent wrapping */
+    overflow: hidden; /* hide overflow */
+    text-overflow: ellipsis; /* truncate with ellipsis */
+  }
+
+  .NewsCard__tooltip {
+    width: 150px;
+    font-size: 12px;
+  }
 }

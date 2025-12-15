@@ -3,8 +3,8 @@ import React from "react";
 import "./Main.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
+import About from "../About/About";
 import heroImage from "../../assets/images/hero-image.jpg";
-import authorImage from "../../assets/images/author.jpg";
 
 function Main({
   articles,
@@ -121,7 +121,12 @@ function Main({
           {hasSearched && articles.length > 0 && (
             <section className="Main__section Main__results">
               <h2 className="Main__section-title">Search results</h2>
-              <NewsCardList newsCards={articles.slice(0, visibleCount)} />
+              <NewsCardList
+                newsCards={articles.slice(0, visibleCount)}
+                isLoggedIn={isLoggedIn}
+                savedArticles={savedArticles}
+                onToggleSave={onToggleSave}
+              />
               {!allVisible && (
                 <button className="Main__show-more" onClick={handleShowMore}>
                   Show more
@@ -149,20 +154,7 @@ function Main({
       )}
 
       <section className="Main__section Main__about">
-        <div className="About__image">
-          <img src={authorImage} alt="Author" className="About__img" />
-        </div>
-        <div className="About__content">
-          <h2 className="About__title">About the author</h2>
-          <p className="About__description">
-            This block describes the project author. Here you should indicate
-            your name, what you do, and which development technologies you know.
-            <br />
-            <br />
-            You can also talk about your experience with TripleTen, what you
-            learned there, and how you can help potential customers.
-          </p>
-        </div>
+        <About />
       </section>
     </main>
   );

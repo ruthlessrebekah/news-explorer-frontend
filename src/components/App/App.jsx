@@ -60,6 +60,7 @@ function MainRouterContent({
   const [isLoading, setIsLoading] = React.useState(false);
   const [apiError, setApiError] = React.useState("");
   const [hasSearched, setHasSearched] = React.useState(false);
+  const [currentKeyword, setCurrentKeyword] = React.useState(""); // track search keyword
   const [savedArticles, setSavedArticles] = React.useState([]); // store by url
 
   // Search handler
@@ -76,6 +77,7 @@ function MainRouterContent({
     setApiError("");
     setIsLoading(true);
     setHasSearched(true);
+    setCurrentKeyword(trimmed); // store the search keyword
 
     try {
       const results = await searchNews(trimmed);
@@ -98,7 +100,8 @@ function MainRouterContent({
       if (exists) {
         return prev.filter((item) => item.url !== article.url);
       }
-      return [...prev, article];
+      // Attach the search keyword to the saved article
+      return [...prev, { ...article, keyword: currentKeyword }];
     });
   };
 
@@ -130,12 +133,28 @@ function MainRouterContent({
   const openRegisterModal = () => setIsRegisterModalOpen(true);
   const closeRegisterModal = () => setIsRegisterModalOpen(false);
 
+  // Get username from localStorage user data
+  let username = "";
+  if (isLoggedIn) {
+    try {
+      const user = JSON.parse(window.localStorage.getItem("user"));
+      username = user?.username || user?.name || user?.email || "User";
+    } catch (e) {
+      username = "User";
+    }
+  }
+
+  const handleSavedArticles = () => navigate("/saved-news");
+
   return (
     <div className="App">
       <Header
         isLoggedIn={isLoggedIn}
+        username={username}
         onLogout={logout}
         onLogin={openLoginModal}
+        onSavedArticles={handleSavedArticles}
+        isBlack={location.pathname === "/saved-news"}
       />
       <Routes>
         <Route

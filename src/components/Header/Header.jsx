@@ -1,50 +1,70 @@
-// Header.jsx
-
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import logoutIconWhite from "../../assets/images/logout-icon-white.png";
+import logoutIconBlack from "../../assets/images/logout-icon-black.png";
 import "./Header.css";
 
-function Header({ isLoggedIn, onLogout, onLogin }) {
-  const location = useLocation();
-  const showHomeUnderline = location.pathname === "/";
-  const isSavedNews = location.pathname === "/saved-news";
-  const headerClassName = `Header ${
-    isLoggedIn && isSavedNews ? "Header--black" : ""
-  }`;
+export default function Header({
+  isLoggedIn,
+  username,
+  onLogin,
+  onLogout,
+  onSavedArticles,
+  isBlack,
+}) {
   return (
-    <header className={headerClassName}>
-      <div className="Header__logo">
-        <Link to="/" className="Header__logo-link">
-          News Explorer
-        </Link>
-      </div>
-      <nav className="Header__nav">
-        <div className="Header__nav-home-wrapper">
-          <Link to="/" className="Header__nav-link">
-            Home
-          </Link>
-          {showHomeUnderline && <div className="Header__nav-underline" />}
-        </div>
-        {isLoggedIn && (
-          <Link to="/saved-news" className="Header__nav-link">
-            Saved News
-          </Link>
-        )}
-        {isLoggedIn ? (
-          <button className="Header__nav-link" onClick={onLogout}>
-            Logout
-          </button>
-        ) : (
-          <button
-            className="Header__nav-link Header__nav-signin"
-            onClick={onLogin}
+    <header
+      className={`Header${isLoggedIn ? " Header--logged-in" : ""}${
+        isBlack ? " Header--black" : ""
+      }`}
+    >
+      <div className="Header__container">
+        <a href="/" className="Header__logo" aria-label="Go to main page">
+          NewsExplorer
+        </a>
+        <nav className="Header__nav">
+          <a
+            href="/"
+            className="Header__nav-link Header__nav-link--home Header__nav-link--active"
           >
-            Sign in
-          </button>
-        )}
-      </nav>
+            Home
+          </a>
+          {!isLoggedIn && (
+            <button
+              className="Header__nav-link Header__nav-link--signin"
+              type="button"
+              onClick={onLogin}
+            >
+              <span className="Header__nav-link--signin-text">Sign in</span>
+            </button>
+          )}
+          {isLoggedIn && (
+            <>
+              <button
+                className="Header__nav-link Header__nav-link--saved"
+                type="button"
+                onClick={onSavedArticles}
+              >
+                Saved articles
+              </button>
+              <button
+                className="Header__logout-button"
+                type="button"
+                onClick={onLogout}
+              >
+                <span className="Header__username">
+                  {(username || "").slice(0, 30)}
+                </span>
+                <img
+                  src={isBlack ? logoutIconBlack : logoutIconWhite}
+                  alt="Log out"
+                  className="Header__logout-icon"
+                />
+              </button>
+            </>
+          )}
+        </nav>
+      </div>
     </header>
   );
 }
-
-export default Header;
+// ...existing code...

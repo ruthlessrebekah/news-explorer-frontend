@@ -12,3 +12,11 @@
   z-index: 1000;
   overflow: visible;
 }
+
+/* Tablet: position dialog 207px from top */
+@media (max-width: 768px) {
+  .ModalWithForm {
+    align-items: flex-start; /* move from center to top alignment */
+    padding-top: 207px; /* offset the dialog from the top */
+  }
+}

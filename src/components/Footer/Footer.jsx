@@ -41,7 +41,7 @@ function Footer() {
           </svg>
         </a>
         <a
-          href="https://www.linkedin.com/in/ruthlessrebekah"
+          href="https://www.linkedin.com/in/rebekah-crockatt"
           className="Footer__icon"
           target="_blank"
           rel="noopener noreferrer"
