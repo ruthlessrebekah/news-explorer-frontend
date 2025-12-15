@@ -80,14 +80,16 @@ function Main({
             Find the latest news on any topic and save them in your personal
             account.
           </p>
-          <form className="Main__search" onSubmit={handleSearchSubmit}>
-            <input
-              className="Main__search-input"
-              type="text"
-              placeholder="Enter topic"
-              value={searchQuery}
-              onChange={handleInputChange}
-            />
+          <div className="Main__search-bar">
+            <form className="Main__search" onSubmit={handleSearchSubmit}>
+              <input
+                className="Main__search-input"
+                type="text"
+                placeholder="Enter topic"
+                value={searchQuery}
+                onChange={handleInputChange}
+              />
+            </form>
             <button
               className={`Main__search-button ${
                 searchQuery.trim()
@@ -107,7 +109,7 @@ function Main({
             >
               Search
             </button>
-          </form>
+          </div>
           {searchError && <p className="Main__search-error">{searchError}</p>}
         </div>
       </section>

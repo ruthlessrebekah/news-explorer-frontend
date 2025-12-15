@@ -1,3 +1,20 @@
+.Header__saved-underline {
+  display: none;
+}
+
+/* Show underline only on saved news page (Header--black) */
+.Header--black .Header__nav-link--saved .Header__saved-underline {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -28px;
+  width: 178px;
+  height: 3px;
+  background: #1a1b22;
+  border-radius: 2px;
+  z-index: 2;
+}
 /* Saved articles button (main page, Figma spec) */
 .Header__nav-link.Header__nav-link--saved {
   max-width: 114px;
@@ -16,8 +33,8 @@
   margin-right: 64px;
   display: block;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
 }
 /* Header overlays hero, full width background and border */
 .Header {
@@ -113,9 +130,28 @@
 
 /* Home link underline (active) */
 .Header__nav-link--active {
-  border-bottom: 3px solid #fff;
+  border-bottom: none;
   border-radius: 0;
   padding-bottom: 0;
+  position: relative;
+}
+
+.Header__home-underline {
+  display: none;
+}
+
+/* Show underline only on main page (not .Header--black) */
+.Header:not(.Header--black) .Header__nav-link--active .Header__home-underline {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -16px; /* 1px gap above border, 3px line, sits above border-bottom */
+  width: 68px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  z-index: 2;
 }
 
 /* Sign in button */
@@ -308,7 +344,7 @@
     line-height: 24px;
   }
 
-  .Header__nav-signin {
+  .Header__nav-link--signin {
     width: 152px; /* Tablet spec */
     height: 40px; /* Tablet spec */
     font-family: "Roboto", Arial, sans-serif;

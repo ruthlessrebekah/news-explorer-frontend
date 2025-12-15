@@ -13,9 +13,13 @@ export default function Header({
 }) {
   return (
     <header
-      className={`Header${isLoggedIn ? " Header--logged-in" : ""}${
-        isBlack ? " Header--black" : ""
-      }`}
+      className={[
+        "Header",
+        isLoggedIn && "Header--logged-in",
+        isBlack && "Header--black",
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       <div className="Header__container">
         <a href="/" className="Header__logo" aria-label="Go to main page">
@@ -27,6 +31,7 @@ export default function Header({
             className="Header__nav-link Header__nav-link--home Header__nav-link--active"
           >
             Home
+            <span className="Header__home-underline" />
           </a>
           {!isLoggedIn && (
             <button
@@ -45,6 +50,7 @@ export default function Header({
                 onClick={onSavedArticles}
               >
                 Saved articles
+                <span className="Header__saved-underline" />
               </button>
               <button
                 className="Header__logout-button"
@@ -67,4 +73,3 @@ export default function Header({
     </header>
   );
 }
-// ...existing code...
