@@ -1,22 +1,22 @@
 /* About styles (desktop) */
 .About {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 64px;
   background: #fff;
-  padding: 80px 120px;
+  padding: 0px 216px 80px 104px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .About__image {
-  width: 320px;
-  height: 320px;
+  width: 464px;
+  height: 464px;
   border-radius: 50%;
   flex-shrink: 0;
   overflow: hidden;
   background: #c4c4c4;
+  margin-top: 80px;
 }
 
 .About__img {
@@ -30,7 +30,8 @@
 .About__content {
   flex: 1;
   max-width: 600px;
-  margin-left: 56px; /* Figma: 56px between image and text */
+  margin-left: 56px;
+  margin-top: 131px;
 }
 
 .About__title {
@@ -38,8 +39,9 @@
   font-size: 40px;
   font-weight: 400;
   line-height: 46px;
-  margin: 0 0 16px 0;
   color: #1a1b22;
+  margin-top: 0;
+  margin-bottom: 24px;
 }
 
 .About__description {

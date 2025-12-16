@@ -24,7 +24,13 @@ function NewsCard({
   };
 
   return (
-    <div className="NewsCard">
+    <a
+      className="NewsCard"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      tabIndex={0}
+    >
       <div className="NewsCard__image-wrapper">
         {imageError || !urlToImage ? (
           <div
@@ -62,7 +68,7 @@ function NewsCard({
           <span className="NewsCard__source">{source?.name || "Unknown"}</span>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
