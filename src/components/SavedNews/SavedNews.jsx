@@ -73,14 +73,39 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
         {hasArticles ? (
           <div className="SavedNews__cards">
             {savedArticles.map((article) => (
-              <div key={article.url} className="SavedNews__card">
+              <a
+                key={article.url}
+                className="SavedNews__card"
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                tabIndex={0}
+              >
                 {/* Image Container */}
                 <div className="SavedNews__image-wrapper">
-                  <img
-                    src={article.urlToImage || article.imageUrl}
-                    alt={article.title}
-                    className="SavedNews__image"
-                  />
+                  {!(article.urlToImage || article.imageUrl) ? (
+                    <div
+                      className="SavedNews__image SavedNews__image--placeholder"
+                      aria-label="Image unavailable"
+                    >
+                      <span className="SavedNews__image-text">
+                        Image unavailable
+                      </span>
+                    </div>
+                  ) : (
+                    <img
+                      src={article.urlToImage || article.imageUrl}
+                      alt={article.title}
+                      className="SavedNews__image"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.style.display = "none";
+                        e.target.parentNode.querySelector(
+                          ".SavedNews__image--placeholder"
+                        ).style.display = "flex";
+                      }}
+                    />
+                  )}
                   {/* Keyword Tag */}
                   {article.keyword && (
                     <span className="SavedNews__tag">{article.keyword}</span>
@@ -88,7 +113,11 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
                   {/* Delete Button */}
                   <button
                     className="SavedNews__delete"
-                    onClick={() => onToggleSave(article)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      onToggleSave(article);
+                    }}
                     title="Delete article"
                   >
                     <span className="visually-hidden">Delete article</span>
@@ -97,33 +126,43 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
                   <span className="SavedNews__remove-label">
                     Remove from saved
                   </span>
+                  {/* Hidden placeholder for broken image fallback */}
+                  <div
+                    className="SavedNews__image SavedNews__image--placeholder"
+                    style={{ display: "none" }}
+                    aria-label="Image unavailable"
+                  >
+                    <span className="SavedNews__image-text">
+                      Image unavailable
+                    </span>
+                  </div>
                 </div>
 
                 {/* Content */}
                 <div className="SavedNews__content">
+                  <span className="SavedNews__date">
+                    {article.publishedAt
+                      ? new Date(article.publishedAt).toLocaleDateString(
+                          "en-US",
+                          {
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric",
+                          }
+                        )
+                      : ""}
+                  </span>
                   <h3 className="SavedNews__card-title">{article.title}</h3>
                   <p className="SavedNews__card-description">
-                    {article.description}
+                    {article.description || "No description available"}
                   </p>
-                  <div className="SavedNews__card-footer">
-                    <span className="SavedNews__date">
-                      {article.publishedAt
-                        ? new Date(article.publishedAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              month: "long",
-                              day: "numeric",
-                              year: "numeric",
-                            }
-                          )
-                        : ""}
-                    </span>
+                  <div className="SavedNews__meta">
                     <span className="SavedNews__source">
-                      {article.source?.name || article.source}
+                      {article.source?.name || article.source || "Unknown"}
                     </span>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         ) : (

@@ -19,6 +19,7 @@ function NewsCard({
 
   const handleSaveClick = (e) => {
     e.stopPropagation();
+    e.preventDefault();
     if (!isLoggedIn) return;
     onToggleSave();
   };

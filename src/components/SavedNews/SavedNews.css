@@ -4,7 +4,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: #ffffff;
-  padding: 120px 0 0; /* 80px header + 40px spacing */
+  padding: 40px 0 0; /* 80px header + 40px spacing */
 }
 
 .SavedNews__container {
@@ -14,9 +14,8 @@
 /* Header Section */
 .SavedNews__header {
   background-color: #ffffff;
-  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 104px 60px;
+  padding: 0 0 56px 104px;
 }
 
 .SavedNews__label {
@@ -61,7 +60,7 @@
   background-color: #f5f6f7;
   width: 100%;
   margin: 0;
-  padding: 56px 104px 60px;
+  padding: 62px 104px;
   box-sizing: border-box;
   justify-content: center;
 }
