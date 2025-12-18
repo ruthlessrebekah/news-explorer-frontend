@@ -18,12 +18,14 @@ import About from "../About/About";
 import SavedNews from "../SavedNews/SavedNews";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import SuccessModal from "../SuccessModal/SuccessModal";
 import { searchNews } from "../../utils/api";
 import "./App.css";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = React.useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = React.useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = React.useState(false);
 
   return (
     <AuthProvider>
@@ -33,6 +35,8 @@ function App() {
           setIsLoginModalOpen={setIsLoginModalOpen}
           isRegisterModalOpen={isRegisterModalOpen}
           setIsRegisterModalOpen={setIsRegisterModalOpen}
+          isSuccessModalOpen={isSuccessModalOpen}
+          setIsSuccessModalOpen={setIsSuccessModalOpen}
         />
       </Router>
     </AuthProvider>
@@ -44,6 +48,8 @@ function MainRouterContent({
   setIsLoginModalOpen,
   isRegisterModalOpen,
   setIsRegisterModalOpen,
+  isSuccessModalOpen,
+  setIsSuccessModalOpen,
 }) {
   const {
     isLoggedIn,
@@ -132,6 +138,8 @@ function MainRouterContent({
   };
   const openRegisterModal = () => setIsRegisterModalOpen(true);
   const closeRegisterModal = () => setIsRegisterModalOpen(false);
+  const openSuccessModal = () => setIsSuccessModalOpen(true);
+  const closeSuccessModal = () => setIsSuccessModalOpen(false);
 
   // Get username from localStorage user data
   let username = "";
@@ -195,7 +203,23 @@ function MainRouterContent({
         />
       )}
       {isRegisterModalOpen && (
-        <RegisterModal onClose={closeRegisterModal} onLogin={openLoginModal} />
+        <RegisterModal
+          onClose={closeRegisterModal}
+          onLogin={openLoginModal}
+          onRegisterSuccess={() => {
+            closeRegisterModal();
+            openSuccessModal();
+          }}
+        />
+      )}
+      {isSuccessModalOpen && (
+        <SuccessModal
+          onClose={closeSuccessModal}
+          onSignIn={() => {
+            closeSuccessModal();
+            openLoginModal();
+          }}
+        />
       )}
     </div>
   );

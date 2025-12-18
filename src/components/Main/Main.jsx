@@ -89,26 +89,26 @@ function Main({
                 value={searchQuery}
                 onChange={handleInputChange}
               />
+              <button
+                className={`Main__search-button ${
+                  searchQuery.trim()
+                    ? `Main__search-button--ready ${
+                        searchSubmitting ? "Main__search-button--active" : ""
+                      }`
+                    : "Main__search-button--idle"
+                }`}
+                type="submit"
+                onMouseDown={() =>
+                  searchQuery.trim() && setSearchSubmitting(true)
+                }
+                onMouseUp={() =>
+                  searchQuery.trim() &&
+                  window.setTimeout(() => setSearchSubmitting(false), 250)
+                }
+              >
+                Search
+              </button>
             </form>
-            <button
-              className={`Main__search-button ${
-                searchQuery.trim()
-                  ? `Main__search-button--ready ${
-                      searchSubmitting ? "Main__search-button--active" : ""
-                    }`
-                  : "Main__search-button--idle"
-              }`}
-              type="submit"
-              onMouseDown={() =>
-                searchQuery.trim() && setSearchSubmitting(true)
-              }
-              onMouseUp={() =>
-                searchQuery.trim() &&
-                window.setTimeout(() => setSearchSubmitting(false), 250)
-              }
-            >
-              Search
-            </button>
           </div>
           {searchError && <p className="Main__search-error">{searchError}</p>}
         </div>

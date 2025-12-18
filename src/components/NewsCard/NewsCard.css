@@ -193,7 +193,7 @@
   font-weight: 700;
   color: #b6bcbf;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
+  line-height: 20px;
 }
 /* Responsive Design - Tablet (768px and below) */
 @media (max-width: 768px) {

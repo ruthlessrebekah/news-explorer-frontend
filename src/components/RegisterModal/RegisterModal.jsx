@@ -1,15 +1,13 @@
 // RegisterModal.jsx
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import SuccessModal from "../SuccessModal/SuccessModal";
 import closeIcon from "../../assets/images/close-icon-white.png";
 import "./RegisterModal.css";
 
-function RegisterModal({ onClose, onLogin }) {
+function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState("");
   const [emailUnavailableError, setEmailUnavailableError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -60,9 +58,7 @@ function RegisterModal({ onClose, onLogin }) {
     try {
       setIsLoading(true);
       // Simulate register success; in Stage 2, call real register API
-      // The API will return emailUnavailable error if the email exists
-      // On success, show the success modal instead of closing immediately
-      setShowSuccess(true);
+      onRegisterSuccess(); // Notify parent about successful registration
       setEmail("");
       setPassword("");
       setUsername("");
@@ -104,27 +100,14 @@ function RegisterModal({ onClose, onLogin }) {
     username.trim() &&
     username.length >= 2;
 
-  // Show success modal if registration was successful
-  if (showSuccess) {
-    return (
-      <SuccessModal
-        onClose={onClose}
-        onSignIn={() => {
-          setShowSuccess(false);
-          onLogin();
-        }}
-      />
-    );
-  }
-
   return (
     <ModalWithForm onClose={onClose}>
       <div className="RegisterModal">
         <button onClick={onClose} className="RegisterModal__close">
           <img src={closeIcon} alt="Close" />
         </button>
-        <h2>Sign up</h2>
-        <form onSubmit={handleRegister}>
+        <h2 className="RegisterModal__title">Sign up</h2>
+        <form onSubmit={handleRegister} className="RegisterModal__form">
           <div className={emailGroupClass}>
             <label className="RegisterModal__label">Email</label>
             <input
@@ -134,6 +117,7 @@ function RegisterModal({ onClose, onLogin }) {
               onChange={(e) => setEmail(e.target.value)}
               disabled={isLoading}
               required
+              className="RegisterModal__input"
             />
             {displayedEmailError && (
               <p className="RegisterModal__error">{displayedEmailError}</p>
@@ -148,6 +132,7 @@ function RegisterModal({ onClose, onLogin }) {
               onChange={(e) => setPassword(e.target.value)}
               disabled={isLoading}
               required
+              className="RegisterModal__input"
             />
           </div>
           <div className="RegisterModal__input-group">
@@ -159,27 +144,32 @@ function RegisterModal({ onClose, onLogin }) {
               onChange={(e) => setUsername(e.target.value)}
               disabled={isLoading}
               required
-              maxLength={30}
+              className="RegisterModal__input"
             />
           </div>
-          <button type="submit" disabled={!isFormValid || isLoading}>
+          <button
+            type="submit"
+            className="RegisterModal__submit"
+            disabled={!isFormValid || isLoading}
+          >
             {isLoading ? "Signing up..." : "Sign up"}
           </button>
+          {error && (
+            <p className="RegisterModal__error RegisterModal__error--main">
+              {error}
+            </p>
+          )}
         </form>
-        <p>
+        <div className="RegisterModal__signin-container">
           or{" "}
           <button
             type="button"
-            onClick={() => {
-              onClose();
-              onLogin();
-            }}
-            className="RegisterModal__login-link"
-            disabled={isLoading}
+            className="RegisterModal__signin-link"
+            onClick={onLogin}
           >
             Sign in
           </button>
-        </p>
+        </div>
       </div>
     </ModalWithForm>
   );

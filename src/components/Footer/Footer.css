@@ -5,10 +5,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 80px;
+  padding: 0 104px;
   box-sizing: border-box;
   background: #fff;
   border-top: 1px solid #eee;
+}
+
+.Footer__copyright {
+  width: 433px;
+  height: 22px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #b6bcbf;
 }
 
 .Footer__nav {

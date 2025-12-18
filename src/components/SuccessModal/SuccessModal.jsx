@@ -11,7 +11,9 @@ function SuccessModal({ onClose, onSignIn }) {
         <button onClick={onClose} className="SuccessModal__close">
           <img src={closeIcon} alt="Close" />
         </button>
-        <h2>Registration successfully completed!</h2>
+        <h2 className="SuccessModal__title">
+          Registration successfully completed!
+        </h2>
         <button
           type="button"
           onClick={onSignIn}

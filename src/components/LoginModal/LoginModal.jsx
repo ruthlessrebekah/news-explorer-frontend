@@ -115,7 +115,7 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
         <button onClick={onClose} className="LoginModal__close">
           <img src={closeIcon} alt="Close" />
         </button>
-        <h2>Sign in</h2>
+        <h2 className="LoginModal__title">Sign in</h2>
         <form onSubmit={handleLogin}>
           <div className={emailGroupClass}>
             <label className="LoginModal__label">Email</label>
@@ -150,7 +150,7 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
             {isLoading ? "Signing in..." : "Sign in"}
           </button>
         </form>
-        <p>
+        <div className="LoginModal__register-container">
           or{" "}
           <button
             type="button"
@@ -163,7 +163,7 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
           >
             Sign up
           </button>
-        </p>
+        </div>
       </div>
     </ModalWithForm>
   );

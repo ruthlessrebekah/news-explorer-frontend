@@ -45,7 +45,7 @@
   box-shadow: none;
 }
 
-.LoginModal h2 {
+.LoginModal__title {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 24px;
   font-weight: 900;
@@ -141,7 +141,7 @@
   cursor: not-allowed;
 }
 
-.LoginModal p {
+.LoginModal__register-container {
   text-align: center;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
@@ -296,7 +296,7 @@
     right: -28px;
   }
 
-  .LoginModal h2 {
+  .LoginModal__title {
     font-size: 20px;
     margin-bottom: 18px;
   }

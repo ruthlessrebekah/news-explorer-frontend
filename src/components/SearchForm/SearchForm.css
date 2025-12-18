@@ -1,1 +1,6 @@
 /* SearchForm styles */
+
+/* Updated CSS selectors to match JSX changes */
+.SearchForm__form {
+  /* ...existing styles... */
+}

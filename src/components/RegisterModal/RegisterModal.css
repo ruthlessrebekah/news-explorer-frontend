@@ -44,7 +44,7 @@
   box-shadow: none;
 }
 
-.RegisterModal h2 {
+.RegisterModal__title {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 24px;
   font-weight: 900;
@@ -55,32 +55,32 @@
   white-space: nowrap;
 }
 
-.RegisterModal form {
+.RegisterModal__form {
   display: flex;
   flex-direction: column;
   margin-bottom: 0;
 }
 
 /* Default spacing for Password group; Username group margin-bottom will be zero so button's margin-top applies */
-.RegisterModal form > .RegisterModal__input-group:nth-child(2) {
+.RegisterModal__form > .RegisterModal__input-group:nth-child(2) {
   margin-bottom: 31px;
 }
 
 /* Email group spacing controlled by error state modifiers */
-.RegisterModal form > .RegisterModal__input-group--no-error {
+.RegisterModal__form > .RegisterModal__input-group--no-error {
   margin-bottom: 31px;
 }
 
-.RegisterModal form > .RegisterModal__input-group--error {
+.RegisterModal__form > .RegisterModal__input-group--error {
   margin-bottom: 0; /* error block provides only 3px + 13px spacing */
 }
 
 /* Submit button always sits 39px below the last input field (Password) */
-.RegisterModal form > button[type="submit"] {
+.RegisterModal__form > button[type="submit"] {
   margin-top: 39px;
 }
 
-.RegisterModal input {
+.RegisterModal__input {
   padding: 0 0 12px 0;
   border: none;
   border-bottom: 1px solid #d3d3d3;
@@ -94,12 +94,12 @@
   letter-spacing: 0;
 }
 
-.RegisterModal input:focus {
+.RegisterModal__input:focus {
   outline: none;
   border-color: #d3d3d3;
 }
 
-.RegisterModal input::placeholder {
+.RegisterModal__input::placeholder {
   color: #000000;
   opacity: 0.2;
   font-family: "Inter", Arial, sans-serif;
@@ -109,7 +109,7 @@
   letter-spacing: 0;
 }
 
-.RegisterModal button[type="submit"] {
+.RegisterModal__submit {
   padding: 0;
   width: 360px; /* extend 1px more on each side vs input fields */
   height: 64px;
@@ -131,21 +131,21 @@
 }
 
 /* Enabled (valid inputs) state */
-.RegisterModal button[type="submit"]:not(:disabled) {
+.RegisterModal__submit:not(:disabled) {
   background: #2f71e5;
 }
 
-.RegisterModal button[type="submit"]:not(:disabled):hover {
+.RegisterModal__submit:not(:disabled):hover {
   background: #2f71e5;
 }
 
-.RegisterModal button[type="submit"]:disabled {
+.RegisterModal__submit:disabled {
   background: #e6e8eb;
   color: #b6bcbf;
   cursor: not-allowed;
 }
 
-.RegisterModal p {
+.RegisterModal__alternative {
   text-align: center;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
@@ -160,7 +160,22 @@
   gap: 4px;
 }
 
-.RegisterModal__login-link {
+.RegisterModal__signin-container {
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #1a1b22;
+  margin: 16px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.RegisterModal__signin-link {
   background: none;
   border: none;
   color: #2563eb;
@@ -174,7 +189,7 @@
   letter-spacing: 0;
 }
 
-.RegisterModal__login-link:hover {
+.RegisterModal__signin-link:hover {
   color: #1d4ed8;
   text-decoration: underline;
 }
