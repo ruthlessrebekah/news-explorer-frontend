@@ -142,9 +142,6 @@
   margin-left: 0;
   margin-right: 0;
   text-align: left;
-  letter-spacing: 0;
-  opacity: 1;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .Main__subtitle {
@@ -158,10 +155,8 @@
   line-height: 24px;
   margin-top: 32px;
   margin-bottom: 0;
+  margin-left: 0;
   text-align: left;
-  letter-spacing: 0;
-  opacity: 1;
-  text-shadow: none;
 }
 /* Search bar flex wrapper for seamless overlap */
 .Main__search-bar {
@@ -323,5 +318,100 @@
     min-height: auto;
     height: auto;
     padding: 0;
+  }
+
+  .Main__hero {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    min-height: 400px;
+    max-height: 400px;
+    background: url("../../assets/images/hero-image.jpg") center center / cover
+      no-repeat;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .Main__hero-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Main__hero-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    border: 1px solid #d1d2d6;
+  }
+
+  .Main__hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: rgba(40, 40, 40, 0.35); /* semi-transparent dark overlay */
+    z-index: 1;
+  }
+
+  .Main__title {
+    font-size: 36px;
+    line-height: 40px;
+    width: 385px;
+    height: 80px;
+    margin-top: 38px;
+  }
+
+  .Main__subtitle {
+    width: 452px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 16px;
+  }
+
+  .Main__search-bar {
+    display: flex;
+    width: 452px;
+    position: relative;
+    align-items: center;
+    margin: 48px 156px 48px 160px;
+  }
+
+  .Main__search {
+    width: 452px;
+    height: 56px;
+  }
+
+  .Main__search-button {
+    width: 160px;
+    height: 56px;
+  }
+
+  .Main__search-input {
+    width: 228px;
+    padding: 17px 24px;
+  }
+
+  .Main__search-input::placeholder {
+    width: 228px;
+  }
+
+  .Main__hero-content {
+    height: 400px;
   }
 }

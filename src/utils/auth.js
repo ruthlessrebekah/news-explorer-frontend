@@ -13,6 +13,8 @@ export function register(email, password, name) {
     // Simulate successful registration
     const fakeToken =
       "fake_jwt_token_" + Math.random().toString(36).substr(2, 9);
+    // Store the registered username in localStorage for demo purposes
+    window.localStorage.setItem("lastRegisteredUsername", name);
     resolve({
       token: fakeToken,
       user: {
@@ -35,12 +37,15 @@ export function login(email, password) {
     // Simulate successful login
     const fakeToken =
       "fake_jwt_token_" + Math.random().toString(36).substr(2, 9);
+    // Retrieve the last registered username for demo purposes
+    const lastRegisteredUsername =
+      window.localStorage.getItem("lastRegisteredUsername") || "Fake User";
     resolve({
       token: fakeToken,
       user: {
         _id: "fake-user-" + Date.now(),
         email,
-        name: "Fake User",
+        name: lastRegisteredUsername,
       },
     });
   });

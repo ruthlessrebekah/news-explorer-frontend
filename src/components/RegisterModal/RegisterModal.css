@@ -9,6 +9,7 @@
   position: relative;
   box-sizing: border-box;
   overflow: visible;
+  margin-top: 167px;
 }
 
 .RegisterModal__close {

@@ -1,5 +1,6 @@
 // RegisterModal.jsx
 import React, { useState } from "react";
+import { register } from "../../utils/auth";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import closeIcon from "../../assets/images/close-icon-white.png";
 import "./RegisterModal.css";
@@ -48,16 +49,22 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
       setError("Please enter your username");
       return;
     }
-
     if (username.length < 2) {
       setError("Username must be at least 2 characters");
+      return;
+    }
+    if (username.length > 30) {
+      setError("Username must be 30 characters or less");
       return;
     }
 
     // All validation passed
     try {
       setIsLoading(true);
-      // Simulate register success; in Stage 2, call real register API
+      // Actually call the register stub and store user/token in localStorage
+      const response = await register(email, password, username);
+      window.localStorage.setItem("token", response.token);
+      window.localStorage.setItem("user", JSON.stringify(response.user));
       onRegisterSuccess(); // Notify parent about successful registration
       setEmail("");
       setPassword("");
@@ -141,7 +148,8 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
               type="text"
               placeholder="Enter your username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              maxLength={30}
+              onChange={(e) => setUsername(e.target.value.slice(0, 30))}
               disabled={isLoading}
               required
               className="RegisterModal__input"
@@ -165,7 +173,10 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
           <button
             type="button"
             className="RegisterModal__signin-link"
-            onClick={onLogin}
+            onClick={() => {
+              onClose();
+              onLogin();
+            }}
           >
             Sign in
           </button>
