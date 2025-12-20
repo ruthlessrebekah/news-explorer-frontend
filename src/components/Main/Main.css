@@ -8,8 +8,7 @@
 
 /* Main styles */
 .Main {
-  background: #f5f5f5;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,52 +18,29 @@
 /* Generic section wrapper to fit viewport width and height */
 .Main__section {
   width: 100%;
-  min-height: 100vh;
+  min-height: 576px;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 80px 104px;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 32px;
 }
 
-/* Override generic section sizing for About when combined */
-.Main__section.Main__about {
+.Main__hero-wrapper {
   width: 100%;
-  min-height: 0;
-  padding: 0;
-  margin-bottom: 0;
+  height: 576px; /* includes header and hero */
+  background: url("/assets/images/hero-image.jpg") center center / cover
+    no-repeat;
+  color: #fff;
 }
 
-/* Loading state for results: matches Figma block height and removes extra padding */
-.Main__results--loading {
-  min-height: 282px;
-  height: 282px;
-  padding: 0; /* so the 80px offset for the spinner is measured from the bottom of the hero image */
-  background: #f5f6f7; /* light grey per Figma */
-}
-
-.Main__section-title {
-  font-family: "Roboto Slab", serif;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  color: #1a1b22;
-  margin: 0;
-}
-
-/* Hero section */
 .Main__hero {
   width: 100%;
   max-width: none;
   margin: 0;
   padding: 0;
-  min-height: 576px;
-  max-height: 576px;
-  background: url("../../assets/images/hero-image.jpg") center center / cover
-    no-repeat;
-  color: #fff;
+  height: 496px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,14 +95,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 576px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   color: #fff;
   z-index: 3;
-  padding: 0 2rem;
   text-align: center;
 }
 
@@ -261,6 +234,13 @@
   background: #2f71e5;
   pointer-events: none;
 }
+/* Loading state for results: matches Figma block height and removes extra padding */
+.Main__results--loading {
+  min-height: 282px;
+  height: 282px;
+  padding: 0; /* so the 80px offset for the spinner is measured from the bottom of the hero image */
+  background: #f5f6f7; /* light grey per Figma */
+}
 
 .Main__search-error {
   color: #ff3055;
@@ -304,68 +284,47 @@
   color: #1a1b22; /* hover text color */
 }
 
-/* About and Footer component styles belong in About.css and Footer.css respectively.
-   They were previously duplicated here and have been removed to restore separation. */
+.Main__section-title {
+  font-family: "Roboto Slab", serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+.Main__section.Main__results {
+  padding: 80px 104px;
+}
+
+/* Standalone About section for outside hero-wrapper */
+.Main__about-section {
+  width: 100%;
+  background: #fff;
+  /* padding: 80px 104px; */
+  box-sizing: border-box;
+}
 
 /* Responsive Design - Tablet (768px and below) */
 @media (max-width: 768px) {
   .Main__section {
     max-width: 100%;
     padding: 20px;
-  }
-
-  .Main__section.Main__about {
-    min-height: auto;
-    height: auto;
-    padding: 0;
+    gap: 0;
   }
 
   .Main__hero {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
     min-height: 400px;
     max-height: 400px;
-    background: url("../../assets/images/hero-image.jpg") center center / cover
-      no-repeat;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    gap: 0;
   }
 
-  .Main__hero-container {
-    position: relative;
-    width: 100%;
+  .Main__hero-container
+    .Main__hero-image
+    .Main__hero-overlay
+    .Main__hero-shadow
+    .Main__hero-content {
     height: 400px;
-    margin: 0;
-    overflow: hidden;
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .Main__hero-image {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    object-position: center center;
-    display: block;
-    border: 1px solid #d1d2d6;
-  }
-
-  .Main__hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 400px;
-    background: rgba(40, 40, 40, 0.35); /* semi-transparent dark overlay */
-    z-index: 1;
   }
 
   .Main__title {
@@ -411,7 +370,9 @@
     width: 228px;
   }
 
-  .Main__hero-content {
-    height: 400px;
+  .Main__about {
+    min-height: auto;
+    height: auto;
+    padding: 0;
   }
 }

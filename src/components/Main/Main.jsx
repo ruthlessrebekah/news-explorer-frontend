@@ -4,7 +4,6 @@ import "./Main.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
-import heroImage from "../../assets/images/hero-image.jpg";
 
 function Main({
   articles,
@@ -73,46 +72,54 @@ function Main({
 
   return (
     <main className="Main">
-      <section className="Main__section Main__hero">
-        <div className="Main__hero-content">
-          <h1 className="Main__title">What's going on in the world?</h1>
-          <p className="Main__subtitle">
-            Find the latest news on any topic and save them in your personal
-            account.
-          </p>
-          <div className="Main__search-bar">
-            <form className="Main__search" onSubmit={handleSearchSubmit}>
-              <input
-                className="Main__search-input"
-                type="text"
-                placeholder="Enter topic"
-                value={searchQuery}
-                onChange={handleInputChange}
-              />
-              <button
-                className={`Main__search-button ${
-                  searchQuery.trim()
-                    ? `Main__search-button--ready ${
-                        searchSubmitting ? "Main__search-button--active" : ""
-                      }`
-                    : "Main__search-button--idle"
-                }`}
-                type="submit"
-                onMouseDown={() =>
-                  searchQuery.trim() && setSearchSubmitting(true)
-                }
-                onMouseUp={() =>
-                  searchQuery.trim() &&
-                  window.setTimeout(() => setSearchSubmitting(false), 250)
-                }
-              >
-                Search
-              </button>
-            </form>
+      <div className="Main__hero-wrapper">
+        <section className="Main__section">
+          <div className="Main__hero">
+            <div className="Main__hero-content">
+              <h1 className="Main__title">What's going on in the world?</h1>
+              <p className="Main__subtitle">
+                Find the latest news on any topic and save them in your personal
+                account.
+              </p>
+              <div className="Main__search-bar">
+                <form className="Main__search" onSubmit={handleSearchSubmit}>
+                  <input
+                    className="Main__search-input"
+                    type="text"
+                    placeholder="Enter topic"
+                    value={searchQuery}
+                    onChange={handleInputChange}
+                  />
+                  <button
+                    className={`Main__search-button ${
+                      searchQuery.trim()
+                        ? `Main__search-button--ready ${
+                            searchSubmitting
+                              ? "Main__search-button--active"
+                              : ""
+                          }`
+                        : "Main__search-button--idle"
+                    }`}
+                    type="submit"
+                    onMouseDown={() =>
+                      searchQuery.trim() && setSearchSubmitting(true)
+                    }
+                    onMouseUp={() =>
+                      searchQuery.trim() &&
+                      window.setTimeout(() => setSearchSubmitting(false), 250)
+                    }
+                  >
+                    Search
+                  </button>
+                </form>
+              </div>
+              {searchError && (
+                <p className="Main__search-error">{searchError}</p>
+              )}
+            </div>
           </div>
-          {searchError && <p className="Main__search-error">{searchError}</p>}
-        </div>
-      </section>
+        </section>
+      </div>
 
       {isLoading || forcePreloader ? (
         <section className="Main__section Main__results Main__results--loading">
@@ -154,10 +161,6 @@ function Main({
           )}
         </>
       )}
-
-      <section className="Main__section Main__about">
-        <About />
-      </section>
     </main>
   );
 }
