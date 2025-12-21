@@ -1,20 +1,20 @@
 /* Preloader styles */
 .Preloader {
-  position: relative;
   width: 100%;
   height: 282px; /* Figma block height */
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Spinner container positioned 80px from hero bottom */
+/* Spinner */
 .circle-preloader {
-  position: absolute;
-  top: 80px; /* distance from bottom of hero image to TOP of spinner */
-  left: 50%;
-  transform: translateX(-50%);
   width: 74px;
   height: 74px;
   border-radius: 50%;
+  position: relative;
+  margin-bottom: 24px; /* space between spinner and text */
 }
 
 /* Light track ring */
@@ -23,10 +23,10 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1px solid #d1d2d6; /* Figma: 1px track */
+  border: 1px solid #d1d2d6;
 }
 
-/* Rotating arc rendered as gradient ring; single continuous circular line */
+/* Rotating arc */
 .circle-preloader::after {
   content: "";
   position: absolute;
@@ -40,7 +40,6 @@
     rgba(209, 210, 214, 0) 350deg,
     rgba(209, 210, 214, 0) 360deg
   );
-  /* Punch out the center to create a 1px ring */
   -webkit-mask: radial-gradient(
     farthest-side,
     transparent calc(100% - 1px),
@@ -62,10 +61,6 @@
 }
 
 .Preloader__text {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: calc(80px + 74px + 24px); /* spinner offset + size + 24px gap */
   width: 280px;
   height: 24px;
   font-family: "Roboto", Arial, sans-serif;

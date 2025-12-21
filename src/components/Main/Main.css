@@ -249,23 +249,10 @@
   font-family: "Roboto", Arial, sans-serif;
 }
 
-/* No results section */
-.Main__no-results {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.Main__no-results-text {
-  font-size: 18px;
-  color: #b6bcbf;
-  font-family: "Roboto", Arial, sans-serif;
-  margin: 16px 0 0 0;
-}
-
 /* Show More button styles */
 .Main__show-more {
   display: block;
-  margin: 32px auto 0 auto;
+  margin: 64px auto 0 auto;
   width: 288px;
   height: 64px;
   font-size: 1.1rem;
@@ -284,24 +271,102 @@
   color: #1a1b22; /* hover text color */
 }
 
-.Main__section-title {
-  font-family: "Roboto Slab", serif;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 38px;
-  color: #1a1b22;
-  margin: 0;
-}
-
 .Main__section.Main__results {
   padding: 80px 104px;
+}
+
+.Main__results-content {
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Main__section-title {
+  font-family: "Roboto Slab", serif;
+  color: #1a1b22;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 32px;
+  width: 1216px; /* Match grid width */
+  margin-left: 0;
+  max-width: none;
+  height: auto;
+}
+
+/* Status title for nothing found and error */
+.Main__status-title {
+  font-family: "Roboto Slab", serif;
+  color: #1a1b22;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 32px;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+.Main__no-results {
+  align-items: center;
+  background: #f5f6f7;
+  text-align: center;
+  min-height: 374px;
+  max-height: 374px;
+  padding: 0;
+}
+
+.Main__no-results-text {
+  font-size: 18px;
+  color: #6c707a;
+  font-family: "Roboto", Arial, sans-serif;
+  width: 356px;
+  height: 48px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  margin-bottom: 80px;
+  margin-top: 0;
+}
+
+.Main__no-results-icon {
+  margin-top: 86px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.Main__no-results-icon::before {
+  content: "";
+  display: block;
+  width: 82px;
+  height: 82px;
+  background: url("../../assets/images/not-found-icon.png") center no-repeat;
+  background-size: contain;
+}
+
+.Main__section.Main__results--loading {
+  min-height: 282px;
+  max-height: 282px;
+  background: #f5f6f7;
+  padding: 80px 0 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Standalone About section for outside hero-wrapper */
 .Main__about-section {
   width: 100%;
   background: #fff;
-  /* padding: 80px 104px; */
   box-sizing: border-box;
 }
 

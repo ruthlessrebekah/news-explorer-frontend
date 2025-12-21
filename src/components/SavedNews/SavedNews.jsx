@@ -48,19 +48,19 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
               By keywords:{" "}
               {keywords.length <= 3
                 ? keywords.map((keyword, index) => (
-                    <span key={index}>
+                    <span className="SavedNews__keyword" key={index}>
                       {keyword}
                       {index < keywords.length - 1 && ", "}
                     </span>
                   ))
                 : [
                     ...keywords.slice(0, 3).map((keyword, index) => (
-                      <span key={index}>
+                      <span className="SavedNews__keyword" key={index}>
                         {keyword}
                         {index < 2 && ", "}
                       </span>
                     )),
-                    <span key="other">
+                    <span className="SavedNews__keyword" key="other">
                       {keywords.length > 3 &&
                         `, and ${keywords.length - 3} other`}
                     </span>,

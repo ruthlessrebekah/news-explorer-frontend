@@ -3,7 +3,6 @@ import React from "react";
 import "./Main.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
-import About from "../About/About";
 
 function Main({
   articles,
@@ -129,33 +128,42 @@ function Main({
         <>
           {hasSearched && articles.length > 0 && (
             <section className="Main__section Main__results">
-              <h2 className="Main__section-title">Search results</h2>
-              <NewsCardList
-                newsCards={articles.slice(0, visibleCount)}
-                isLoggedIn={isLoggedIn}
-                savedArticles={savedArticles}
-                onToggleSave={onToggleSave}
-              />
-              {!allVisible && (
-                <button className="Main__show-more" onClick={handleShowMore}>
-                  Show more
-                </button>
-              )}
+              <div className="Main__results-content">
+                <h2 className="Main__section-title">Search results</h2>
+                <NewsCardList
+                  newsCards={articles.slice(0, visibleCount)}
+                  isLoggedIn={isLoggedIn}
+                  savedArticles={savedArticles}
+                  onToggleSave={onToggleSave}
+                />
+                {!allVisible && (
+                  <button
+                    className="Main__show-more"
+                    onClick={handleShowMore}
+                    onMouseUp={(e) => e.currentTarget.blur()}
+                  >
+                    Show more
+                  </button>
+                )}
+              </div>
             </section>
           )}
 
           {hasSearched && !apiError && articles.length === 0 && (
             <section className="Main__section Main__no-results">
-              <h2 className="Main__section-title">Nothing found</h2>
+              <div className="Main__no-results-icon" />
+              <h2 className="Main__status-title">Nothing found</h2>
               <p className="Main__no-results-text">
-                Sorry, but nothing matched your search terms.
+                Sorry, but nothing matched
+                <br />
+                your search terms.
               </p>
             </section>
           )}
 
           {hasSearched && apiError && !articles.length && (
             <section className="Main__section Main__no-results">
-              <h2 className="Main__section-title">Search results</h2>
+              <h2 className="Main__status-title">Search results</h2>
               <p className="Main__no-results-text">{apiError}</p>
             </section>
           )}

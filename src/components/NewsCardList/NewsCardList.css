@@ -1,10 +1,13 @@
 /* NewsCardList styles */
 .NewsCardList {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 400px);
   gap: 16px;
-  max-width: 1440px;
-  margin: 0 auto;
+  background-color: #f5f6f7;
+  width: 1216px;
+  margin: 0;
+  box-sizing: border-box;
+  justify-content: start;
 }
 
 @media (max-width: 1024px) {
