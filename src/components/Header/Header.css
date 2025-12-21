@@ -57,24 +57,6 @@
   text-overflow: ellipsis;
   position: relative;
 }
-/* Sign in button text: literal Figma sizing */
-.Header__nav-link--signin-text {
-  display: block;
-  width: 152px;
-  height: 24px;
-  font-family: "Roboto", Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: 0;
-  margin: 0 auto;
-  padding: 0;
-  box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 /* Centered content, max 1440px, with side padding */
 
@@ -96,8 +78,8 @@
   margin: 0;
   padding: 0;
   user-select: none;
-  width: 200;
-  height: 24;
+  width: 200px;
+  height: 24px;
   font-size: 20px;
   line-height: 24px;
 }
@@ -161,14 +143,31 @@
   border-width: 1px;
   border-radius: 100px;
   background: transparent;
-  color: #fff;
-  font-weight: 500;
-  font-size: 18px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+}
+
+/* Sign in button text: literal Figma sizing */
+.Header__nav-link--signin-text {
+  display: block;
+  width: 152px;
+  height: 24px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
 }
 
 /* Remove all UA styles for header links/buttons */
@@ -301,8 +300,6 @@
 /* Tablet (768px and below) specific typography and spacing per Figma */
 @media (max-width: 768px) {
   .Header {
-    /* Tablet layout: exact vertical spacing and horizontal paddings */
-    padding: 23px 40px 18px 40px; /* top 23px, bottom 18px, sides 40px */
     height: 66px; /* 23 + 25 + 18 = 66 (logo height 25px) */
   }
 
@@ -310,17 +307,6 @@
     width: 100%;
     padding: 0 40px;
     height: 66px;
-  }
-
-  .Header__logo-link {
-    font-family: "Roboto Slab", "Roboto", Arial, sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 25px;
-    width: 200px;
-    height: 25px;
-    display: inline-flex;
-    align-items: center;
   }
 
   .Header__nav-home-wrapper,
@@ -344,18 +330,30 @@
     justify-content: center;
   }
 
+  /* Show underline only on main page (not .Header--black) */
+  .Header:not(.Header--black)
+    .Header__nav-link--active
+    .Header__home-underline {
+    bottom: -21px; /* 1px gap above border, 3px line, sits above border-bottom */
+    width: 60px;
+    height: 3px;
+  }
+
   .Header__nav-link {
     font-size: 16px; /* base for other links/buttons */
     line-height: 24px;
   }
 
+  .Header__nav-link--home {
+    width: 64px;
+    font-size: 16px;
+    margin-right: 16px;
+  }
+
   .Header__nav-link--signin {
     width: 152px; /* Tablet spec */
     height: 40px; /* Tablet spec */
-    font-family: "Roboto", Arial, sans-serif;
-    font-weight: 500;
     font-size: 16px; /* Figma: 16px */
-    line-height: 24px; /* Figma: 24px */
   }
 
   /* Logged-in logout button size on tablet */
