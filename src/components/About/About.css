@@ -1,4 +1,11 @@
 /* About styles (desktop) */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .About {
   display: flex;
   align-items: flex-start;

@@ -1,4 +1,11 @@
 /* Header overlays hero, full width background and border */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .Header {
   position: absolute;
   top: 0;

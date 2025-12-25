@@ -1,4 +1,9 @@
 /* SavedNews.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 .SavedNews {
   width: 100%;

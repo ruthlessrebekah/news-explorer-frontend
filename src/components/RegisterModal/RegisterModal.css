@@ -1,4 +1,11 @@
 /* RegisterModal styles aligned to LoginModal */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .RegisterModal {
   background: #fff;
   border-radius: 12px;

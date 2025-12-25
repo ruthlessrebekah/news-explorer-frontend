@@ -1,6 +1,101 @@
 /* SearchForm styles */
 
-/* Updated CSS selectors to match JSX changes */
-.SearchForm__form {
-  /* ...existing styles... */
+.SearchForm__bar {
+  display: flex;
+  width: 608px;
+  position: relative;
+  align-items: center;
+  margin: 88px auto 0 auto;
+  justify-content: flex-start;
+  border-radius: 100px;
 }
+
+.SearchForm__form {
+  display: flex;
+  align-items: center;
+  width: 608px;
+  height: 64px;
+  border: 1px solid #d1d2d6;
+  border-right: none;
+  border-radius: 100px;
+  background: #fff;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  z-index: 1;
+}
+
+.SearchForm__button {
+  width: 168px;
+  height: 64px;
+  border: none;
+  border-radius: 100px;
+  background: #2f71e5;
+  color: #fff;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px 0px #0e1a3933;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  z-index: 2;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  padding: 0;
+  position: relative;
+  margin-left: -32px;
+}
+
+.SearchForm__input {
+  width: 376px;
+  height: 22px;
+  padding: 21px 24px;
+  border: none;
+  border-radius: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #1a1b22;
+  background: transparent;
+  z-index: 1;
+  box-sizing: border-box;
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.SearchForm__input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.SearchForm__input::placeholder {
+  width: 376px;
+  height: 22px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #b6bcbf;
+  opacity: 1;
+}
+
+.SearchForm__button:hover,
+.SearchForm__button--ready:hover {
+  background: #347eff;
+}
+
+.SearchForm__button:active,
+.SearchForm__button--ready:active,
+.SearchForm__button--ready.SearchForm__button--active {
+  background: #2a65cc;
+}
+
+.SearchForm__button--idle {
+  background: #2f71e5;
+  pointer-events: none;
+}
+
+/* Removed .SearchForm__error style as per Figma requirements */

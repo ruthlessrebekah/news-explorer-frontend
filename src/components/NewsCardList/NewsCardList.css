@@ -1,4 +1,11 @@
 /* NewsCardList styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .NewsCardList {
   display: grid;
   grid-template-columns: repeat(3, 400px);
@@ -10,16 +17,10 @@
   justify-content: start;
 }
 
-@media (max-width: 1024px) {
-  .NewsCardList {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   .NewsCardList {
     width: 100%;
-    max-width: 672px;
+    max-width: 688px;
     grid-template-columns: repeat(3, 224px);
     justify-content: center;
     gap: 8px;

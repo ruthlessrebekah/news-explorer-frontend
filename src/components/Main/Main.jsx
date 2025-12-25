@@ -3,6 +3,7 @@ import React from "react";
 import "./Main.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
+import SearchForm from "../SearchForm/SearchForm";
 
 function Main({
   articles,
@@ -14,17 +15,13 @@ function Main({
   savedArticles,
   onToggleSave,
 }) {
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const [searchError, setSearchError] = React.useState("");
   const [visibleCount, setVisibleCount] = React.useState(3);
-  const [searchSubmitting, setSearchSubmitting] = React.useState(false);
+
+  React.useEffect(() => {
+    setVisibleCount(3);
+  }, [articles]);
 
   // DEV helper: force the Preloader to stay visible for styling/debugging
-  // Enable by either:
-  //  - adding ?preloader=1 to the URL, e.g., http://localhost:5173/?preloader=1
-  //  - or setting localStorage.setItem('dev:force-preloader', '1') in the console
-  // Disable by removing the query param or calling localStorage.removeItem('dev:force-preloader')
-  // This override is ignored in production builds.
   const forcePreloader = (() => {
     try {
       const isProd =
@@ -44,30 +41,8 @@ function Main({
     }
   })();
 
-  const handleInputChange = (e) => {
-    setSearchQuery(e.target.value);
-    if (searchError) setSearchError("");
-  };
-
   const handleShowMore = () => setVisibleCount((prev) => prev + 3);
   const allVisible = visibleCount >= articles.length;
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-
-    // Validate input
-    if (!searchQuery.trim()) {
-      setSearchError("Please enter a keyword");
-      return;
-    }
-
-    // Clear previous error and trigger search
-    setSearchError("");
-    // Flash the active (click) state even for keyboard Enter submits
-    setSearchSubmitting(true);
-    window.setTimeout(() => setSearchSubmitting(false), 250);
-    onSearch(searchQuery);
-  };
 
   return (
     <main className="Main">
@@ -80,41 +55,7 @@ function Main({
                 Find the latest news on any topic and save them in your personal
                 account.
               </p>
-              <div className="Main__search-bar">
-                <form className="Main__search" onSubmit={handleSearchSubmit}>
-                  <input
-                    className="Main__search-input"
-                    type="text"
-                    placeholder="Enter topic"
-                    value={searchQuery}
-                    onChange={handleInputChange}
-                  />
-                  <button
-                    className={`Main__search-button ${
-                      searchQuery.trim()
-                        ? `Main__search-button--ready ${
-                            searchSubmitting
-                              ? "Main__search-button--active"
-                              : ""
-                          }`
-                        : "Main__search-button--idle"
-                    }`}
-                    type="submit"
-                    onMouseDown={() =>
-                      searchQuery.trim() && setSearchSubmitting(true)
-                    }
-                    onMouseUp={() =>
-                      searchQuery.trim() &&
-                      window.setTimeout(() => setSearchSubmitting(false), 250)
-                    }
-                  >
-                    Search
-                  </button>
-                </form>
-              </div>
-              {searchError && (
-                <p className="Main__search-error">{searchError}</p>
-              )}
+              <SearchForm onSearch={onSearch} />
             </div>
           </div>
         </section>

@@ -1,4 +1,11 @@
 /* NewsCard styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .NewsCard {
   background: #fff;
   border-radius: 12px;
@@ -135,7 +142,6 @@
   font-size: 26px;
   font-weight: 400;
   line-height: 30px;
-  letter-spacing: 0;
   width: 352px;
   height: 60px;
   color: #1a1b22;
@@ -180,7 +186,6 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
-  vertical-align: middle;
   color: #b6bcbf;
   margin-bottom: 12px;
 }
@@ -193,7 +198,9 @@
   color: #b6bcbf;
   text-transform: uppercase;
   line-height: 20px;
+  letter-spacing: 0.4px;
 }
+
 /* Responsive Design - Tablet (768px and below) */
 @media (max-width: 768px) {
   .NewsCard {
@@ -206,6 +213,10 @@
     width: 224px;
     height: 150px; /* Figma: tablet image height */
     object-fit: cover;
+  }
+
+  .NewsCard__image-wrapper {
+    height: 150px;
   }
 
   .NewsCard__save {
@@ -222,45 +233,32 @@
   }
 
   .NewsCard__content {
-    /* Layout spacing based on Figma specs */
-    padding: 0; /* control spacing via element margins */
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 0;
   }
 
   .NewsCard__title {
-    font-family: "Roboto Slab", serif;
-    font-weight: 400;
     font-size: 22px;
     line-height: 24px;
-    letter-spacing: 0px;
     width: 192px;
     height: 72px; /* Figma: 3 lines at 24px */
-    margin-left: 16px; /* 16px from left */
-    margin-top: 12px; /* 12px under date */
+    margin-bottom: 10px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .NewsCard__description {
-    font-family: "Roboto", Arial, sans-serif;
-    font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    letter-spacing: 0px;
     width: 192px;
     height: 88px; /* Figma: 4 lines at 22px */
-    margin-left: 16px; /* 16px from left */
-    margin-top: 10px; /* 10px under title */
+    margin-bottom: 12px;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .NewsCard__meta {
@@ -273,13 +271,7 @@
   }
 
   .NewsCard__date {
-    font-family: "Source Sans Pro", Arial, sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    letter-spacing: 0px;
-    margin-left: 16px; /* align with 16px left spacing */
-    margin-top: 16px; /* 16px under image */
+    margin-bottom: 12px;
     width: 192px; /* single line within content column */
     white-space: nowrap; /* prevent wrapping */
     overflow: hidden; /* hide overflow */
@@ -287,15 +279,6 @@
   }
 
   .NewsCard__source {
-    font-family: "Roboto Slab", serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    margin-left: 16px; /* 16px from left */
-    margin-top: 12px; /* 12px under description */
-    margin-bottom: 16px; /* bottom space per Figma */
     width: 192px; /* match title/description width */
     height: 20px; /* Figma: source height */
     display: block; /* ensure width/height apply */

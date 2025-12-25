@@ -1,7 +1,6 @@
 /* Footer styles */
 .Footer {
   height: 80px;
-  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,12 +23,12 @@
 .Footer__nav {
   display: flex;
   align-items: center;
-  gap: 24px;
 }
 
 .Footer__link {
   color: #1a1b22;
   font-weight: 500;
+  margin-right: 40px;
 }
 
 .Footer__icon {
@@ -37,12 +36,15 @@
   align-items: center;
 }
 
+.Footer__icon--github {
+  margin-right: 24px;
+}
+
 /* Responsive Design - Tablet (768px and below) */
 @media (max-width: 768px) {
   .Footer {
     height: 64px;
-    min-height: 64px;
-    padding: 0 24px;
+    padding: 0 24px 0 40px;
   }
 
   .Footer__nav {

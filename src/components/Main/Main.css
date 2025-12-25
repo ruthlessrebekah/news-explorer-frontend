@@ -6,6 +6,12 @@
   font-style: normal;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Main styles */
 .Main {
   /* min-height: 100vh; */
@@ -18,7 +24,7 @@
 /* Generic section wrapper to fit viewport width and height */
 .Main__section {
   width: 100%;
-  height: 576px;
+  min-height: 576px;
   box-sizing: border-box;
   margin: 0 auto;
   padding-top: 80px;
@@ -242,28 +248,23 @@
   background: #f5f6f7; /* light grey per Figma */
 }
 
-.Main__search-error {
-  color: #ff3055;
-  font-size: 14px;
-  margin-top: 8px;
-  font-family: "Roboto", Arial, sans-serif;
-}
-
 /* Show More button styles */
 .Main__show-more {
   display: block;
   margin: 64px auto 0 auto;
   width: 288px;
   height: 64px;
-  font-size: 1.1rem;
+  font-size: 18px;
+  line-height: 24px;
   font-weight: 500;
   color: #1a1b22; /* default text color */
   background: #ffffff; /* default background */
   border: 1px solid transparent;
-  border-radius: 24px;
+  border-radius: 80px;
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease,
     border-color 0.15s ease;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
 .Main__show-more:hover {
@@ -373,7 +374,7 @@
 /* Responsive Design - Tablet (768px and below) */
 @media (max-width: 768px) {
   .Main__section {
-    height: 400px;
+    min-height: 400px;
     padding-top: 66px;
   }
 
@@ -392,20 +393,26 @@
     height: 400px;
   }
 
+  .Main__hero-content {
+    align-items: flex-start;
+  }
+
   .Main__title {
     font-size: 36px;
     line-height: 40px;
     width: 385px;
     height: 80px;
     margin-top: 38px;
+    margin-left: 163px;
+    margin-right: 220px;
   }
 
   .Main__subtitle {
     width: 452px;
     height: 48px;
-    font-size: 18px;
-    line-height: 24px;
     margin-top: 16px;
+    margin-left: 160px;
+    margin-right: 156px;
   }
 
   .Main__search-bar {
@@ -433,6 +440,27 @@
 
   .Main__search-input::placeholder {
     width: 228px;
+  }
+
+  .Main__section.Main__results {
+    padding: 40px;
+  }
+
+  .Main__results-content {
+    max-width: 688px;
+  }
+
+  .Main__section-title {
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 32px;
+    width: 688px; /* Match grid width */
+  }
+
+  .Main__show-more {
+    width: 240px;
+    height: 56px;
+    margin: 32px auto 0 auto;
   }
 
   .Main__about {

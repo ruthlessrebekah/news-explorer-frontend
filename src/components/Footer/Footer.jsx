@@ -22,7 +22,7 @@ function Footer() {
         </a>
         <a
           href="https://github.com/ruthlessrebekah"
-          className="Footer__icon"
+          className="Footer__icon Footer__icon--github"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"

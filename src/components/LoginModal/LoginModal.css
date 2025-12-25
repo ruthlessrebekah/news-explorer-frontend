@@ -1,4 +1,11 @@
 /* LoginModal styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .LoginModal {
   background: #fff;
   border-radius: 12px;
