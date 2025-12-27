@@ -26,12 +26,12 @@
   background: #fff;
   border-bottom: 1px solid #d1d2d6;
 }
-.Header__saved-underline {
+/* .Header__saved-underline {
   display: none;
-}
+} */
 
 /* Show underline only on saved news page (Header--black) */
-.Header--black .Header__nav-link--saved .Header__saved-underline {
+/* .Header--black .Header__nav-link--saved .Header__saved-underline {
   display: block;
   position: absolute;
   left: 50%;
@@ -42,9 +42,9 @@
   background: #1a1b22;
   border-radius: 2px;
   z-index: 2;
-}
+} */
 /* Saved articles button (main page, Figma spec) */
-.Header__nav-link.Header__nav-link--saved {
+/* .Header__nav-link.Header__nav-link--saved {
   max-width: 114px;
   max-height: 24px;
   font-family: "Roboto", Arial, sans-serif;
@@ -63,7 +63,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   position: relative;
-}
+} */
 
 /* Centered content, max 1440px, with side padding */
 
@@ -91,13 +91,17 @@
   line-height: 24px;
 }
 
+.Header--black .Header__logo {
+  color: #1a1b22;
+}
+
 .Header__nav {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.Header__nav-link {
+/* .Header__nav-link {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -117,7 +121,7 @@
 }
 
 /* Home link underline (active) */
-.Header__nav-link--active {
+/* .Header__nav-link--active {
   border-bottom: none;
   border-radius: 0;
   padding-bottom: 0;
@@ -126,24 +130,24 @@
 
 .Header__home-underline {
   display: none;
-}
+} */
 
 /* Show underline only on main page (not .Header--black) */
-.Header:not(.Header--black) .Header__nav-link--active .Header__home-underline {
+/* .Header:not(.Header--black) .Header__nav-link--active .Header__home-underline {
   display: block;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -16px; /* 1px gap above border, 3px line, sits above border-bottom */
+  bottom: -16px;
   width: 68px;
   height: 3px;
   background: #fff;
   border-radius: 2px;
   z-index: 2;
-}
+} */
 
 /* Sign in button */
-.Header__nav-link--signin {
+/* .Header__nav-link--signin {
   width: 176px;
   height: 48px;
   border: 1px solid #fff;
@@ -155,10 +159,10 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-}
+} */
 
 /* Sign in button text: literal Figma sizing */
-.Header__nav-link--signin-text {
+/* .Header__nav-link--signin-text {
   display: block;
   width: 152px;
   height: 24px;
@@ -175,10 +179,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
-}
+} */
 
 /* Remove all UA styles for header links/buttons */
-.Header__nav-link,
+/* .Header__nav-link,
 .Header__nav-link:active,
 .Header__nav-link:focus,
 .Header__nav-link:visited {
@@ -187,10 +191,10 @@
   background: none;
   text-decoration: none;
   color: #fff;
-}
+} */
 
 /* Home link (no border) */
-.Header__nav-link--home {
+/* .Header__nav-link--home {
   border: none;
   width: 49px;
   height: 24;
@@ -201,18 +205,18 @@
   text-align: center;
   color: #fff;
   margin-right: 42px;
-}
+} */
 
 /* When logged in, increase margin-right to 76px */
-.Header--logged-in .Header__nav-link--home {
+/* .Header--logged-in .Header__nav-link--home {
   margin-right: 76px;
-}
+} */
 
 /* Black variant when logged in on saved-news */
 /* Saved news page: all header text/buttons #1A1B22 */
 
 /* Saved news page: all header text/buttons #1A1B22 */
-.Header--black .Header__logo,
+/* .Header--black .Header__logo,
 .Header--black .Header__nav-link,
 .Header--black .Header__nav-link--home,
 .Header--black .Header__nav-link--saved,
@@ -229,9 +233,9 @@
 
 .Header--black .Header__logout-button:hover {
   background-color: rgba(26, 27, 34, 0.1);
-}
+} */
 
-.Header--black .Header__nav-link:hover,
+/* .Header--black .Header__nav-link:hover,
 .Header--black .Header__nav-link:active,
 .Header--black .Header__nav-link:focus {
   color: #1a1b22;
@@ -242,10 +246,10 @@
 .Header--black .Header__logo-link:active,
 .Header--black .Header__logo-link:focus {
   color: #1a1b22;
-}
+} */
 
 /* Logout button (username + icon) */
-.Header__logout-button {
+/* .Header__logout-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -266,9 +270,9 @@
   box-sizing: border-box;
   padding: 0 19px 0 19px;
   overflow: hidden;
-}
+} */
 
-.Header__logout-button:hover {
+/* .Header__logout-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -283,7 +287,6 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
-  vertical-align: middle;
 }
 
 .Header__logout-icon {
@@ -292,17 +295,17 @@
   display: block;
   margin-left: 19px;
   flex-shrink: 0;
-}
+} */
 
 /* Black variant (on saved-news page) */
-.Header--black .Header__logout-button {
+/* .Header--black .Header__logout-button {
   border-color: #000;
   color: #000;
-}
+} */
 
-.Header--black .Header__logout-button:hover {
+/* .Header--black .Header__logout-button:hover {
   background-color: rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* Tablet (768px and below) specific typography and spacing per Figma */
 @media (max-width: 768px) {
@@ -346,8 +349,8 @@
     height: 3px;
   }
 
-  .Header__nav-link {
-    font-size: 16px; /* base for other links/buttons */
+  /* .Header__nav-link {
+    font-size: 16px;
     line-height: 24px;
   }
 
@@ -358,23 +361,23 @@
   }
 
   .Header__nav-link--signin {
-    width: 152px; /* Tablet spec */
-    height: 40px; /* Tablet spec */
-    font-size: 16px; /* Figma: 16px */
-  }
+    width: 152px; 
+    height: 40px; 
+    font-size: 16px; 
+  } */
 
   /* Logged-in logout button size on tablet */
-  .Header__logout-button {
+  /* .Header__logout-button {
     height: 40px;
-    padding: 8px 16px; /* tighten to fit 40px height */
+    padding: 8px 16px;
     border-radius: 32px;
     font-size: 16px;
     line-height: 24px;
-  }
+  } */
 
-  .Header__nav-underline {
-    bottom: 2px; /* pull above divider on tablet where header flex layout differs */
-  }
+  /* .Header__nav-underline {
+    bottom: 2px;
+  } */
 }
 .Header--black .Header__logo-link:hover,
 .Header--black .Header__logo-link:active,
@@ -386,4 +389,4 @@
 .Header--black .Header__nav-link:focus {
   color: #000;
   border-color: #000;
-}
+} 

@@ -11,10 +11,10 @@
   grid-template-columns: repeat(3, 400px);
   gap: 16px;
   background-color: #f5f6f7;
-  width: 1216px;
-  margin: 0;
+  max-width: 1232px;
+  margin: 0 auto;
   box-sizing: border-box;
-  justify-content: start;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

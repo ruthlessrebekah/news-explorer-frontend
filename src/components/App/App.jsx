@@ -186,9 +186,11 @@ function MainRouterContent({
         />
         <Route path="/saved-news" element={<ProtectedSavedNews />} />
       </Routes>
-      <section className="Main__about-section">
-        <About />
-      </section>
+      {location.pathname !== "/saved-news" && (
+        <section className="Main__about-section">
+          <About />
+        </section>
+      )}
       <Footer />
       {isLoginModalOpen && (
         <LoginModal

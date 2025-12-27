@@ -98,4 +98,31 @@
   pointer-events: none;
 }
 
-/* Removed .SearchForm__error style as per Figma requirements */
+@media (max-width: 768px) {
+  .SearchForm__bar {
+    display: flex;
+    width: 452px;
+    position: relative;
+    align-items: center;
+    margin: 48px 156px 48px 160px;
+  }
+
+  .SearchForm__form {
+    width: 452px;
+    height: 56px;
+  }
+
+  .SearchForm__button {
+    width: 160px;
+    height: 56px;
+  }
+
+  .SearchForm__input {
+    width: 228px;
+    padding: 17px 24px;
+  }
+
+  .SearchForm__input::placeholder {
+    width: 228px;
+  }
+}

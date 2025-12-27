@@ -292,7 +292,7 @@
   text-align: left;
   margin-top: 0;
   margin-bottom: 32px;
-  width: 1216px; /* Match grid width */
+  width: 1232px; /* Match grid width */
   margin-left: 0;
   max-width: none;
   height: auto;
@@ -303,14 +303,14 @@
   font-family: "Roboto Slab", serif;
   color: #1a1b22;
   font-weight: 400;
-  font-size: 40px;
-  line-height: 46px;
-  text-align: left;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
   margin-top: 0;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   width: 100%;
-  max-width: none;
-  height: auto;
+  width: 356px;
+  height: 30px;
 }
 
 .Main__no-results {
@@ -318,7 +318,6 @@
   background: #f5f6f7;
   text-align: center;
   min-height: 374px;
-  max-height: 374px;
   padding: 0;
 }
 
@@ -415,7 +414,7 @@
     margin-right: 156px;
   }
 
-  .Main__search-bar {
+  /* .Main__search-bar {
     display: flex;
     width: 452px;
     position: relative;
@@ -440,10 +439,15 @@
 
   .Main__search-input::placeholder {
     width: 228px;
-  }
+  } */
 
   .Main__section.Main__results {
     padding: 40px;
+  }
+
+  .Main__no-results {
+    min-height: 374px;
+    padding: 0;
   }
 
   .Main__results-content {
