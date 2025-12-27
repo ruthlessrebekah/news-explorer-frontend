@@ -102,6 +102,13 @@
   background-size: cover !important;
 }
 
+.NewsCard__content {
+  padding: 20px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .NewsCard__tooltip {
   position: absolute;
   width: 182px;
@@ -130,11 +137,13 @@
   opacity: 1;
 }
 
-.NewsCard__content {
-  padding: 20px 24px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+.NewsCard__date {
+  font-family: "Source Sans Pro", "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #b6bcbf;
+  margin-bottom: 12px;
 }
 
 .NewsCard__title {
@@ -181,15 +190,6 @@
   margin-top: auto;
 }
 
-.NewsCard__date {
-  font-family: "Source Sans Pro", "Roboto", Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 24px;
-  color: #b6bcbf;
-  margin-bottom: 12px;
-}
-
 .NewsCard__source {
   max-width: 352px;
   font-family: "Roboto Slab", serif;
@@ -206,7 +206,6 @@
   .NewsCard {
     width: 224px;
     height: 420px;
-    min-height: 420px;
   }
 
   .NewsCard__image {
@@ -239,6 +238,19 @@
     gap: 0;
   }
 
+  .NewsCard__tooltip {
+    width: 150px;
+    font-size: 12px;
+  }
+
+  .NewsCard__date {
+    margin-bottom: 12px;
+    width: 192px; /* single line within content column */
+    white-space: nowrap; /* prevent wrapping */
+    overflow: hidden; /* hide overflow */
+    text-overflow: ellipsis; /* truncate if needed */
+  }
+
   .NewsCard__title {
     font-size: 22px;
     line-height: 24px;
@@ -263,19 +275,10 @@
 
   .NewsCard__meta {
     margin-top: auto; /* push meta to bottom */
-    padding-top: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-  }
-
-  .NewsCard__date {
-    margin-bottom: 12px;
-    width: 192px; /* single line within content column */
-    white-space: nowrap; /* prevent wrapping */
-    overflow: hidden; /* hide overflow */
-    text-overflow: ellipsis; /* truncate if needed */
   }
 
   .NewsCard__source {
@@ -285,10 +288,5 @@
     white-space: nowrap; /* prevent wrapping */
     overflow: hidden; /* hide overflow */
     text-overflow: ellipsis; /* truncate with ellipsis */
-  }
-
-  .NewsCard__tooltip {
-    width: 150px;
-    font-size: 12px;
   }
 }

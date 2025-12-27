@@ -107,26 +107,30 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
                         }}
                       />
                     )}
-                    {/* Keyword Tag */}
-                    {article.keyword && (
-                      <span className="SavedNews__tag">{article.keyword}</span>
-                    )}
-                    {/* Delete Button */}
-                    <button
-                      className="SavedNews__delete"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        onToggleSave(article);
-                      }}
-                      title="Delete article"
-                    >
-                      <span className="visually-hidden">Delete article</span>
-                    </button>
-                    {/* Remove from Saved Label */}
-                    <span className="SavedNews__remove-label">
-                      Remove from saved
-                    </span>
+                    <div className="SavedNews__actions">
+                      {/* Delete Button */}
+                      <button
+                        className="SavedNews__delete"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          onToggleSave(article);
+                        }}
+                        aria-label="Delete article"
+                      >
+                        {/* icon only, no text or span needed */}
+                      </button>
+                      {/* Remove from Saved Label */}
+                      <span className="SavedNews__remove-label">
+                        Remove from saved
+                      </span>
+                      {/* Keyword Tag */}
+                      {article.keyword && (
+                        <span className="SavedNews__tag">
+                          {article.keyword}
+                        </span>
+                      )}
+                    </div>
                     {/* Hidden placeholder for broken image fallback */}
                     <div
                       className="SavedNews__image SavedNews__image--placeholder"
