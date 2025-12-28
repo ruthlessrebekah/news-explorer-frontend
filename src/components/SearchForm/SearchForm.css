@@ -1,3 +1,14 @@
+/* SearchForm.css */
+/* Error message below search bar */
+.SearchForm__error {
+  width: 100%;
+  margin: 12px auto 0 auto;
+  color: #ff3b3b;
+  font-size: 16px;
+  font-family: "Roboto", Arial, sans-serif;
+  text-align: center;
+  min-height: 22px;
+}
 /* SearchForm styles */
 
 .SearchForm__bar {
@@ -95,7 +106,15 @@
 
 .SearchForm__button--idle {
   background: #2f71e5;
-  pointer-events: none;
+}
+
+/* Prevent idle button from changing color on click */
+.SearchForm__button--idle:active {
+  background: #2f71e5 !important;
+}
+.SearchForm__button:focus-visible,
+.SearchForm__button--ready:focus-visible {
+  background: #2a65cc;
 }
 
 @media (max-width: 768px) {

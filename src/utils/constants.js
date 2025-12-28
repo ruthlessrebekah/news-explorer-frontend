@@ -1,5 +1,5 @@
 // News API constants
-export const NEWS_API_KEY = "1ef40212d6a64bb8a7501f393992f973";
+export const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 // Use proxy URL in production, direct API in development
 export const NEWS_API_BASE_URL =

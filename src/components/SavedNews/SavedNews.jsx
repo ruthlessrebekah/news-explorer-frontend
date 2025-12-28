@@ -37,41 +37,45 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
       <div className="SavedNews__container">
         {/* Header */}
         <div className="SavedNews__header">
-          <p className="SavedNews__label">Saved articles</p>
-          <h1 className="SavedNews__title">
-            {userName}, you have {savedArticles.length} saved{" "}
-            {savedArticles.length === 1 ? "article" : "articles"}
-          </h1>
+          <div className="SavedNews__header-content">
+            <p className="SavedNews__label">Saved articles</p>
+            <h1 className="SavedNews__title">
+              {userName}, you have {savedArticles.length} saved{" "}
+              {savedArticles.length === 1 ? "article" : "articles"}
+            </h1>
 
-          {hasArticles && keywords.length > 0 && (
-            <p className="SavedNews__keywords">
-              By keywords:{" "}
-              {keywords.length <= 3
-                ? keywords.map((keyword, index) => (
-                    <span className="SavedNews__keyword" key={index}>
-                      {keyword}
-                      {index < keywords.length - 1 && ", "}
-                    </span>
-                  ))
-                : [
-                    ...keywords.slice(0, 3).map((keyword, index) => (
+            {hasArticles && keywords.length > 0 && (
+              <p className="SavedNews__keywords">
+                By keywords:{" "}
+                {keywords.length <= 3
+                  ? keywords.map((keyword, index) => (
                       <span className="SavedNews__keyword" key={index}>
                         {keyword}
-                        {index < 2 && ", "}
+                        {index < keywords.length - 1 && ", "}
                       </span>
-                    )),
-                    <span className="SavedNews__keyword" key="other">
-                      {keywords.length > 3 &&
-                        `, and ${keywords.length - 3} other`}
-                    </span>,
-                  ]}
-            </p>
-          )}
+                    ))
+                  : [
+                      ...keywords.slice(0, 3).map((keyword, index) => (
+                        <span className="SavedNews__keyword" key={index}>
+                          {keyword}
+                          {index < 2 && ", "}
+                        </span>
+                      )),
+                      <span className="SavedNews__keyword" key="other">
+                        {keywords.length > 3 &&
+                          `, and ${keywords.length - 3} other`}
+                      </span>,
+                    ]}
+              </p>
+            )}
+          </div>
         </div>
+      </div>
 
-        {/* Articles Grid */}
-        {hasArticles ? (
-          <div className="SavedNews__cards-bg">
+      {/* Articles Grid with full-width background */}
+      {hasArticles ? (
+        <div className="SavedNews__cards-bg">
+          <div className="SavedNews__container">
             <div className="SavedNews__cards">
               {savedArticles.map((article) => (
                 <a
@@ -171,8 +175,8 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
               ))}
             </div>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </section>
   );
 }
