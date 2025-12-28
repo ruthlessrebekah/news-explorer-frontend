@@ -70,12 +70,10 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
             )}
           </div>
         </div>
-      </div>
 
-      {/* Articles Grid with full-width background */}
-      {hasArticles ? (
-        <div className="SavedNews__cards-bg">
-          <div className="SavedNews__container">
+        {/* Articles Grid with full-width background */}
+        {hasArticles ? (
+          <div className="SavedNews__cards-bg">
             <div className="SavedNews__cards">
               {savedArticles.map((article) => (
                 <a
@@ -175,8 +173,8 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
               ))}
             </div>
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </section>
   );
 }
