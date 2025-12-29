@@ -24,6 +24,7 @@ export default function Header({
         <a href="/" className="Header__logo" aria-label="Go to main page">
           NewsExplorer
         </a>
+        {/* Mobile menu icon for 320px - now handled in Navigation */}
         <Navigation
           isLoggedIn={isLoggedIn}
           username={username}
@@ -31,6 +32,7 @@ export default function Header({
           onLogout={onLogout}
           onSavedArticles={onSavedArticles}
           isBlack={isBlack}
+          showMenuIcon={true}
         />
       </div>
     </header>

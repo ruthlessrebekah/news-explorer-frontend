@@ -1,3 +1,4 @@
+/* Navigation.css */
 /* Flex row for navigation buttons */
 .Navigation__row {
   display: flex;
@@ -216,6 +217,25 @@
   flex-shrink: 0;
 }
 
+/* Mobile menu icon for 320px */
+.Navigation__menu-icon {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.Navigation__menu-overlay {
+  display: none;
+}
+
 /* TABLET/MOBILE OVERRIDES */
 @media (max-width: 768px) {
   .Navigation__link {
@@ -276,5 +296,91 @@
 
   .Navigation__nav-underline {
     bottom: 2px;
+  }
+}
+
+@media (max-width: 320px) {
+  .Navigation__menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    background: #1a1b22;
+    z-index: 100;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    width: 320px;
+    height: 230px;
+  }
+
+  .Navigation__menu-content {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .Navigation__menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 24px 0 24px;
+    height: 56px;
+  }
+  .Navigation__menu-logo {
+    color: #fff;
+    font-family: "Roboto Slab", serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+  }
+  .Navigation__menu-close {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Navigation__menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 24px 0 24px;
+    gap: 24px;
+  }
+  .Navigation__menu-link {
+    background: none;
+    border: none;
+    color: #fff;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 500;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: background 0.2s;
+    width: 288px;
+    height: 56px;
+    font-size: 18px;
+    line-height: 56px;
+  }
+  .Navigation__menu-link:active,
+  .Navigation__menu-link:focus {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .Navigation__menu-icon {
+    display: block;
   }
 }
