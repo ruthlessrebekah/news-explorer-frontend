@@ -1,6 +1,7 @@
 // App.jsx
 
 import React from "react";
+import PropTypes from "prop-types";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,7 +10,10 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { AuthProvider, useAuth } from "../../contexts/AuthContext";
+import { AuthProvider } from "../../contexts/AuthContext.jsx";
+import { CurrentUserProvider } from "../../contexts/CurrentUserContext.jsx";
+import { useAuth } from "../../hooks/useAuth";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -29,16 +33,18 @@ function App() {
 
   return (
     <AuthProvider>
-      <Router>
-        <MainRouterContent
-          isLoginModalOpen={isLoginModalOpen}
-          setIsLoginModalOpen={setIsLoginModalOpen}
-          isRegisterModalOpen={isRegisterModalOpen}
-          setIsRegisterModalOpen={setIsRegisterModalOpen}
-          isSuccessModalOpen={isSuccessModalOpen}
-          setIsSuccessModalOpen={setIsSuccessModalOpen}
-        />
-      </Router>
+      <CurrentUserProvider>
+        <Router>
+          <MainRouterContent
+            isLoginModalOpen={isLoginModalOpen}
+            setIsLoginModalOpen={setIsLoginModalOpen}
+            isRegisterModalOpen={isRegisterModalOpen}
+            setIsRegisterModalOpen={setIsRegisterModalOpen}
+            isSuccessModalOpen={isSuccessModalOpen}
+            setIsSuccessModalOpen={setIsSuccessModalOpen}
+          />
+        </Router>
+      </CurrentUserProvider>
     </AuthProvider>
   );
 }
@@ -56,10 +62,16 @@ function MainRouterContent({
     setIsLoggedIn,
     postLoginRedirect,
     setPostLoginRedirect,
-    logout,
+    logout: authLogout,
   } = useAuth();
+  const { setCurrentUser } = useCurrentUser();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const logout = () => {
+    authLogout();
+    setCurrentUser(null);
+  };
 
   // News search state
   const [articles, setArticles] = React.useState([]);
@@ -141,24 +153,12 @@ function MainRouterContent({
   const openSuccessModal = () => setIsSuccessModalOpen(true);
   const closeSuccessModal = () => setIsSuccessModalOpen(false);
 
-  // Get username from localStorage user data
-  let username = "";
-  if (isLoggedIn) {
-    try {
-      const user = JSON.parse(window.localStorage.getItem("user"));
-      username = user?.username || user?.name || user?.email || "User";
-    } catch (e) {
-      username = "User";
-    }
-  }
-
   const handleSavedArticles = () => navigate("/saved-news");
 
   return (
     <div className="App">
       <Header
         isLoggedIn={isLoggedIn}
-        username={username}
         onLogout={logout}
         onLogin={openLoginModal}
         onSavedArticles={handleSavedArticles}
@@ -196,8 +196,9 @@ function MainRouterContent({
         <LoginModal
           onClose={closeLoginModal}
           onRegister={openRegisterModal}
-          onLoginSuccess={() => {
+          onLoginSuccess={(userData) => {
             setIsLoggedIn(true);
+            setCurrentUser(userData);
             closeLoginModal();
             if (postLoginRedirect) {
               navigate(postLoginRedirect, { replace: true });
@@ -228,5 +229,14 @@ function MainRouterContent({
     </div>
   );
 }
+
+MainRouterContent.propTypes = {
+  isLoginModalOpen: PropTypes.bool.isRequired,
+  setIsLoginModalOpen: PropTypes.func.isRequired,
+  isRegisterModalOpen: PropTypes.bool.isRequired,
+  setIsRegisterModalOpen: PropTypes.func.isRequired,
+  isSuccessModalOpen: PropTypes.bool.isRequired,
+  setIsSuccessModalOpen: PropTypes.func.isRequired,
+};
 
 export default App;

@@ -1,8 +1,9 @@
 // LoginModal.jsx
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import closeIcon from "../../assets/images/close-icon-white.png";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import { login } from "../../utils/auth";
 import "./LoginModal.css";
 
@@ -62,7 +63,7 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
       setPassword("");
       onClose();
       if (onLoginSuccess) {
-        onLoginSuccess();
+        onLoginSuccess(response.user);
       }
     } catch (err) {
       // Handle specific error cases; do not show verification modal
@@ -168,5 +169,11 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
     </ModalWithForm>
   );
 }
+
+LoginModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired,
+  onLoginSuccess: PropTypes.func.isRequired,
+};
 
 export default LoginModal;

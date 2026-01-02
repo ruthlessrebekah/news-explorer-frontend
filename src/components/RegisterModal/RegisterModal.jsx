@@ -1,5 +1,6 @@
 // RegisterModal.jsx
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { register } from "../../utils/auth";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import closeIcon from "../../assets/images/close-icon-white.png";
@@ -185,5 +186,11 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
     </ModalWithForm>
   );
 }
+
+RegisterModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  onRegisterSuccess: PropTypes.func.isRequired,
+};
 
 export default RegisterModal;

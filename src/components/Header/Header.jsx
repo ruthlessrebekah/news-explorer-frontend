@@ -1,15 +1,8 @@
-import React from "react";
+import PropTypes from "prop-types";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 
-export default function Header({
-  isLoggedIn,
-  username,
-  onLogin,
-  onLogout,
-  onSavedArticles,
-  isBlack,
-}) {
+function Header({ isLoggedIn, onLogin, onLogout, onSavedArticles, isBlack }) {
   return (
     <header
       className={[
@@ -27,7 +20,6 @@ export default function Header({
         {/* Mobile menu icon for 320px - now handled in Navigation */}
         <Navigation
           isLoggedIn={isLoggedIn}
-          username={username}
           onLogin={onLogin}
           onLogout={onLogout}
           onSavedArticles={onSavedArticles}
@@ -38,3 +30,13 @@ export default function Header({
     </header>
   );
 }
+
+Header.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  onSavedArticles: PropTypes.func.isRequired,
+  isBlack: PropTypes.bool,
+};
+
+export default Header;

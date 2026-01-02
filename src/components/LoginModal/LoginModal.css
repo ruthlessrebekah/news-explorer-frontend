@@ -290,8 +290,8 @@
   color: #b6bcbf;
   cursor: not-allowed;
 }
-/* Responsive Design - Tablet (768px and below) */
-@media (max-width: 768px) {
+/* Responsive Design - Tablet (1311px and below) */
+@media (max-width: 1311px) {
   .LoginModal {
     width: 90vw;
     max-width: 380px;

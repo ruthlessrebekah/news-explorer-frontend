@@ -1,4 +1,17 @@
 /* SearchForm.css */
+
+/* Visually hidden label for accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 /* Error message below search bar */
 .SearchForm__error {
   width: 100%;
@@ -19,6 +32,12 @@
   margin: 88px auto 0 auto;
   justify-content: flex-start;
   border-radius: 100px;
+}
+
+.SearchForm__bar-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .SearchForm__form {
@@ -117,7 +136,7 @@
   background: #2a65cc;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1311px) {
   .SearchForm__bar {
     display: flex;
     width: 452px;
@@ -143,5 +162,55 @@
 
   .SearchForm__input::placeholder {
     width: 228px;
+  }
+}
+
+@media (max-width: 767px) {
+  .SearchForm__bar {
+    width: 288px;
+    margin: 122px auto 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .SearchForm__bar-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .SearchForm__form {
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    flex-direction: column;
+  }
+
+  .SearchForm__input {
+    width: 100%;
+    height: 56px;
+    padding: 17px 24px;
+    font-size: 16px;
+    line-height: 22px;
+    border: 1px solid #d1d2d6;
+    border-radius: 100px;
+    background: #fff;
+  }
+
+  .SearchForm__input::placeholder {
+    width: auto;
+  }
+
+  .SearchForm__button {
+    width: 100%;
+    height: 56px;
+    margin-left: 0;
+    margin-top: 16px;
+    position: static;
+    z-index: 1;
   }
 }

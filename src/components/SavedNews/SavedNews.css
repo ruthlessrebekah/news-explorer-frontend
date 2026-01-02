@@ -471,7 +471,7 @@ body.saved-news-page .Main__about-section {
     text-overflow: ellipsis; /* truncate with ellipsis */
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   .SavedNews {
     padding: 16px 0 0;
   }

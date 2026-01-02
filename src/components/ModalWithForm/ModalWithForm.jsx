@@ -1,5 +1,6 @@
 // ModalWithForm.jsx
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import "./ModalWithForm.css";
 
 function ModalWithForm({ children, onClose }) {
@@ -37,5 +38,10 @@ function ModalWithForm({ children, onClose }) {
     </div>
   );
 }
+
+ModalWithForm.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default ModalWithForm;

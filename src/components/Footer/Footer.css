@@ -41,8 +41,8 @@
   margin-right: 24px;
 }
 
-/* Responsive Design - Tablet (768px and below) */
-@media (max-width: 768px) {
+/* Responsive Design - Tablet (1311px and below) */
+@media (max-width: 1311px) {
   .Footer {
     height: 64px;
     padding: 0 24px 0 40px;

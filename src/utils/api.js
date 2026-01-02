@@ -93,7 +93,7 @@ export function saveArticle(article) {
  * @param {string} articleUrl - The URL of the article to delete
  * @returns {Promise} Promise resolving when deletion is complete
  */
-export function deleteSavedArticle(articleUrl) {
+export function deleteSavedArticle() {
   return new Promise((resolve) => {
     resolve({ message: "Article deleted" });
   });

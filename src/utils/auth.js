@@ -32,7 +32,7 @@ export function register(email, password, name) {
  * @param {string} password - User password
  * @returns {Promise} Promise resolving to { token, user }
  */
-export function login(email, password) {
+export function login(email) {
   return new Promise((resolve) => {
     // Simulate successful login
     const fakeToken =

@@ -1,5 +1,4 @@
 // About.jsx
-import React from "react";
 import "./About.css";
 import authorImage from "../../assets/images/author.jpg";
 

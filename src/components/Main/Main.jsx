@@ -1,5 +1,6 @@
 // Main.jsx
 import React from "react";
+import PropTypes from "prop-types";
 import "./Main.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
@@ -50,7 +51,9 @@ function Main({
         <section className="Main__section">
           <div className="Main__hero">
             <div className="Main__hero-content">
-              <h1 className="Main__title">What's going on in the world?</h1>
+              <h1 className="Main__title">
+                What&apos;s going on in the world?
+              </h1>
               <p className="Main__subtitle">
                 Find the latest news on any topic and save them in your personal
                 account.
@@ -113,5 +116,16 @@ function Main({
     </main>
   );
 }
+
+Main.propTypes = {
+  articles: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  apiError: PropTypes.string,
+  hasSearched: PropTypes.bool.isRequired,
+  onSearch: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  savedArticles: PropTypes.array.isRequired,
+  onToggleSave: PropTypes.func.isRequired,
+};
 
 export default Main;

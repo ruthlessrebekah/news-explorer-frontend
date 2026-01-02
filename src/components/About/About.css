@@ -60,8 +60,8 @@
   margin: 0;
 }
 
-/* Responsive Design - Tablet (768px and below): maintain Figma layout without overflow */
-@media (max-width: 768px) {
+/* Responsive Design - Tablet (1311px and below): maintain Figma layout without overflow */
+@media (max-width: 1311px) {
   .About {
     display: flex;
     flex-direction: row;
@@ -89,7 +89,7 @@
   }
 
   .About__content {
-    max-width: 424px; /* fits alongside 232px image at 768px */
+    max-width: 424px; /* fits alongside 232px image at 1311px */
     margin-left: 32px;
     margin-top: 61px;
   }
@@ -122,7 +122,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 0px 40px 61px 40px;
+    padding: 0;
     width: 100%;
     box-sizing: border-box;
   }
@@ -164,9 +164,8 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    letter-spacing: 0px;
     color: #1a1b22;
     margin: 0;
-    max-width: 424px;
+    max-width: 288px;
   }
 }

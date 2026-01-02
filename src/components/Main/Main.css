@@ -124,8 +124,6 @@
 }
 
 .Main__subtitle {
-  /* Search bar flex wrapper for seamless overlap */
-  /* (removed invalid nested .Main__search-bar) */
   width: 608px;
   height: 24px;
   font-family: "Roboto", Arial, sans-serif;
@@ -137,109 +135,7 @@
   margin-left: 0;
   text-align: left;
 }
-/* Search bar flex wrapper for seamless overlap */
-.Main__search-bar {
-  display: flex;
-  width: 608px;
-  position: relative;
-  align-items: center;
-  margin: 88px auto 0 auto; /* Ensuring spacing is 88px under subtitle */
-  justify-content: flex-start;
-  border-radius: 100px;
-}
 
-/* Search bar */
-.Main__search {
-  display: flex;
-  align-items: center;
-  width: 608px;
-  height: 64px;
-  border: 1px solid #d1d2d6;
-  border-right: none;
-  border-radius: 100px;
-  background: #fff;
-  position: relative;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  z-index: 1;
-}
-
-.Main__search-button {
-  width: 168px;
-  height: 64px;
-  border: none;
-  border-radius: 100px;
-  background: #2f71e5;
-  color: #fff;
-  font-family: "Roboto", Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 24px;
-  cursor: pointer;
-  box-shadow: 0px 5px 15px 0px #0e1a3933;
-  transition: background-color 0.15s ease, color 0.15s ease;
-  z-index: 2;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  padding: 0;
-  position: relative;
-  margin-left: -32px;
-}
-
-.Main__search-input {
-  width: 376px;
-  height: 22px;
-  padding: 21px 24px;
-  border: none;
-  border-radius: 0;
-  font-family: "Roboto", Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  color: #1a1b22;
-  background: transparent;
-  z-index: 1;
-  box-sizing: border-box;
-  margin: 0;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-/* Remove default outline/border on search input focus */
-.Main__search-input:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.Main__search-input::placeholder {
-  width: 376px;
-  height: 22px;
-  font-family: "Roboto", Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  color: #b6bcbf;
-  opacity: 1;
-}
-
-.Main__search-button:hover,
-.Main__search-button--ready:hover {
-  background: #347eff;
-}
-
-.Main__search-button:active,
-.Main__search-button--ready:active,
-.Main__search-button--ready.Main__search-button--active {
-  background: #2a65cc;
-}
-
-/* Disabled/idle state: keep default color, no hover/active effect needed */
-.Main__search-button--idle {
-  background: #2f71e5;
-  pointer-events: none;
-}
 /* Loading state for results: matches Figma block height and removes extra padding */
 .Main__results--loading {
   min-height: 282px;
@@ -371,7 +267,7 @@
 }
 
 /* Responsive Design - Tablet (768px and below) */
-@media (max-width: 768px) {
+@media (max-width: 1311px) {
   .Main__section {
     min-height: 400px;
     padding-top: 66px;
@@ -392,10 +288,6 @@
     height: 400px;
   }
 
-  .Main__hero-content {
-    align-items: flex-start;
-  }
-
   .Main__title {
     font-size: 36px;
     line-height: 40px;
@@ -413,33 +305,6 @@
     margin-left: 160px;
     margin-right: 156px;
   }
-
-  /* .Main__search-bar {
-    display: flex;
-    width: 452px;
-    position: relative;
-    align-items: center;
-    margin: 48px 156px 48px 160px;
-  }
-
-  .Main__search {
-    width: 452px;
-    height: 56px;
-  }
-
-  .Main__search-button {
-    width: 160px;
-    height: 56px;
-  }
-
-  .Main__search-input {
-    width: 228px;
-    padding: 17px 24px;
-  }
-
-  .Main__search-input::placeholder {
-    width: 228px;
-  } */
 
   .Main__section.Main__results {
     padding: 40px;
@@ -471,5 +336,60 @@
     min-height: auto;
     height: auto;
     padding: 0;
+  }
+}
+
+/* Mobile (320px) specific styles */
+@media (max-width: 767px) {
+  .Main__section {
+    min-height: 536px;
+    padding-top: 56px;
+  }
+
+  .Main__hero-wrapper {
+    height: 536px;
+  }
+
+  .Main__hero {
+    height: 480px;
+  }
+
+  .Main__hero-container,
+  .Main__hero-image,
+  .Main__hero-overlay,
+  .Main__hero-shadow {
+    height: 536px;
+  }
+
+  .Main__section.Main__results {
+    padding: 32px 16px 24px 16px;
+  }
+
+  .Main__results-content {
+    max-width: 288px;
+  }
+
+  .Main__title {
+    width: 285px;
+    margin-top: 30px;
+    margin-left: 19px;
+    margin-right: 16px;
+  }
+
+  .Main__subtitle {
+    width: 288px;
+    height: 72px;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .Main__section-title {
+    margin-bottom: 58px;
+    width: 288px;
+  }
+  .Main__show-more {
+    width: 288px;
+    height: 56px;
+    margin: 16px auto 0 auto;
   }
 }

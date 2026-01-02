@@ -80,8 +80,8 @@
   display: none;
 }
 
-/* Tablet (768px and below) specific typography and spacing per Figma */
-@media (max-width: 768px) {
+/* Tablet (1311px and below) specific typography and spacing per Figma */
+@media (max-width: 1311px) {
   .Header {
     height: 66px; /* 23 + 25 + 18 = 66 (logo height 25px) */
   }
@@ -134,7 +134,20 @@
   border-color: #000;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 767px) {
+  .Header {
+    height: 56px;
+  }
+
+  .Header__container {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .Header__nav-home-wrapper,
+  .Header__nav-saved-wrapper {
+    height: 56px;
+  }
   .Header__menu-overlay {
     position: fixed;
     top: 0;

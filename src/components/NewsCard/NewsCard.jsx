@@ -1,5 +1,6 @@
 // NewsCard.jsx
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import "./NewsCard.css";
 import { formatNewsDate } from "../../utils/helpers";
 
@@ -72,5 +73,19 @@ function NewsCard({
     </a>
   );
 }
+
+NewsCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  urlToImage: PropTypes.string,
+  publishedAt: PropTypes.string.isRequired,
+  source: PropTypes.shape({
+    name: PropTypes.string,
+  }).isRequired,
+  url: PropTypes.string.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  isSaved: PropTypes.bool.isRequired,
+  onToggleSave: PropTypes.func.isRequired,
+};
 
 export default NewsCard;

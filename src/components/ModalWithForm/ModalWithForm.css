@@ -21,7 +21,7 @@
 }
 
 /* Tablet: position dialog 207px from top */
-@media (max-width: 768px) {
+@media (max-width: 1311px) {
   .ModalWithForm {
     padding-top: 207px; /* offset the dialog from the top */
   }

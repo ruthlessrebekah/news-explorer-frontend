@@ -1,19 +1,25 @@
 // Navigation.jsx
 
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import "./Navigation.css";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import logoutIconWhite from "../../assets/images/logout-icon-white.png";
 import logoutIconBlack from "../../assets/images/logout-icon-black.png";
+import menuIconBlack from "../../assets/images/menu-icon-black.png";
+import menuIconWhite from "../../assets/images/menu-icon-white.png";
 
 function Navigation({
   isLoggedIn,
-  username,
   onLogin,
   onLogout,
   onSavedArticles,
   isBlack,
   showMenuIcon,
 }) {
+  const { currentUser } = useCurrentUser();
+  const username = currentUser?.name || "User";
+
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleMenuOpen = () => setMenuOpen(true);
@@ -24,21 +30,18 @@ function Navigation({
       <nav className={`Navigation${isBlack ? " Navigation--black" : ""}`}>
         {showMenuIcon && (
           <button
-            className="Header__menu-icon"
+            className={`Navigation__menu-icon${
+              isBlack ? " Navigation__menu-icon--black" : ""
+            }`}
             aria-label="Open menu"
             onClick={handleMenuOpen}
           >
-            <svg
+            <img
+              src={isBlack ? menuIconBlack : menuIconWhite}
+              alt=""
               width="24"
               height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect y="4" width="24" height="2" rx="1" fill="#1A1B22" />
-              <rect y="11" width="24" height="2" rx="1" fill="#1A1B22" />
-              <rect y="18" width="24" height="2" rx="1" fill="#1A1B22" />
-            </svg>
+            />
           </button>
         )}
         <div className="Navigation__row">
@@ -134,23 +137,82 @@ function Navigation({
               </button>
             </div>
             <nav className="Navigation__menu-nav">
-              <a
-                href="/"
-                className="Navigation__menu-link"
-                onClick={handleMenuClose}
-              >
-                Home
-              </a>
-              {isLoggedIn && (
-                <button
-                  className="Navigation__menu-link"
-                  onClick={() => {
-                    onLogout();
-                    handleMenuClose();
-                  }}
-                >
-                  {username} / Sign out
-                </button>
+              {/* Main home page when logged in: Saved news + Username/logout */}
+              {isLoggedIn && !isBlack && (
+                <>
+                  <button
+                    className="Navigation__menu-link"
+                    onClick={() => {
+                      onSavedArticles();
+                      handleMenuClose();
+                    }}
+                  >
+                    Saved articles
+                  </button>
+                  <button
+                    className="Navigation__menu-link Navigation__menu-link--logout"
+                    onClick={() => {
+                      onLogout();
+                      handleMenuClose();
+                    }}
+                  >
+                    {username}
+                    <img
+                      src={logoutIconWhite}
+                      alt="Logout"
+                      className="Navigation__menu-logout-icon"
+                    />
+                  </button>
+                </>
+              )}
+
+              {/* Saved news page when logged in: Home + Username/logout */}
+              {isLoggedIn && isBlack && (
+                <>
+                  <a
+                    href="/"
+                    className="Navigation__menu-link"
+                    onClick={handleMenuClose}
+                  >
+                    Home
+                  </a>
+                  <button
+                    className="Navigation__menu-link Navigation__menu-link--logout"
+                    onClick={() => {
+                      onLogout();
+                      handleMenuClose();
+                    }}
+                  >
+                    {username}
+                    <img
+                      src={logoutIconWhite}
+                      alt="Logout"
+                      className="Navigation__menu-logout-icon"
+                    />
+                  </button>
+                </>
+              )}
+
+              {/* Not logged in: Home + Sign in */}
+              {!isLoggedIn && (
+                <>
+                  <a
+                    href="/"
+                    className="Navigation__menu-link"
+                    onClick={handleMenuClose}
+                  >
+                    Home
+                  </a>
+                  <button
+                    className="Navigation__menu-link"
+                    onClick={() => {
+                      onLogin();
+                      handleMenuClose();
+                    }}
+                  >
+                    Sign in
+                  </button>
+                </>
               )}
             </nav>
           </div>
@@ -159,5 +221,14 @@ function Navigation({
     </>
   );
 }
+
+Navigation.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  onSavedArticles: PropTypes.func.isRequired,
+  isBlack: PropTypes.bool,
+  showMenuIcon: PropTypes.bool,
+};
 
 export default Navigation;

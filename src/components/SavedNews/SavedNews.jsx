@@ -1,5 +1,6 @@
 // SavedNews.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./SavedNews.css";
 
 function SavedNews({ savedArticles = [], onToggleSave }) {
@@ -178,5 +179,10 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
     </section>
   );
 }
+
+SavedNews.propTypes = {
+  savedArticles: PropTypes.arrayOf(PropTypes.object),
+  onToggleSave: PropTypes.func.isRequired,
+};
 
 export default SavedNews;

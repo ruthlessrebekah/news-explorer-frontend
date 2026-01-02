@@ -1,12 +1,6 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
-
-const AuthContext = createContext();
+import { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
+import { AuthContext } from "./authContext";
 
 export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -82,8 +76,8 @@ export function AuthProvider({ children }) {
           }}
         >
           <span>
-            Warning: Your browser's storage is unavailable. Login persistence
-            and saved news may not work.
+            Warning: Your browser&apos;s storage is unavailable. Login
+            persistence and saved news may not work.
           </span>
           <button
             onClick={dismissStorageError}
@@ -107,6 +101,6 @@ export function AuthProvider({ children }) {
   );
 }
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

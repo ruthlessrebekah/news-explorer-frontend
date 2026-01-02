@@ -17,7 +17,7 @@
   justify-content: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1311px) {
   .NewsCardList {
     width: 100%;
     max-width: 688px;
@@ -25,5 +25,15 @@
     justify-content: center;
     gap: 8px;
     box-sizing: border-box;
+  }
+}
+
+@media (max-width: 767px) {
+  .NewsCardList {
+    grid-template-columns: 1fr;
+    max-width: 288px;
+    gap: 16px;
+    margin: 0;
+    justify-content: center;
   }
 }

@@ -1,5 +1,6 @@
 // SearchForm.jsx
 import React from "react";
+import PropTypes from "prop-types";
 import "./SearchForm.css";
 
 function SearchForm({ onSearch }) {
@@ -64,5 +65,9 @@ function SearchForm({ onSearch }) {
     </div>
   );
 }
+
+SearchForm.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
 
 export default SearchForm;

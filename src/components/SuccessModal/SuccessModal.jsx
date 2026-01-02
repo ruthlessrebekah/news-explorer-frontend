@@ -1,5 +1,5 @@
 // SuccessModal.jsx
-import React from "react";
+import PropTypes from "prop-types";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import closeIcon from "../../assets/images/close-icon-white.png";
 import "./SuccessModal.css";
@@ -25,5 +25,10 @@ function SuccessModal({ onClose, onSignIn }) {
     </ModalWithForm>
   );
 }
+
+SuccessModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  onSignIn: PropTypes.func.isRequired,
+};
 
 export default SuccessModal;

@@ -1,5 +1,5 @@
 // NewsCardList.jsx
-import React from "react";
+import PropTypes from "prop-types";
 import NewsCard from "../NewsCard/NewsCard";
 import "./NewsCardList.css";
 
@@ -23,5 +23,12 @@ function NewsCardList({ newsCards, isLoggedIn, savedArticles, onToggleSave }) {
     </section>
   );
 }
+
+NewsCardList.propTypes = {
+  newsCards: PropTypes.array.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  savedArticles: PropTypes.array.isRequired,
+  onToggleSave: PropTypes.func.isRequired,
+};
 
 export default NewsCardList;
