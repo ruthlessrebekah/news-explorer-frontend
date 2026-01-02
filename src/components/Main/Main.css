@@ -36,8 +36,8 @@
 .Main__hero-wrapper {
   width: 100%;
   height: 576px; /* includes header and hero */
-  background: url("/assets/images/hero-image.jpg") center center / cover
-    no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/images/hero-image.jpg") center center / cover no-repeat;
   color: #fff;
 }
 
@@ -281,10 +281,10 @@
     height: 334px;
   }
 
-  .Main__hero-container
-    .Main__hero-image
-    .Main__hero-overlay
-    .Main__hero-shadow {
+  .Main__hero-container,
+  .Main__hero-image,
+  .Main__hero-overlay,
+  .Main__hero-shadow {
     height: 400px;
   }
 

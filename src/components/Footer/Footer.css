@@ -61,3 +61,71 @@
     height: 16px;
   }
 }
+
+/* Mobile (767px and below) */
+@media (max-width: 767px) {
+  .Footer {
+    height: auto;
+    min-height: 176px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px 22px 16px;
+    gap: 38px;
+  }
+
+  .Footer__copyright {
+    width: 100%;
+    order: 2;
+    font-size: 14px;
+  }
+
+  .Footer__nav {
+    width: 100%;
+    order: 1;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-template-rows: auto auto;
+    row-gap: 26px;
+    column-gap: 26px;
+  }
+
+  .Footer__link {
+    margin-right: 0;
+    font-size: 14px;
+  }
+
+  .Footer__nav > a:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .Footer__nav > a:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .Footer__nav > a:nth-child(3) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .Footer__nav > a:nth-child(4) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .Footer__icon {
+    margin-right: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .Footer__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .Footer__icon--github {
+    margin-right: 0;
+  }
+}
