@@ -412,3 +412,10 @@
     display: block;
   }
 }
+
+/* Hide menu icon at 400px when sign in or sign up modals are open */
+@media (max-width: 400px) {
+  .App--modal-open .Navigation__menu-icon {
+    display: none;
+  }
+}

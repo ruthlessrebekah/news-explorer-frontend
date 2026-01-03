@@ -250,3 +250,19 @@
   width: 100%;
   align-self: flex-start;
 }
+
+@media (max-width: 526px) {
+  .RegisterModal__close {
+    top: -40px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+  }
+
+  .RegisterModal__close img {
+    width: 24px;
+    height: 24px;
+    transform: scale(1);
+  }
+}

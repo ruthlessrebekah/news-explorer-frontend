@@ -156,7 +156,11 @@ function MainRouterContent({
   const handleSavedArticles = () => navigate("/saved-news");
 
   return (
-    <div className="App">
+    <div
+      className={`App${
+        isLoginModalOpen || isRegisterModalOpen ? " App--modal-open" : ""
+      }`}
+    >
       <Header
         isLoggedIn={isLoggedIn}
         onLogout={logout}
