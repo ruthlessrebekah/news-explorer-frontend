@@ -1,16 +1,17 @@
 // Footer.jsx
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
   return (
     <footer className="Footer">
       <div className="Footer__copyright">
-        © 2025 Supersite, Powered by News API
+        © 2026 Supersite, Powered by News API
       </div>
       <nav className="Footer__nav">
-        <a href="/" className="Footer__link">
+        <Link to="/" className="Footer__link">
           Home
-        </a>
+        </Link>
         <a
           href="https://tripleten.com"
           className="Footer__link"

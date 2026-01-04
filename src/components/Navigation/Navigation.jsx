@@ -156,7 +156,9 @@ function Navigation({
                       handleMenuClose();
                     }}
                   >
-                    {username}
+                    <span className="Navigation__menu-username">
+                      {username}
+                    </span>
                     <img
                       src={logoutIconWhite}
                       alt="Logout"
@@ -183,7 +185,9 @@ function Navigation({
                       handleMenuClose();
                     }}
                   >
-                    {username}
+                    <span className="Navigation__menu-username">
+                      {username}
+                    </span>
                     <img
                       src={logoutIconWhite}
                       alt="Logout"

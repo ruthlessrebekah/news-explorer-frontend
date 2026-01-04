@@ -401,11 +401,22 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
+    gap: 19px;
+  }
+
+  .Navigation__menu-username {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    flex: 1;
   }
 
   .Navigation__menu-logout-icon {
-    width: 24px;
-    height: 24px;
+    width: 17px;
+    height: 16px;
+    display: block;
+    flex-shrink: 0;
   }
 
   .Navigation__menu-icon {

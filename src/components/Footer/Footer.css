@@ -8,7 +8,6 @@
   box-sizing: border-box;
   background: #fff;
   border-top: 1px solid #eee;
-  /* margin-top: auto; */
 }
 
 .Footer__copyright {
@@ -27,7 +26,10 @@
 }
 
 .Footer__link {
+  font-family: "Roboto", Arial, sans-serif;
   color: #1a1b22;
+  font-size: 18px;
+  line-height: 24px;
   font-weight: 500;
   margin-right: 40px;
 }
@@ -65,18 +67,17 @@
 /* Mobile (767px and below) */
 @media (max-width: 767px) {
   .Footer {
-    height: auto;
-    min-height: 176px;
+    height: 176px;
     flex-direction: column;
     align-items: flex-start;
     padding: 20px 16px 22px 16px;
-    gap: 38px;
+    gap: 40px;
   }
 
   .Footer__copyright {
-    width: 100%;
+    width: 288px;
     order: 2;
-    font-size: 14px;
+    white-space: nowrap;
   }
 
   .Footer__nav {
@@ -85,13 +86,13 @@
     display: grid;
     grid-template-columns: 1fr auto auto;
     grid-template-rows: auto auto;
-    row-gap: 26px;
+    row-gap: 28px;
     column-gap: 26px;
   }
 
   .Footer__link {
     margin-right: 0;
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .Footer__nav > a:nth-child(1) {

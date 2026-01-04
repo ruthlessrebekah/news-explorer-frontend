@@ -105,7 +105,7 @@
   font-size: 14px;
 }
 
-.LoginModal button[type="submit"] {
+.LoginModal__submit {
   padding: 0;
   width: 358px;
   height: 64px;
@@ -126,15 +126,15 @@
 }
 
 /* Enabled (valid inputs) state */
-.LoginModal button[type="submit"]:not(:disabled) {
+.LoginModal__submit:not(:disabled) {
   background: #2f71e5;
 }
 
-.LoginModal button[type="submit"]:not(:disabled):hover {
+.LoginModal__submit:not(:disabled):hover {
   background: #2f71e5;
 }
 
-.LoginModal button[type="submit"]:disabled {
+.LoginModal__submit:disabled {
   background: #e6e8eb;
   color: #b6bcbf;
   cursor: not-allowed;
@@ -309,7 +309,7 @@
     padding: 16px;
   }
 
-  .LoginModal button[type="submit"] {
+  .LoginModal__submit {
     width: 288px;
     height: 64px;
   }

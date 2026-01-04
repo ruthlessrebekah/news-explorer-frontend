@@ -1,11 +1,5 @@
 /* About styles (desktop) */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .About {
   display: flex;
   align-items: flex-start;
@@ -99,7 +93,6 @@
     font-weight: 400;
     font-size: 30px;
     line-height: 40px;
-    letter-spacing: 0px;
     color: #1a1b22;
     margin: 0 0 16px 0;
     max-width: 424px;
@@ -110,7 +103,6 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    letter-spacing: 0px;
     color: #1a1b22;
     margin: 0;
     max-width: 424px;
@@ -153,7 +145,6 @@
     font-weight: 400;
     font-size: 30px;
     line-height: 40px;
-    letter-spacing: 0px;
     color: #1a1b22;
     margin: 0 0 16px 0;
     max-width: 288px;

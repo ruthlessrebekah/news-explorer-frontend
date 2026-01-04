@@ -68,11 +68,6 @@ function MainRouterContent({
   const location = useLocation();
   const navigate = useNavigate();
 
-  const logout = () => {
-    authLogout();
-    setCurrentUser(null);
-  };
-
   // News search state
   const [articles, setArticles] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -81,17 +76,92 @@ function MainRouterContent({
   const [currentKeyword, setCurrentKeyword] = React.useState(""); // track search keyword
   const [savedArticles, setSavedArticles] = React.useState([]); // store by url
 
+  // Track first render to avoid redundant localStorage write on mount
+  const isFirstRender = React.useRef(true);
+  // Session token to prevent stale API responses after logout
+  const sessionTokenRef = React.useRef(Date.now());
+
+  // Load saved articles from localStorage on mount
+  React.useEffect(() => {
+    const stored = window.localStorage.getItem("savedArticles");
+    if (stored) {
+      try {
+        setSavedArticles(JSON.parse(stored));
+      } catch (e) {
+        console.error("Failed to load saved articles from localStorage", e);
+      }
+    }
+  }, []);
+
+  // Sync logout across tabs - listen for localStorage changes
+  React.useEffect(() => {
+    const handleStorageChange = (e) => {
+      // If token was removed in another tab, log out this tab too
+      if (e.key === "token" && e.newValue === null) {
+        authLogout();
+        setCurrentUser(null);
+        setSavedArticles([]);
+        setArticles([]);
+        setCurrentKeyword("");
+        setHasSearched(false);
+        setApiError("");
+        setIsLoading(false); // Reset loading state
+        // Invalidate session to prevent stale API responses
+        sessionTokenRef.current = Date.now();
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, [authLogout, setCurrentUser]);
+
+  // Save to localStorage whenever savedArticles changes (skip first render)
+  React.useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    window.localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
+  }, [savedArticles]);
+
+  // Logout handler - clear all user data and invalidate session
+  const logout = () => {
+    authLogout();
+    setCurrentUser(null);
+    // Clear sensitive data from localStorage
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("user");
+    window.localStorage.removeItem("savedArticles");
+    window.localStorage.removeItem("lastRegisteredUsername"); // Clear stub username cache
+    // Clear saved articles from state
+    setSavedArticles([]);
+    // Clear search history (potentially sensitive)
+    setArticles([]);
+    setCurrentKeyword("");
+    setHasSearched(false);
+    setApiError("");
+    setIsLoading(false); // Reset loading state
+    // Invalidate session to prevent stale API responses
+    sessionTokenRef.current = Date.now();
+  };
+
   // Search handler
   const handleSearch = async (query) => {
+    // Capture session to prevent stale data after logout
+    const sessionAtStart = sessionTokenRef.current;
     const trimmed = query.trim();
 
     if (!trimmed) {
+      // Validate session before early return state updates
+      if (sessionAtStart !== sessionTokenRef.current) return;
       setApiError("Please enter a keyword");
       setArticles([]);
       setHasSearched(false);
       return;
     }
 
+    // Validate session before starting search
+    if (sessionAtStart !== sessionTokenRef.current) return;
     setApiError("");
     setIsLoading(true);
     setHasSearched(true);
@@ -99,15 +169,26 @@ function MainRouterContent({
 
     try {
       const results = await searchNews(trimmed);
+      // Validate session before setting results
+      if (sessionAtStart !== sessionTokenRef.current) {
+        return; // Session invalidated
+      }
       setArticles(results);
     } catch (error) {
+      // Validate session before setting error state
+      if (sessionAtStart !== sessionTokenRef.current) {
+        return; // Session invalidated
+      }
       console.error("Search failed:", error);
       setApiError(
         "Sorry, something went wrong during the request. Please try again later."
       );
       setArticles([]);
     } finally {
-      setIsLoading(false);
+      // Only reset loading if session is still valid
+      if (sessionAtStart === sessionTokenRef.current) {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -123,7 +204,7 @@ function MainRouterContent({
     });
   };
 
-  // Custom element for protected route: redirects to home with login required message and remembers intended route
+  // Protected route - redirects to home if not logged in
   const ProtectedSavedNews = () => {
     if (isLoggedIn)
       return (
