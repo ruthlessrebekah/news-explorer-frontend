@@ -127,9 +127,7 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
               required
               className="RegisterModal__input"
             />
-            {displayedEmailError && (
-              <p className="RegisterModal__error">{displayedEmailError}</p>
-            )}
+            {emailError && <p className="RegisterModal__error">{emailError}</p>}
           </div>
           <div className="RegisterModal__input-group">
             <label className="RegisterModal__label">Password</label>
@@ -156,9 +154,16 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
               className="RegisterModal__input"
             />
           </div>
+          {emailUnavailableError && (
+            <p className="RegisterModal__error RegisterModal__error--unavailable">
+              {emailUnavailableError}
+            </p>
+          )}
           <button
             type="submit"
-            className="RegisterModal__submit"
+            className={`RegisterModal__submit ${
+              emailUnavailableError ? "RegisterModal__submit--no-margin" : ""
+            }`}
             disabled={!isFormValid || isLoading}
           >
             {isLoading ? "Signing up..." : "Sign up"}

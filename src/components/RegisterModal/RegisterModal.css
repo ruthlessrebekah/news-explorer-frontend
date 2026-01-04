@@ -8,8 +8,8 @@
 
 .RegisterModal {
   background: #fff;
-  border-radius: 12px;
-  padding: 34px 36px 48px 36px;
+  border-radius: 16px;
+  padding: 34px 36px 28px 36px;
   width: 430px;
   height: 458px; /* Set Sign up modal height to 458px */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -53,13 +53,13 @@
 }
 
 .RegisterModal__title {
+  width: 358px;
+  height: 32px;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 24px;
   font-weight: 900;
   color: #1a1b22;
   margin: 0 0 22px 0;
-  line-height: 100%;
-  letter-spacing: 0;
   white-space: nowrap;
 }
 
@@ -69,27 +69,19 @@
   margin-bottom: 0;
 }
 
-/* Default spacing for Password group; Username group margin-bottom will be zero so button's margin-top applies */
-.RegisterModal__form > .RegisterModal__input-group:nth-child(2) {
-  margin-bottom: 31px;
-}
-
-/* Email group spacing controlled by error state modifiers */
-.RegisterModal__form > .RegisterModal__input-group--no-error {
-  margin-bottom: 31px;
-}
-
-.RegisterModal__form > .RegisterModal__input-group--error {
-  margin-bottom: 0; /* error block provides only 3px + 13px spacing */
-}
-
-/* Submit button always sits 39px below the last input field (Password) */
-.RegisterModal__form > button[type="submit"] {
-  margin-top: 39px;
+.RegisterModal__label {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #2f71e5;
+  margin-bottom: 8px;
+  width: 66px;
+  height: 14px;
 }
 
 .RegisterModal__input {
-  padding: 0 0 12px 0;
+  height: 25px;
+  padding: 0 0 8px 0;
   border: none;
   border-bottom: 1px solid #d3d3d3;
   font-size: 14px;
@@ -98,8 +90,6 @@
   transition: border-color 0.2s;
   width: 100%;
   background: transparent;
-  line-height: 100%;
-  letter-spacing: 0;
 }
 
 .RegisterModal__input:focus {
@@ -113,8 +103,61 @@
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0;
+}
+
+.RegisterModal__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 47px;
+}
+
+.RegisterModal__form > .RegisterModal__input-group:nth-child(2) {
+  margin-bottom: 31px;
+}
+
+.RegisterModal__form > .RegisterModal__input-group--no-error {
+  margin-bottom: 31px;
+}
+
+.RegisterModal__form > .RegisterModal__input-group--error {
+  margin-bottom: 30px;
+}
+
+/* Submit button always sits 39px below the last input field (Password) */
+.RegisterModal__form > button[type="submit"] {
+  margin-top: 39px;
+}
+
+/* Spacing for email group based on error presence */
+.RegisterModal__input-group--no-error {
+  margin-bottom: 31px; /* explicit for clarity; matches default */
+}
+
+.RegisterModal__input-group--error {
+  margin-bottom: 0; /* error block provides only 3px + 13px spacing */
+}
+
+/* No extra override needed; default is 31px when no error */
+
+.RegisterModal .RegisterModal__error {
+  color: #ff0000 !important;
+  font-size: 12px;
+  line-height: 14px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+  height: 14px;
+  margin: 3px 0 13px 0;
+  padding: 0;
+  text-align: left;
+  display: block;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.RegisterModal__error--unavailable {
+  margin: 17px 0 8px 0 !important;
+  text-align: center !important;
 }
 
 .RegisterModal__submit {
@@ -129,13 +172,16 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  letter-spacing: 0;
   text-align: center;
   cursor: pointer;
   transition: background 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.RegisterModal__submit--no-margin {
+  margin-top: 0 !important;
 }
 
 /* Enabled (valid inputs) state */
@@ -153,28 +199,12 @@
   cursor: not-allowed;
 }
 
-.RegisterModal__alternative {
-  text-align: center;
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0;
-  color: #1a1b22;
-  margin: 16px auto 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
 .RegisterModal__signin-container {
+  height: 20px;
   text-align: center;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0;
   color: #1a1b22;
   margin: 16px auto 0 auto;
   display: flex;
@@ -192,63 +222,11 @@
   font-weight: 400;
   font-family: "Inter", Arial, sans-serif;
   padding: 0;
-  text-decoration: none;
-  line-height: 100%;
-  letter-spacing: 0;
 }
 
 .RegisterModal__signin-link:hover {
   color: #1d4ed8;
   text-decoration: underline;
-}
-
-.RegisterModal__input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0; /* remove extra 10px spacing; keep only the label's 9px margin */
-}
-
-/* Spacing for email group based on error presence */
-.RegisterModal__input-group--no-error {
-  margin-bottom: 31px; /* explicit for clarity; matches default */
-}
-
-.RegisterModal__input-group--error {
-  margin-bottom: 0; /* error block provides only 3px + 13px spacing */
-}
-
-/* No extra override needed; default is 31px when no error */
-
-.RegisterModal__label {
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0;
-  color: #2f71e5;
-  margin-bottom: 9px;
-  width: 66px;
-  height: 14px;
-}
-
-/* Labels do not add extra top margin; spacing is controlled by previous group's margin-bottom */
-.RegisterModal__label {
-  margin-top: 0;
-}
-
-.RegisterModal .RegisterModal__error {
-  color: #ff0000 !important;
-  font-size: 12px;
-  line-height: 14px;
-  font-family: "Roboto", Arial, sans-serif;
-  /* 3px under the email input line, 13px above the next label */
-  height: 14px;
-  margin: 3px 0 13px 0;
-  padding: 0;
-  text-align: left;
-  display: block;
-  width: 100%;
-  align-self: flex-start;
 }
 
 @media (max-width: 526px) {

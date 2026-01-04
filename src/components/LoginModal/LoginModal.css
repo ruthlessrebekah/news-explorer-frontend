@@ -70,11 +70,6 @@
   margin-bottom: 0;
 }
 
-.LoginModal form > .LoginModal__input-group {
-  margin-bottom: 0;
-  height: 47px;
-}
-
 /* spacing under password field depends on email error presence */
 .LoginModal__submit--no-error {
   margin-top: 39px; /* 39px under password when there is no email error */
@@ -182,6 +177,8 @@
   display: flex;
   flex-direction: column;
   gap: 0; /* remove extra 10px gap; rely on label margin-bottom */
+  /* margin-bottom: 0; */
+  height: 47px;
 }
 
 /* Spacing for email group based on error presence */
@@ -217,7 +214,7 @@
   font-size: 12px;
   line-height: 14px;
   font-family: "Roboto", Arial, sans-serif;
-  /* 3px under the email input line, 13px above the next label */
+  font-weight: 400;
   height: 14px;
   margin: 3px 0 13px 0;
   padding: 0;
