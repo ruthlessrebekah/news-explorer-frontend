@@ -239,7 +239,9 @@ function MainRouterContent({
   return (
     <div
       className={`App${
-        isLoginModalOpen || isRegisterModalOpen ? " App--modal-open" : ""
+        isLoginModalOpen || isRegisterModalOpen || isSuccessModalOpen
+          ? " App--modal-open"
+          : ""
       }`}
     >
       <Header

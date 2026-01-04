@@ -12,7 +12,6 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  // Removed verification modal flow per requirements
   const { login: authLogin } = useAuth();
 
   // Email validation regex
@@ -25,7 +24,6 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
     e.preventDefault();
     setError("");
 
-    // Validate inputs
     if (!email.trim()) {
       setError("Please enter your email");
       return;
@@ -46,19 +44,15 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
       return;
     }
 
-    // All validation passed, attempt login
     setIsLoading(true);
     try {
       const response = await login(email, password);
-
-      // Do not gate login on email verification
 
       // Store token in localStorage for persistence
       window.localStorage.setItem("token", response.token);
       window.localStorage.setItem("user", JSON.stringify(response.user));
       // Update auth context
       authLogin();
-      // Clear form and close modal
       setEmail("");
       setPassword("");
       onClose();
@@ -66,29 +60,13 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
         onLoginSuccess(response.user);
       }
     } catch (err) {
-      // Handle specific error cases; do not show verification modal
-      if (err.code === "USER_NOT_FOUND" || err.message.includes("not found")) {
-        setError("Email or password is incorrect");
-      } else if (
-        err.code === "INVALID_CREDENTIALS" ||
-        err.message.includes("incorrect")
-      ) {
-        setError("Email or password is incorrect");
-      } else if (
-        err.code === "EMAIL_NOT_VERIFIED" ||
-        err.message.includes("not verified")
-      ) {
-        // Treat as invalid credentials per requirement
-        setError("Email or password is incorrect");
-      } else {
-        setError(err.message || "Login failed. Please try again.");
-      }
+      // Generic error message prevents user enumeration attacks
+      setError("Email or password is incorrect");
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Check if form is valid
   const isFormValid =
     email.trim() &&
     isValidEmail(email) &&
@@ -107,8 +85,6 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
   const submitButtonClass = emailHasError
     ? "LoginModal__submit LoginModal__submit--error"
     : "LoginModal__submit LoginModal__submit--no-error";
-
-  // Verification modal removed
 
   return (
     <ModalWithForm onClose={onClose}>

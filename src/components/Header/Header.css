@@ -1,11 +1,5 @@
 /* Header overlays hero, full width background and border */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .Header {
   position: absolute;
   top: 0;
@@ -59,25 +53,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-/* Mobile menu icon for 320px */
-.Header__menu-icon {
-  display: none;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
-  background: none;
-  border: none;
-  padding: 0;
-  z-index: 20;
-  cursor: pointer;
-}
-
-.Header__menu-overlay {
-  display: none;
 }
 
 /* Tablet (1311px and below) specific typography and spacing per Figma */
@@ -147,88 +122,5 @@
   .Header__nav-home-wrapper,
   .Header__nav-saved-wrapper {
     height: 56px;
-  }
-  .Header__menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    background: #1a1b22;
-    z-index: 100;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-    width: 320px;
-    height: 230px;
-  }
-
-  .Header__menu-content {
-    width: 100vw;
-    max-width: 100vw;
-    padding: 0 0 32px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .Header__menu-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 24px 0 24px;
-    height: 56px;
-  }
-  .Header__menu-logo {
-    color: #fff;
-    font-family: "Roboto Slab", serif;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.2px;
-  }
-  .Header__menu-close {
-    background: none;
-    border: none;
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .Header__menu-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 32px 24px 0 24px;
-    gap: 24px;
-  }
-  .Header__menu-link {
-    background: none;
-    border: none;
-    color: #fff;
-    font-family: "Roboto", Arial, sans-serif;
-    font-weight: 500;
-    text-align: left;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    border-radius: 100px;
-    transition: background 0.2s;
-    width: 288px;
-    height: 56px;
-    font-size: 18px;
-    line-height: 56px;
-  }
-  .Header__menu-link:active,
-  .Header__menu-link:focus {
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  .Header__menu-icon {
-    display: block;
   }
 }

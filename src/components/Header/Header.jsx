@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 
@@ -14,10 +15,9 @@ function Header({ isLoggedIn, onLogin, onLogout, onSavedArticles, isBlack }) {
         .join(" ")}
     >
       <div className="Header__container">
-        <a href="/" className="Header__logo" aria-label="Go to main page">
+        <Link to="/" className="Header__logo" aria-label="Go to main page">
           NewsExplorer
-        </a>
-        {/* Mobile menu icon for 320px - now handled in Navigation */}
+        </Link>
         <Navigation
           isLoggedIn={isLoggedIn}
           onLogin={onLogin}
