@@ -22,26 +22,6 @@ function Main({
     setVisibleCount(3);
   }, [articles]);
 
-  // DEV helper: force the Preloader to stay visible for styling/debugging
-  const forcePreloader = (() => {
-    try {
-      const isProd =
-        typeof import.meta !== "undefined" &&
-        import.meta.env &&
-        import.meta.env.MODE === "production";
-      if (isProd) return false;
-      const ls = window.localStorage.getItem("dev:force-preloader");
-      const sp = new URLSearchParams(window.location.search);
-      return (
-        ls === "1" ||
-        sp.get("preloader") === "1" ||
-        window.location.hash.includes("preloader")
-      );
-    } catch (_e) {
-      return false;
-    }
-  })();
-
   const handleShowMore = () => setVisibleCount((prev) => prev + 3);
   const allVisible = visibleCount >= articles.length;
 
@@ -64,7 +44,7 @@ function Main({
         </section>
       </div>
 
-      {isLoading || forcePreloader ? (
+      {isLoading ? (
         <section className="Main__section Main__results Main__results--loading">
           <Preloader />
         </section>
@@ -105,7 +85,7 @@ function Main({
             </section>
           )}
 
-          {hasSearched && apiError && !articles.length && (
+          {hasSearched && apiError && (
             <section className="Main__section Main__no-results">
               <h2 className="Main__status-title">Search results</h2>
               <p className="Main__no-results-text">{apiError}</p>

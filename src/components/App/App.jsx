@@ -163,6 +163,7 @@ function MainRouterContent({
     // Validate session before starting search
     if (sessionAtStart !== sessionTokenRef.current) return;
     setApiError("");
+    setArticles([]);
     setIsLoading(true);
     setHasSearched(true);
     setCurrentKeyword(trimmed); // store the search keyword
