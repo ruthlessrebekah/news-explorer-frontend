@@ -11,12 +11,19 @@ function About() {
       <div className="About__content">
         <h2 className="About__title">About the author</h2>
         <p className="About__description">
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.
+          Hi, I&apos;m Rebekah Crockatt, a Full Stack Software Engineer
+          specializing in JavaScript, React, Node.js, Express.js, and MongoDB. I
+          build responsive web applications and RESTful APIs with a focus on
+          clean, maintainable code.
           <br />
           <br />
-          You can also talk about your experience with TripleTen, what you
-          learned there, and how you can help potential customers.
+          I&apos;m a recent TripleTen bootcamp graduate with 8+ years of utility
+          operations experience. This unique background combines fresh
+          development skills with strong problem-solving abilities and
+          systematic thinking – helping me build reliable, user-focused
+          applications that solve real business problems. I&apos;m ready to
+          bring technical expertise, attention to detail, and a systematic
+          approach to your next web development project.
         </p>
       </div>
     </section>
