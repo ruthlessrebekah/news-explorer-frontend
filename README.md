@@ -18,7 +18,12 @@ News Explorer allows users to search for news articles, save favorites, and mana
 
 ## Project Pitch Video
 
-Video coming soon!
+**Watch the project pitch video:**
+Check out this video (https://www.loom.com/share/8d0d9e592d934edcb12786839e9643b2), where I describe my
+project and some challenges I faced while building it.
+
+**Disclaimer:**
+Loom does not allow free account users to download their videos. If you need a downloadable copy for review or Google Drive upload, please contact me and I will provide access or an alternative solution.
 
 ---
 
