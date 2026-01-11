@@ -1,11 +1,5 @@
 /* NewsCardList styles */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .NewsCardList {
   display: grid;
   grid-template-columns: repeat(3, 400px);

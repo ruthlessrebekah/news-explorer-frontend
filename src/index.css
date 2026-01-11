@@ -12,6 +12,17 @@
   background-color: #f5f5f5;
 }
 
+/* Global CSS Reset and Base Styles
+ * 
+ * Architecture Decision (Jan 2026):
+ * - Universal box-sizing (*) is set HERE ONLY - this applies globally
+ * - Component files should NOT duplicate universal selectors
+ * - Component-specific box-sizing (e.g., .NewsCard) is acceptable
+ *   when part of a complete ruleset for layout control
+ * 
+ * If you see "*, *::before, *::after" in a component file, remove it!
+ * If you see ".ComponentName { box-sizing: ... }", that's intentional.
+ */
 *,
 *::before,
 *::after {

@@ -1,7 +1,8 @@
 // Navigation.jsx
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./Navigation.css";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import logoutIconWhite from "../../assets/images/logout-icon-white.png";
@@ -21,15 +22,87 @@ function Navigation({
   const username = currentUser?.name || "User";
 
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const menuOverlayRef = useRef(null);
+  const previousFocusRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
   const handleMenuOpen = () => setMenuOpen(true);
   const handleMenuClose = () => setMenuOpen(false);
+
+  // Focus trap for mobile menu overlay
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    // Store the previously focused element
+    previousFocusRef.current = document.activeElement;
+
+    // Query all focusable elements within the menu overlay
+    const getFocusableElements = () => {
+      if (!menuOverlayRef.current) return [];
+      const focusableSelectors =
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      return Array.from(
+        menuOverlayRef.current.querySelectorAll(focusableSelectors)
+      ).filter(
+        (el) => !el.hasAttribute("disabled") && el.offsetParent !== null
+      );
+    };
+
+    const focusableElements = getFocusableElements();
+
+    // Focus first focusable element (close button)
+    if (focusableElements.length > 0) {
+      focusableElements[0].focus();
+    }
+
+    // Handle focus trap on Tab key
+    const handleTabKey = (e) => {
+      const focusable = getFocusableElements();
+      if (focusable.length === 0) return;
+
+      const firstElement = focusable[0];
+      const lastElement = focusable[focusable.length - 1];
+
+      // Shift + Tab on first element -> cycle to last
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      }
+      // Tab on last element -> cycle to first
+      else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Tab") {
+        handleTabKey(e);
+      } else if (e.key === "Escape") {
+        handleMenuClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Store the current menu button ref for cleanup
+    const menuButtonNode = menuButtonRef.current;
+
+    // Cleanup: restore focus to menu button
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      if (menuButtonNode?.isConnected) {
+        menuButtonNode.focus();
+      }
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
       <nav className={`Navigation${isBlack ? " Navigation--black" : ""}`}>
         {showMenuIcon && (
           <button
+            ref={menuButtonRef}
             className={`Navigation__menu-icon${
               isBlack ? " Navigation__menu-icon--black" : ""
             }`}
@@ -45,14 +118,14 @@ function Navigation({
           </button>
         )}
         <div className="Navigation__row">
-          <a
-            href="/"
+          <Link
+            to="/"
             className={`Navigation__link Navigation__link--home Navigation__link--active`}
             onClick={handleMenuClose}
           >
             Home
             <span className="Navigation__home-underline" />
-          </a>
+          </Link>
           {!isLoggedIn && (
             <button
               className="Navigation__link Navigation__link--signin"
@@ -99,7 +172,13 @@ function Navigation({
       </nav>
       {/* Overlay menu for mobile */}
       {isMenuOpen && (
-        <div className="Navigation__menu-overlay">
+        <div
+          ref={menuOverlayRef}
+          className="Navigation__menu-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
+        >
           <div className="Navigation__menu-content">
             <div className="Navigation__menu-top">
               <span className="Navigation__menu-logo">NewsExplorer</span>
@@ -171,13 +250,13 @@ function Navigation({
               {/* Saved news page when logged in: Home + Username/logout */}
               {isLoggedIn && isBlack && (
                 <>
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="Navigation__menu-link"
                     onClick={handleMenuClose}
                   >
                     Home
-                  </a>
+                  </Link>
                   <button
                     className="Navigation__menu-link Navigation__menu-link--logout"
                     onClick={() => {
@@ -200,13 +279,13 @@ function Navigation({
               {/* Not logged in: Home + Sign in */}
               {!isLoggedIn && (
                 <>
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="Navigation__menu-link"
                     onClick={handleMenuClose}
                   >
                     Home
-                  </a>
+                  </Link>
                   <button
                     className="Navigation__menu-link"
                     onClick={() => {

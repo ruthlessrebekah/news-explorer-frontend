@@ -40,11 +40,10 @@
   transform: scale(1.2);
 }
 
-/* Remove focus/active outlines and shadows to avoid flicker when clicking */
-.LoginModal__close:focus,
-.LoginModal__close:active {
-  outline: none;
-  box-shadow: none;
+/* Accessible focus indicator for keyboard navigation */
+.LoginModal__close:focus-visible {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
 }
 
 .LoginModal__title {
@@ -86,9 +85,10 @@
   background: transparent;
 }
 
-.LoginModal input:focus {
+.LoginModal input:focus-visible {
   outline: none;
-  border-color: #d3d3d3;
+  border-color: #2f71e5;
+  border-width: 2px;
 }
 
 .LoginModal input::placeholder {
@@ -134,6 +134,11 @@
   cursor: not-allowed;
 }
 
+.LoginModal__submit:focus-visible:not(:disabled) {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
+}
+
 .LoginModal__register-container {
   height: 20px;
   text-align: center;
@@ -158,6 +163,11 @@
   font-family: "Inter", Arial, sans-serif;
   padding: 0;
   text-decoration: none;
+}
+
+.LoginModal__register-link:focus-visible {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
   line-height: 100%;
   letter-spacing: 0;
 }

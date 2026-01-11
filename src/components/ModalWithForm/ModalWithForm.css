@@ -1,11 +1,5 @@
 /* ModalWithForm styles */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .ModalWithForm {
   position: fixed;
   top: 0;

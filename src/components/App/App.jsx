@@ -124,13 +124,20 @@ function MainRouterContent({
     window.localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
   }, [savedArticles]);
 
+  // Auto-open login modal when redirected from protected route
+  React.useEffect(() => {
+    if (location.state?.loginRequired && !isLoggedIn) {
+      setIsLoginModalOpen(true);
+    }
+  }, [location.state, isLoggedIn, setIsLoginModalOpen]);
+
   // Logout handler - clear all user data and invalidate session
   const logout = () => {
     authLogout();
     setCurrentUser(null);
     // Clear sensitive data from localStorage
     window.localStorage.removeItem("token");
-    window.localStorage.removeItem("user");
+    window.localStorage.removeItem("currentUser");
     window.localStorage.removeItem("savedArticles");
     window.localStorage.removeItem("lastRegisteredUsername"); // Clear stub username cache
     // Clear saved articles from state
@@ -252,33 +259,35 @@ function MainRouterContent({
         onSavedArticles={handleSavedArticles}
         isBlack={location.pathname === "/saved-news"}
       />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Main
-              showLoginRequiredMessage={
-                location.state && location.state.loginRequired
-              }
-              onLogin={openLoginModal}
-              onSearch={handleSearch}
-              articles={articles}
-              isLoading={isLoading}
-              apiError={apiError}
-              hasSearched={hasSearched}
-              isLoggedIn={isLoggedIn}
-              savedArticles={savedArticles}
-              onToggleSave={handleToggleSave}
-            />
-          }
-        />
-        <Route path="/saved-news" element={<ProtectedSavedNews />} />
-      </Routes>
-      {location.pathname !== "/saved-news" && (
-        <section className="Main__about-section">
-          <About />
-        </section>
-      )}
+      <div className="App__main-content">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main
+                showLoginRequiredMessage={
+                  location.state && location.state.loginRequired
+                }
+                onLogin={openLoginModal}
+                onSearch={handleSearch}
+                articles={articles}
+                isLoading={isLoading}
+                apiError={apiError}
+                hasSearched={hasSearched}
+                isLoggedIn={isLoggedIn}
+                savedArticles={savedArticles}
+                onToggleSave={handleToggleSave}
+              />
+            }
+          />
+          <Route path="/saved-news" element={<ProtectedSavedNews />} />
+        </Routes>
+        {location.pathname !== "/saved-news" && (
+          <section className="Main__about-section">
+            <About />
+          </section>
+        )}
+      </div>
       <Footer />
       {isLoginModalOpen && (
         <LoginModal

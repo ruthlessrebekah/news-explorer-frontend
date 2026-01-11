@@ -1,10 +1,4 @@
 /* SavedNews.css */
-/* Reset and base box-sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 /* Full-width background wrapper for cards */
 .SavedNews__cards-bg {
@@ -334,12 +328,12 @@ body.saved-news-page .Main__about-section {
   color: #1a1b22;
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1;
+  min-height: 110px;
   margin-bottom: 18px;
 }
 
@@ -469,6 +463,7 @@ body.saved-news-page .Main__about-section {
     line-height: 22px;
     width: 192px;
     height: 88px; /* Figma: 4 lines at 22px */
+    min-height: 88px;
     margin-bottom: 12px;
     display: -webkit-box;
     -webkit-line-clamp: 4;
@@ -489,14 +484,14 @@ body.saved-news-page .Main__about-section {
     padding: 8px 0 0;
   }
   .SavedNews__container {
-    max-width: 320px;
+    max-width: 288px;
   }
 
   .SavedNews__header {
     padding: 0 0 16px 0;
   }
 
-  */ .SavedNews__title {
+  .SavedNews__title {
     width: 228px;
     margin: 0 0 50px 0;
   }
@@ -511,7 +506,7 @@ body.saved-news-page .Main__about-section {
   }
   .SavedNews__cards {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 10px;
   }
   .SavedNews__card {
     width: 288px;
@@ -547,29 +542,7 @@ body.saved-news-page .Main__about-section {
     width: 256px;
   }
 
-  .SavedNews__actions > .SavedNews__tag {
-    top: 6px;
-    left: 6px;
-    max-width: 80px;
-    padding: 4px 10px;
-    font-size: 11px;
-    border-radius: 6px;
-  }
-  .SavedNews__actions > .SavedNews__delete {
-    top: 6px;
-    right: 6px;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-  }
-  .SavedNews__actions > .SavedNews__remove-label {
-    top: 6px;
-    right: 40px;
-    width: 90px;
-    height: 28px;
-    font-size: 10px;
-    border-radius: 6px;
-  }
+  /* Tag, delete button, and remove label inherit desktop sizes and positions */
 }
 
 @media (max-width: 352px) {

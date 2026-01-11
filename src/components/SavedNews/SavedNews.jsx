@@ -1,10 +1,37 @@
 // SavedNews.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import "./SavedNews.css";
 
 function SavedNews({ savedArticles = [], onToggleSave }) {
   const [userName, setUserName] = useState("User");
+  // Track image load errors by article URL
+  const [imageErrors, setImageErrors] = useState(new Set());
+  // Reset image errors when savedArticles changes
+  useEffect(() => {
+    setImageErrors(new Set());
+  }, [savedArticles]);
+
+  // Handler for image load errors
+  const handleImageError = (articleUrl) => {
+    setImageErrors((prev) => new Set([...prev, articleUrl]));
+  };
+
+  // Defensive utility for safe text rendering
+  const safeText = (value, fallback = "—") =>
+    typeof value === "string" && value.trim() ? value : fallback;
+
+  // Defensive utility for safe date formatting
+  const safeDate = (value, fallback = "Date unavailable") => {
+    if (!value || typeof value !== "string" || !value.trim()) return fallback;
+    const date = new Date(value);
+    if (isNaN(date.getTime())) return fallback;
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
 
   // Get user name from localStorage
   useEffect(() => {
@@ -19,18 +46,18 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
     }
   }, []);
 
-  // Extract unique keywords from saved articles
-  const getKeywords = () => {
-    const keywords = new Set();
+  // Memoize keywords extraction for performance
+  const keywords = useMemo(() => {
+    const keywordsSet = new Set();
     savedArticles.forEach((article) => {
-      if (article.keyword) {
-        keywords.add(article.keyword);
+      const keywordText = safeText(article.keyword);
+      if (keywordText !== "—") {
+        keywordsSet.add(keywordText);
       }
     });
-    return Array.from(keywords);
-  };
+    return Array.from(keywordsSet);
+  }, [savedArticles]);
 
-  const keywords = getKeywords();
   const hasArticles = savedArticles.length > 0;
 
   return (
@@ -50,14 +77,14 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
                 By keywords:{" "}
                 {keywords.length <= 3
                   ? keywords.map((keyword, index) => (
-                      <span className="SavedNews__keyword" key={index}>
+                      <span className="SavedNews__keyword" key={keyword}>
                         {keyword}
                         {index < keywords.length - 1 && ", "}
                       </span>
                     ))
                   : [
                       ...keywords.slice(0, 3).map((keyword, index) => (
-                        <span className="SavedNews__keyword" key={index}>
+                        <span className="SavedNews__keyword" key={keyword}>
                           {keyword}
                           {index < 2 && ", "}
                         </span>
@@ -76,105 +103,97 @@ function SavedNews({ savedArticles = [], onToggleSave }) {
         {hasArticles ? (
           <div className="SavedNews__cards-bg">
             <div className="SavedNews__cards">
-              {savedArticles.map((article) => (
-                <a
-                  key={article.url}
-                  className="SavedNews__card"
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  tabIndex={0}
-                >
-                  {/* Image Container */}
-                  <div className="SavedNews__image-wrapper">
-                    {!(article.urlToImage || article.imageUrl) ? (
-                      <div
-                        className="SavedNews__image SavedNews__image--placeholder"
-                        aria-label="Image unavailable"
-                      >
-                        <span className="SavedNews__image-text">
-                          Image unavailable
+              {savedArticles.map((article) => {
+                const keywordText = safeText(article.keyword);
+                return (
+                  <a
+                    key={article.url}
+                    className="SavedNews__card"
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabIndex={0}
+                  >
+                    {/* Image Container */}
+                    <div className="SavedNews__image-wrapper">
+                      {imageErrors.has(article.url) ||
+                      !(article.urlToImage || article.imageUrl) ? (
+                        <div
+                          className="SavedNews__image SavedNews__image--placeholder"
+                          aria-label="Image unavailable"
+                        >
+                          <span className="SavedNews__image-text">
+                            Image unavailable
+                          </span>
+                        </div>
+                      ) : (
+                        <img
+                          src={article.urlToImage || article.imageUrl}
+                          alt={article.title}
+                          className="SavedNews__image"
+                          onError={() => handleImageError(article.url)}
+                        />
+                      )}
+                      <div className="SavedNews__actions">
+                        {/* Delete Button */}
+                        <button
+                          className="SavedNews__delete"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            onToggleSave(article);
+                          }}
+                          aria-label="Delete article"
+                        />
+                        {/* Remove from Saved Label */}
+                        <span className="SavedNews__remove-label">
+                          Remove from saved
+                        </span>
+                        {/* Keyword Tag */}
+                        {keywordText !== "—" && (
+                          <span className="SavedNews__tag">{keywordText}</span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="SavedNews__content">
+                      <span className="SavedNews__date">
+                        {safeDate(article.publishedAt)}
+                      </span>
+                      <h3 className="SavedNews__card-title">
+                        {safeText(article.title, "Untitled")}
+                      </h3>
+                      <p className="SavedNews__card-description">
+                        {safeText(
+                          article.description,
+                          "No description available"
+                        )}
+                      </p>
+                      <div className="SavedNews__meta">
+                        <span className="SavedNews__source">
+                          {article.source?.name || article.source || "Unknown"}
                         </span>
                       </div>
-                    ) : (
-                      <img
-                        src={article.urlToImage || article.imageUrl}
-                        alt={article.title}
-                        className="SavedNews__image"
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.style.display = "none";
-                          e.target.parentNode.querySelector(
-                            ".SavedNews__image--placeholder"
-                          ).style.display = "flex";
-                        }}
-                      />
-                    )}
-                    <div className="SavedNews__actions">
-                      {/* Delete Button */}
-                      <button
-                        className="SavedNews__delete"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          onToggleSave(article);
-                        }}
-                        aria-label="Delete article"
-                      >
-                        {/* icon only, no text or span needed */}
-                      </button>
-                      {/* Remove from Saved Label */}
-                      <span className="SavedNews__remove-label">
-                        Remove from saved
-                      </span>
-                      {/* Keyword Tag */}
-                      {article.keyword && (
-                        <span className="SavedNews__tag">
-                          {article.keyword}
-                        </span>
-                      )}
                     </div>
-                    {/* Hidden placeholder for broken image fallback */}
-                    <div
-                      className="SavedNews__image SavedNews__image--placeholder"
-                      style={{ display: "none" }}
-                      aria-label="Image unavailable"
-                    >
-                      <span className="SavedNews__image-text">
-                        Image unavailable
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="SavedNews__content">
-                    <span className="SavedNews__date">
-                      {article.publishedAt
-                        ? new Date(article.publishedAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              month: "long",
-                              day: "numeric",
-                              year: "numeric",
-                            }
-                          )
-                        : ""}
-                    </span>
-                    <h3 className="SavedNews__card-title">{article.title}</h3>
-                    <p className="SavedNews__card-description">
-                      {article.description || "No description available"}
-                    </p>
-                    <div className="SavedNews__meta">
-                      <span className="SavedNews__source">
-                        {article.source?.name || article.source || "Unknown"}
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                );
+              })}
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div className="SavedNews__cards-bg">
+            <div className="SavedNews__empty-state">
+              {/* Optional: Add an SVG or image here */}
+              <p className="SavedNews__empty-title">
+                You haven’t saved any articles yet.
+              </p>
+              <p className="SavedNews__empty-text">
+                Start exploring and save articles to see them here.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -8,6 +8,7 @@ export function CurrentUserProvider({ children }) {
       const stored = window.localStorage.getItem("currentUser");
       return stored ? JSON.parse(stored) : null;
     } catch (e) {
+      console.error("Failed to parse currentUser from localStorage", e);
       return null;
     }
   });

@@ -1,11 +1,5 @@
 /* RegisterModal styles aligned to LoginModal */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .RegisterModal {
   background: #fff;
   border-radius: 16px;
@@ -46,10 +40,9 @@
   transform: scale(1.2);
 }
 
-.RegisterModal__close:focus,
-.RegisterModal__close:active {
-  outline: none;
-  box-shadow: none;
+.RegisterModal__close:focus-visible {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
 }
 
 .RegisterModal__title {
@@ -92,9 +85,10 @@
   background: transparent;
 }
 
-.RegisterModal__input:focus {
+.RegisterModal__input:focus-visible {
   outline: none;
-  border-color: #d3d3d3;
+  border-color: #2f71e5;
+  border-width: 2px;
 }
 
 .RegisterModal__input::placeholder {
@@ -183,6 +177,11 @@
   cursor: not-allowed;
 }
 
+.RegisterModal__submit:focus-visible:not(:disabled) {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
+}
+
 .RegisterModal__signin-container {
   height: 20px;
   text-align: center;
@@ -206,6 +205,11 @@
   font-weight: 400;
   font-family: "Inter", Arial, sans-serif;
   padding: 0;
+}
+
+.RegisterModal__signin-link:focus-visible {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
 }
 
 .RegisterModal__signin-link:hover {

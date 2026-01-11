@@ -14,7 +14,6 @@
   color: #fff;
   background: none;
   border: none;
-  outline: none;
   text-decoration: none;
   cursor: pointer;
   height: 48px;
@@ -87,10 +86,8 @@
 
 .Navigation__link,
 .Navigation__link:active,
-.Navigation__link:focus,
 .Navigation__link:visited {
   box-shadow: none;
-  outline: none;
   background: none;
   text-decoration: none;
   color: #fff;
@@ -126,7 +123,6 @@
   color: #b6bcbf;
   background: none;
   border: none;
-  outline: none;
   box-shadow: none;
   padding: 0;
   margin-right: 64px;
@@ -215,6 +211,18 @@
   display: block;
   margin-left: 19px;
   flex-shrink: 0;
+}
+
+/* Unified accessible focus system for all navigation interactive elements */
+.Navigation__link--home:focus-visible,
+.Navigation__link--signin:focus-visible,
+.Navigation__link--saved:focus-visible,
+.Navigation__logout-button:focus-visible,
+.Navigation__menu-icon:focus-visible,
+.Navigation__menu-close:focus-visible,
+.Navigation__menu-link:focus-visible {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
 }
 
 /* Mobile menu icon for 320px */
@@ -391,8 +399,8 @@
     text-align: center;
   }
 
-  .Navigation__menu-link:active,
-  .Navigation__menu-link:focus {
+  /* Keep active state for touch feedback */
+  .Navigation__menu-link:active {
     background: rgba(255, 255, 255, 0.08);
   }
 

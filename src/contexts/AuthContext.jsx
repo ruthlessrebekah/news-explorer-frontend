@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
       const stored = window.localStorage.getItem("isLoggedIn");
       return stored === "true";
     } catch (e) {
-      // localStorage unavailable, fallback to logged out
+      console.error("Failed to read isLoggedIn from localStorage", e);
       return false;
     }
   });

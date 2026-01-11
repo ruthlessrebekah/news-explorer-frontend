@@ -6,7 +6,7 @@ import "./SuccessModal.css";
 
 function SuccessModal({ onClose, onSignIn }) {
   return (
-    <ModalWithForm onClose={onClose}>
+    <ModalWithForm onClose={onClose} ariaLabel="Registration success">
       <div className="SuccessModal">
         <button onClick={onClose} className="SuccessModal__close">
           <img src={closeIcon} alt="Close" />

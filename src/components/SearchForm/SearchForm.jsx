@@ -3,13 +3,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./SearchForm.css";
 
+const MAX_LENGTH = 100;
+
 function SearchForm({ onSearch }) {
   const [value, setValue] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
   const [error, setError] = React.useState("");
 
   const handleInputChange = (e) => {
-    setValue(e.target.value);
+    const newValue = e.target.value;
+    if (newValue.length > MAX_LENGTH) return;
+    setValue(newValue);
     if (error) setError("");
   };
 
@@ -17,6 +21,10 @@ function SearchForm({ onSearch }) {
     if (e) e.preventDefault();
     if (!value.trim()) {
       setError("Please enter a keyword");
+      return;
+    }
+    if (value.length > MAX_LENGTH) {
+      setError(`Search term must be ${MAX_LENGTH} characters or less`);
       return;
     }
     setSubmitting(true);
@@ -41,6 +49,7 @@ function SearchForm({ onSearch }) {
             onChange={handleInputChange}
             aria-describedby={error ? "search-error" : undefined}
             aria-invalid={!!error}
+            maxLength={MAX_LENGTH}
           />
           <button
             className={`SearchForm__button ${

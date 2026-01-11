@@ -41,10 +41,9 @@
   transform: scale(1.2);
 }
 
-.SuccessModal__close:focus,
-.SuccessModal__close:active {
-  outline: none;
-  box-shadow: none;
+.SuccessModal__close:focus-visible {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
 }
 
 .SuccessModal__title {
@@ -74,6 +73,11 @@
   width: 228px;
   height: 18px;
   text-align: left;
+}
+
+.SuccessModal__signin-link:focus-visible {
+  outline: 2px solid #2f71e5;
+  outline-offset: 2px;
 }
 
 @media (max-width: 1311px) {

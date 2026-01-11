@@ -65,11 +65,14 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
       // Actually call the register stub and store user/token in localStorage
       const response = await register(email, password, username);
       window.localStorage.setItem("token", response.token);
-      window.localStorage.setItem("user", JSON.stringify(response.user));
+      window.localStorage.setItem("currentUser", JSON.stringify(response.user));
       onRegisterSuccess(); // Notify parent about successful registration
+      // Clear form fields and error states
       setEmail("");
       setPassword("");
       setUsername("");
+      setError("");
+      setEmailUnavailableError("");
     } catch (err) {
       // Check if error is due to email already existing
       if (
@@ -109,7 +112,7 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
     username.length >= 2;
 
   return (
-    <ModalWithForm onClose={onClose}>
+    <ModalWithForm onClose={onClose} ariaLabel="Sign up">
       <div className="RegisterModal">
         <button onClick={onClose} className="RegisterModal__close">
           <img src={closeIcon} alt="Close" />
@@ -163,6 +166,10 @@ function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {
             type="submit"
             className={`RegisterModal__submit ${
               emailUnavailableError ? "RegisterModal__submit--no-margin" : ""
+            } ${
+              displayedEmailError
+                ? "RegisterModal__submit--error"
+                : "RegisterModal__submit--no-error"
             }`}
             disabled={!isFormValid || isLoading}
           >

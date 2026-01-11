@@ -50,7 +50,7 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
 
       // Store token in localStorage for persistence
       window.localStorage.setItem("token", response.token);
-      window.localStorage.setItem("user", JSON.stringify(response.user));
+      window.localStorage.setItem("currentUser", JSON.stringify(response.user));
       // Update auth context
       authLogin();
       setEmail("");
@@ -87,7 +87,7 @@ function LoginModal({ onClose, onRegister, onLoginSuccess }) {
     : "LoginModal__submit LoginModal__submit--no-error";
 
   return (
-    <ModalWithForm onClose={onClose}>
+    <ModalWithForm onClose={onClose} ariaLabel="Sign in">
       <div className="LoginModal">
         <button onClick={onClose} className="LoginModal__close">
           <img src={closeIcon} alt="Close" />
