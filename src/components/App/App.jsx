@@ -34,7 +34,7 @@ function App() {
   return (
     <AuthProvider>
       <CurrentUserProvider>
-        <Router basename="/news-explorer-frontend">
+        <Router>
           <MainRouterContent
             isLoginModalOpen={isLoginModalOpen}
             setIsLoginModalOpen={setIsLoginModalOpen}
