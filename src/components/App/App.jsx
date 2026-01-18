@@ -3,7 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -34,7 +34,7 @@ function App() {
   return (
     <AuthProvider>
       <CurrentUserProvider>
-        <Router>
+        <Router basename="/news-explorer-frontend">
           <MainRouterContent
             isLoginModalOpen={isLoginModalOpen}
             setIsLoginModalOpen={setIsLoginModalOpen}

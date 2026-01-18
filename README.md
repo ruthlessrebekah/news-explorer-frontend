@@ -1,5 +1,7 @@
 # News Explorer Frontend
 
+**Live Demo:** [https://ruthlessrebekah.github.io/news-explorer-frontend/](https://ruthlessrebekah.github.io/news-explorer-frontend/)
+
 A responsive, accessible news search and bookmarking app built with React and Vite. This project is designed for Project 16 submission and demonstrates best practices in UI/UX, authentication, validation, error handling, and maintainability.
 
 ---
