@@ -27,7 +27,7 @@ function Main({
 
   return (
     <main className="Main">
-      <div className="Main__hero-wrapper">
+      <header className="Main__hero-wrapper">
         <section className="Main__section">
           <div className="Main__hero">
             <div className="Main__hero-content">
@@ -42,7 +42,7 @@ function Main({
             </div>
           </div>
         </section>
-      </div>
+      </header>
 
       {isLoading ? (
         <section className="Main__section Main__results Main__results--loading">

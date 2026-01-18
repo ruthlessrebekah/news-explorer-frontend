@@ -28,9 +28,10 @@
 
 .Main__hero-wrapper {
   width: 100%;
+  max-width: none;
   height: 576px; /* includes header and hero */
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/assets/images/hero-image.jpg") center center / cover no-repeat;
+    url("../../assets/images/hero-image.jpg") center center / cover no-repeat;
   color: #fff;
 }
 
@@ -162,10 +163,11 @@
 }
 
 .Main__section.Main__results {
-  padding: 80px 104px;
+  padding: 80px 0;
 }
 
 .Main__results-content {
+  width: 100%;
   max-width: 1232px;
   margin: 0 auto;
   padding: 0;
@@ -181,9 +183,9 @@
   text-align: left;
   margin-top: 0;
   margin-bottom: 32px;
-  width: 1232px; /* Match grid width */
+  width: 100%;
+  max-width: 1232px;
   margin-left: 0;
-  max-width: none;
   height: auto;
 }
 
@@ -237,7 +239,7 @@
   display: block;
   width: 82px;
   height: 82px;
-  background: url("../../assets/images/not-found-icon.png") center no-repeat;
+  background: url("../../assets/images/not-found-icon.svg") center no-repeat;
   background-size: contain;
 }
 

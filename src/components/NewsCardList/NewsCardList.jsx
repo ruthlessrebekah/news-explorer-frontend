@@ -10,17 +10,18 @@ function NewsCardList({ newsCards, isLoggedIn, savedArticles, onToggleSave }) {
     savedArticles.some((item) => item.url === url);
 
   return (
-    <section className="NewsCardList">
+    <ul className="NewsCardList">
       {safeCards.map((card, index) => (
-        <NewsCard
-          key={card.url || index}
-          {...card}
-          isLoggedIn={isLoggedIn}
-          isSaved={isSaved(card.url)}
-          onToggleSave={() => onToggleSave && onToggleSave(card)}
-        />
+        <li key={card.url || index}>
+          <NewsCard
+            {...card}
+            isLoggedIn={isLoggedIn}
+            isSaved={isSaved(card.url)}
+            onToggleSave={() => onToggleSave && onToggleSave(card)}
+          />
+        </li>
       ))}
-    </section>
+    </ul>
   );
 }
 

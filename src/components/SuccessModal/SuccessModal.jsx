@@ -1,7 +1,7 @@
 // SuccessModal.jsx
 import PropTypes from "prop-types";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import closeIcon from "../../assets/images/close-icon-white.png";
+import closeIcon from "../../assets/images/close-icon-white.svg";
 import "./SuccessModal.css";
 
 function SuccessModal({ onClose, onSignIn }) {

@@ -6,7 +6,7 @@
   overflow: visible; /* Changed from hidden to allow focus outline to show */
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 100%;
   max-width: 100%;
   height: 576px;
   box-sizing: border-box;
@@ -82,16 +82,16 @@
   display: block;
   width: 24px;
   height: 24px;
-  background: url("../../assets/images/bookmark-icon-default-gray.png") center
+  background: url("../../assets/images/bookmark-icon-default-gray.svg") center
     no-repeat;
-  background-size: cover;
+  background-size: contain;
   transition: background 0.2s;
 }
 
 .NewsCard__save:hover::before {
-  background: url("../../assets/images/bookmark-icon-hover-black.png") center
+  background: url("../../assets/images/bookmark-icon-hover-black.svg") center
     no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .NewsCard__save--inactive {
@@ -103,16 +103,16 @@
 }
 
 .NewsCard__save--saved::before {
-  background: url("../../assets/images/bookmark-icon-saved-blue.png") center
+  background: url("../../assets/images/bookmark-icon-saved-blue.svg") center
     no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-color: transparent;
 }
 
 .NewsCard__save--saved:hover::before {
-  background: url("../../assets/images/bookmark-icon-saved-blue.png") center
+  background: url("../../assets/images/bookmark-icon-saved-blue.svg") center
     no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .NewsCard__content {
@@ -164,7 +164,7 @@
   font-size: 26px;
   font-weight: 400;
   line-height: 30px;
-  width: 352px;
+  width: 100%;
   height: 60px;
   color: #1a1b22;
   margin: 0;
@@ -178,7 +178,7 @@
 }
 
 .NewsCard__description {
-  width: 352px;
+  width: 100%;
   max-height: 110px;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
@@ -204,7 +204,7 @@
 }
 
 .NewsCard__source {
-  max-width: 352px;
+  width: 100%;
   font-family: "Roboto Slab", serif;
   font-size: 16px;
   font-weight: 700;
@@ -217,7 +217,7 @@
 /* Responsive Design - Tablet (768px and below) */
 @media (max-width: 1311px) {
   .NewsCard {
-    width: 224px;
+    width: 100%;
     height: 420px;
   }
 
@@ -251,7 +251,7 @@
 
   .NewsCard__date {
     margin-bottom: 12px;
-    width: 192px; /* single line within content column */
+    width: 100%; /* single line within content column */
     white-space: nowrap; /* prevent wrapping */
     overflow: hidden; /* hide overflow */
     text-overflow: ellipsis; /* truncate if needed */
@@ -260,7 +260,6 @@
   .NewsCard__title {
     font-size: 22px;
     line-height: 24px;
-    width: 192px;
     height: 72px; /* Figma: 3 lines at 24px */
     margin-bottom: 10px;
     display: -webkit-box;
@@ -271,7 +270,6 @@
   .NewsCard__description {
     font-size: 16px;
     line-height: 22px;
-    width: 192px;
     height: 88px; /* Figma: 4 lines at 22px */
     min-height: 88px;
     margin-bottom: 12px;
@@ -281,7 +279,6 @@
   }
 
   .NewsCard__source {
-    width: 192px; /* match title/description width */
     height: 20px; /* Figma: source height */
     display: block; /* ensure width/height apply */
     white-space: nowrap; /* prevent wrapping */
@@ -292,7 +289,7 @@
 
 @media (max-width: 767px) {
   .NewsCard {
-    width: 288px;
+    width: 100%;
     height: 444px;
   }
 
@@ -306,7 +303,7 @@
   }
 
   .NewsCard__title {
-    width: 256px;
+    width: 100%;
     height: 48px;
     margin-bottom: 14px;
     -webkit-line-clamp: 2;
@@ -315,13 +312,13 @@
   }
 
   .NewsCard__description {
-    width: 256px;
+    width: 100%;
     margin-bottom: 8px;
     -webkit-line-clamp: 4;
     line-clamp: 4;
   }
 
   .NewsCard__source {
-    width: 256px;
+    width: 100%;
   }
 }

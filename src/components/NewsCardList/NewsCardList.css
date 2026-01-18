@@ -2,20 +2,23 @@
 
 .NewsCardList {
   display: grid;
-  grid-template-columns: repeat(3, 400px);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 16px;
   background-color: #f5f6f7;
+  width: 100%;
   max-width: 1232px;
   margin: 0 auto;
   box-sizing: border-box;
   justify-content: center;
+  list-style: none;
+  padding: 0;
 }
 
 @media (max-width: 1311px) {
   .NewsCardList {
     width: 100%;
     max-width: 688px;
-    grid-template-columns: repeat(3, 224px);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: center;
     gap: 8px;
     box-sizing: border-box;
@@ -24,8 +27,9 @@
 
 @media (max-width: 767px) {
   .NewsCardList {
-    grid-template-columns: 1fr;
+    width: 100%;
     max-width: 288px;
+    grid-template-columns: 1fr;
     gap: 16px;
     margin: 0;
     justify-content: center;

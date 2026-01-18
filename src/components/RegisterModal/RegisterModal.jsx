@@ -3,7 +3,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { register } from "../../utils/auth";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import closeIcon from "../../assets/images/close-icon-white.png";
+import closeIcon from "../../assets/images/close-icon-white.svg";
 import "./RegisterModal.css";
 
 function RegisterModal({ onClose, onLogin, onRegisterSuccess }) {

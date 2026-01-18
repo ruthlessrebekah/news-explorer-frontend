@@ -1,13 +1,30 @@
+/* Always keep icons in a row for desktop and tablet */
+.Footer__icon-group {
+  display: flex;
+  flex-direction: row;
+  gap: 26px;
+  align-items: center;
+}
 /* Footer styles */
 .Footer {
+  width: 100%;
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 104px;
   box-sizing: border-box;
   background: #fff;
   border-top: 1px solid #eee;
+  padding: 0;
+}
+
+/* Footer container for centering and spacing */
+.Footer__container {
+  width: 100%;
+  max-width: 1232px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  box-sizing: border-box;
 }
 
 .Footer__copyright {
@@ -30,7 +47,7 @@
   color: #1a1b22;
   font-size: 18px;
   line-height: 24px;
-  font-weight: 500;
+  font-weight: 400;
   margin-right: 40px;
 }
 
@@ -39,93 +56,108 @@
   align-items: center;
 }
 
-.Footer__icon--github {
-  margin-right: 24px;
-}
-
 /* Responsive Design - Tablet (1311px and below) */
 @media (max-width: 1311px) {
   .Footer {
     height: 64px;
-    padding: 0 24px 0 40px;
+  }
+  .Footer__container {
+    height: 64px;
+    max-width: 688px;
   }
 
   .Footer__nav {
     gap: 16px;
   }
-
-  .Footer__link {
-    font-size: 14px;
-  }
-
-  .Footer__icon {
-    width: 16px;
-    height: 16px;
-  }
 }
 
 /* Mobile (767px and below) */
 @media (max-width: 767px) {
+  .Footer__icon-group {
+    margin-top: 0;
+    height: 48px;
+  }
   .Footer {
     height: 176px;
+    padding-top: 20px;
+    padding-bottom: 22px; /* Add space at the bottom */
+
+    background: #fff;
+  }
+  .Footer__container {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 16px 22px 16px;
-    gap: 40px;
-  }
-
-  .Footer__copyright {
-    width: 288px;
-    order: 2;
-    white-space: nowrap;
-  }
-
-  .Footer__nav {
+    align-items: stretch;
+    justify-content: space-between;
+    max-width: 288px;
     width: 100%;
-    order: 1;
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    grid-template-rows: auto auto;
-    row-gap: 28px;
-    column-gap: 26px;
+    height: auto;
+    gap: 38px;
+    position: relative;
+    /* margin-bottom: 38px; */
+  }
+  .Footer__nav {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+    flex: 1 1 auto;
+  }
+  .Footer__icon-group {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+    height: 48px;
   }
 
+  .Footer__link:last-child {
+    margin-bottom: 0;
+  }
+  .Footer__copyright {
+    /* position: absolute; */
+    position: static;
+    margin-top: auto;
+    left: 0;
+    /* bottom: -40px; */
+    width: 100%;
+    text-align: center;
+    order: 2;
+    white-space: normal;
+    color: #b6bcbf;
+  }
+  .Footer__icon {
+    margin-left: 0;
+    margin-right: 0;
+    width: 24px; /* Ensure icon size is consistent */
+    height: 24px; /* Ensure icon size is consistent */
+  }
+  .Footer__nav-links {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    height: 74px;
+    gap: 26px;
+  }
+  .Footer__nav-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+  /* ...moved above for absolute positioning... */
   .Footer__link {
     margin-right: 0;
-    font-size: 18px;
   }
-
-  .Footer__nav > a:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .Footer__nav > a:nth-child(2) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .Footer__nav > a:nth-child(3) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .Footer__nav > a:nth-child(4) {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
   .Footer__icon {
     margin-right: 0;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
-
   .Footer__icon svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
-
   .Footer__icon--github {
     margin-right: 0;
   }

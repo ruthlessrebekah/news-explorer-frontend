@@ -225,10 +225,10 @@ body.saved-news-page .Main__about-section {
   width: 40px;
   height: 40px;
   background-color: #ffffff;
-  background-image: url("../../assets/images/trash-icon-default-gray.png");
+  background-image: url("../../assets/images/trash-icon-default-gray.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: 18px 19px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -241,7 +241,7 @@ body.saved-news-page .Main__about-section {
 
 .SavedNews__delete:hover {
   background-color: #ffffff;
-  background-image: url("../../assets/images/trash-icon-hover-black.png");
+  background-image: url("../../assets/images/trash-icon-hover-black.svg");
 }
 
 .SavedNews__remove-label {

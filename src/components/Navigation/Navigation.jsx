@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./Navigation.css";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
-import logoutIconWhite from "../../assets/images/logout-icon-white.png";
-import logoutIconBlack from "../../assets/images/logout-icon-black.png";
-import menuIconBlack from "../../assets/images/menu-icon-black.png";
-import menuIconWhite from "../../assets/images/menu-icon-white.png";
+import logoutIconWhite from "../../assets/images/logout-icon-white.svg";
+import logoutIconBlack from "../../assets/images/logout-icon-black.svg";
+import menuIconBlack from "../../assets/images/menu-icon-black.svg";
+import menuIconWhite from "../../assets/images/menu-icon-white.svg";
 
 function Navigation({
   isLoggedIn,
@@ -111,7 +111,7 @@ function Navigation({
           >
             <img
               src={isBlack ? menuIconBlack : menuIconWhite}
-              alt=""
+              alt="Open menu"
               width="24"
               height="24"
             />

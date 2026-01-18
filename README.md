@@ -16,6 +16,13 @@ News Explorer allows users to search for news articles, save favorites, and mana
 - Accessibility and keyboard navigation
 - Defensive error handling and validation
 
+## Component Reuse & Design Decisions
+
+While reusing the NewsCardList or NewsCard components for both the main news page and the Saved News page would reduce code duplication, the design requirements for these two lists are different according to the Figma specifications. The main news card list and the saved news card list have distinct layouts, styles, and sometimes different behaviors (such as different actions, icons, or card widths). Reusing a single component would require adding a significant amount of conditional logic and styling overrides, which could make the codebase harder to maintain and less clear.
+
+**Summary:**
+To preserve the required Figma styles and ensure each list matches its unique design and functionality, the code for the main news card list and the saved news card list is kept separate.
+
 ## Project Pitch Video
 
 **Watch the project pitch video:**
